@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-base: #fafaf7;
+  --color-paper: #fafaf7;
   --color-ink: #0b0b0e;
   --color-ink-soft: #52525e;
   --color-brand: #0e6e5c;
@@ -142,7 +142,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-base text-ink antialiased;
+    @apply bg-paper text-ink antialiased;
   }
   html {
     @apply scroll-smooth font-sans;

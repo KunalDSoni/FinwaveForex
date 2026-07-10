@@ -28,7 +28,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
           href={`/services/${service.slug}`}
           className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand transition-colors hover:text-brand-deep"
         >
-          Learn more
+          Learn more<span className="sr-only"> about {service.name.toLowerCase()}</span>
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
         </Link>
       </motion.div>

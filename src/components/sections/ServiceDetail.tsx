@@ -33,14 +33,16 @@ export function ServiceDetail({ service }: { service: Service }) {
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <ul className="grid gap-4 sm:grid-cols-2">
           {service.features.map((feature, index) => (
-            <Reveal key={feature} delay={index * 0.06}>
-              <li className="flex items-start gap-3 rounded-2xl border border-hairline bg-white p-5">
-                <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-tint">
-                  <Check className="size-3.5 text-brand-deep" aria-hidden />
+            <li key={feature}>
+              <Reveal delay={index * 0.06} className="h-full">
+                <span className="flex h-full items-start gap-3 rounded-2xl border border-hairline bg-white p-5">
+                  <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-tint">
+                    <Check className="size-3.5 text-brand-deep" aria-hidden />
+                  </span>
+                  <span className="text-sm leading-6">{feature}</span>
                 </span>
-                <span className="text-sm leading-6">{feature}</span>
-              </li>
-            </Reveal>
+              </Reveal>
+            </li>
           ))}
         </ul>
       </section>
@@ -52,15 +54,15 @@ export function ServiceDetail({ service }: { service: Service }) {
           </Reveal>
           <ol className="mt-10 grid gap-8 sm:grid-cols-3">
             {service.steps.map((step, index) => (
-              <Reveal key={step.title} delay={index * 0.1}>
-                <li>
+              <li key={step.title}>
+                <Reveal delay={index * 0.1}>
                   <span className="text-sm font-semibold text-brand">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="mt-2 font-semibold tracking-tight">{step.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-ink-soft">{step.body}</p>
-                </li>
-              </Reveal>
+                </Reveal>
+              </li>
             ))}
           </ol>
         </div>

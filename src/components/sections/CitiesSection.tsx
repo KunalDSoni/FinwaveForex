@@ -11,11 +11,13 @@ export function CitiesSection() {
       <SectionHeading eyebrow="Coverage" lines={["Six cities.", "Doorstep delivery."]} />
       <ul className="mt-10 flex flex-wrap gap-3">
         {siteConfig.cities.map((city, index) => (
-          <Reveal key={city} delay={index * 0.06}>
-            <li className="rounded-full border border-hairline bg-white px-5 py-2.5 text-sm font-medium">
-              {city}
-            </li>
-          </Reveal>
+          <li key={city}>
+            <Reveal delay={index * 0.06}>
+              <span className="inline-block rounded-full border border-hairline bg-white px-5 py-2.5 text-sm font-medium">
+                {city}
+              </span>
+            </Reveal>
+          </li>
         ))}
       </ul>
       <Reveal delay={0.2}>

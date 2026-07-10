@@ -23,7 +23,7 @@ export function MobileNav() {
           <Menu className="size-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="top" className="h-dvh bg-base">
+      <SheetContent side="top" className="h-dvh bg-paper">
         <SheetTitle className="sr-only">Navigation</SheetTitle>
         <motion.ul initial="hidden" animate="visible" variants={list} className="mt-16 space-y-2 px-4">
           {[...siteConfig.nav, { label: "Get a quote", href: "/contact" }].map((link) => (
