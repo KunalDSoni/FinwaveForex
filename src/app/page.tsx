@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
+import { CitiesSection } from "@/components/sections/CitiesSection";
+import { CtaBand } from "@/components/sections/CtaBand";
 import { Hero } from "@/components/sections/Hero";
+import { RatesTeaser } from "@/components/sections/RatesTeaser";
+import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { StatsBand } from "@/components/sections/StatsBand";
 import { pageMetadata } from "@/lib/seo";
 
 const base = pageMetadata({
@@ -15,5 +20,14 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <ServicesGrid />
+      <RatesTeaser />
+      <StatsBand />
+      <CitiesSection />
+      <CtaBand />
+    </>
+  );
 }
