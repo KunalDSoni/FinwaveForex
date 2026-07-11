@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CitiesSection } from "@/components/sections/CitiesSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Hero } from "@/components/sections/Hero";
+import { PullQuote } from "@/components/sections/PullQuote";
 import { RatesTeaser } from "@/components/sections/RatesTeaser";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { StatsBand } from "@/components/sections/StatsBand";
@@ -26,6 +27,7 @@ export default function Home() {
       <ServicesGrid />
       <RatesTeaser />
       <StatsBand />
+      <PullQuote />
       <CitiesSection />
       <CtaBand />
     </>

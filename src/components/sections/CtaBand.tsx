@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MaskText } from "@/components/motion/MaskText";
 import { Reveal } from "@/components/motion/Reveal";
+import { Em } from "@/components/sections/Em";
 import { siteConfig } from "@/content/site";
 
 export function CtaBand() {
@@ -15,7 +16,12 @@ export function CtaBand() {
         <div className="relative">
           <MaskText
             as="h2"
-            lines={["Get a better rate", "in one phone call."]}
+            lines={[
+              <>Get a better rate</>,
+              <>
+                in one <Em>phone call.</Em>
+              </>,
+            ]}
             className="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl lg:text-5xl"
           />
           <Reveal delay={0.2}>

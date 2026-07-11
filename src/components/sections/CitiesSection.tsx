@@ -1,5 +1,6 @@
 import { MapPin, Truck } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
+import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { siteConfig } from "@/content/site";
 
@@ -8,7 +9,15 @@ const fulfilmentIcons = [Truck, MapPin];
 export function CitiesSection() {
   return (
     <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 lg:pb-32">
-      <SectionHeading eyebrow="Coverage" lines={["Six cities.", "Doorstep delivery."]} />
+      <SectionHeading
+        eyebrow="Coverage"
+        lines={[
+          <>Six cities.</>,
+          <>
+            <Em>Doorstep</Em> delivery.
+          </>,
+        ]}
+      />
       <ul className="mt-10 flex flex-wrap gap-3">
         {siteConfig.cities.map((city, index) => (
           <li key={city}>

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/Reveal";
+import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { currencies } from "@/content/rates";
 
@@ -12,7 +13,12 @@ export function RatesTeaser() {
         <div>
           <SectionHeading
             eyebrow="Rates"
-            lines={["Rates we'll work", "to better."]}
+            lines={[
+              <>Rates we&apos;ll work</>,
+              <>
+                to <Em>better.</Em>
+              </>,
+            ]}
             sub="Our rates are an approximate guide — we can surely better the rate for you. Call for today's live quote."
           />
           <Reveal delay={0.25}>

@@ -1,10 +1,11 @@
+import type { ReactNode } from "react";
 import { MaskText } from "@/components/motion/MaskText";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
   eyebrow: string;
-  lines: string[];
+  lines: ReactNode[];
   sub?: string;
   as?: "h1" | "h2";
   className?: string;

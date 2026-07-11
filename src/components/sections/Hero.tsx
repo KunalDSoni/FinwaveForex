@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { MaskText } from "@/components/motion/MaskText";
 import { Reveal } from "@/components/motion/Reveal";
 import { Ticker } from "@/components/motion/Ticker";
+import { Em } from "@/components/sections/Em";
 import { QuoteCard } from "@/components/sections/QuoteCard";
 import { tickerPairs } from "@/content/rates";
 
@@ -19,9 +20,14 @@ export function Hero() {
           </Reveal>
           <MaskText
             as="h1"
-            lines={["The clearer way to", "exchange currency."]}
+            lines={[
+              <>The clearer way</>,
+              <>
+                to exchange <Em>currency.</Em>
+              </>,
+            ]}
             delay={0.1}
-            className="mt-5 text-5xl font-semibold tracking-tighter text-balance sm:text-6xl lg:text-7xl"
+            className="mt-5 text-5xl font-semibold tracking-tighter text-balance sm:text-6xl lg:text-7xl xl:text-[5.25rem] xl:leading-[1.02]"
           />
           <Reveal delay={0.25}>
             <p className="mt-6 max-w-xl text-lg leading-8 text-ink-soft">
