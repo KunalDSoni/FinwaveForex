@@ -17,6 +17,7 @@ export default function ServicesPage() {
       <section className="mx-auto max-w-6xl px-4 pt-32 sm:px-6 lg:pt-44">
         <SectionHeading
           as="h1"
+          layout="split"
           eyebrow="Services"
           lines={["Every foreign-exchange need,", "handled properly."]}
           sub="Four services, one desk: exchange currency, send money abroad, load a travel card, or set up FX for your business."

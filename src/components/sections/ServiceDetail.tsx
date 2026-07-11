@@ -8,6 +8,7 @@ import {
 import { MaskText } from "@/components/motion/MaskText";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { Card } from "@/components/ui/card";
 import type { Service } from "@/content/services";
 
 export function ServiceDetail({ service }: { service: Service }) {
@@ -35,12 +36,12 @@ export function ServiceDetail({ service }: { service: Service }) {
           {service.features.map((feature, index) => (
             <li key={feature}>
               <Reveal delay={index * 0.06} className="h-full">
-                <span className="flex h-full items-start gap-3 rounded-2xl border border-hairline bg-white p-5">
+                <Card className="h-full flex-row items-start gap-3 p-5">
                   <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-tint">
                     <Check className="size-3.5 text-brand-deep" aria-hidden />
                   </span>
                   <span className="text-sm leading-6">{feature}</span>
-                </span>
+                </Card>
               </Reveal>
             </li>
           ))}
