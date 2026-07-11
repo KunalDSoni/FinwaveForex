@@ -8,9 +8,9 @@
   --color-paper: #fefaf3;
   --color-ink: #2f2c25;
   --color-ink-soft: #6f6a5e;
-  --color-brand: #61ab77;
-  --color-brand-deep: #4c9061;
-  --color-brand-tint: #e6f1e9;
+  --color-brand: #eaa300;
+  --color-brand-deep: #9c6b00;
+  --color-brand-tint: #fbf0d0;
   --color-sand: #f1eadd;
   --color-hairline: #e7ded0;
   --color-accent-blue: #369be4;
@@ -128,8 +128,8 @@
   --secondary-foreground: #2f2c25;
   --muted: #f1eadd;
   --muted-foreground: #6f6a5e;
-  --accent: #e6f1e9;
-  --accent-foreground: #4c9061;
+  --accent: #fbf0d0;
+  --accent-foreground: #9c6b00;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #e7ded0;
   --input: #e7ded0;

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/content/site";
@@ -11,8 +12,14 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1.2fr_1fr]">
           <div>
-            <Link href="/" className="text-lg font-semibold tracking-tight">
-              Finwave <span className="text-brand">Forex</span>
+            <Link href="/" aria-label="Finwave Forex — home" className="inline-flex">
+              <Image
+                src="/logo.png"
+                alt="Finwave Forex"
+                width={1459}
+                height={379}
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-6 text-ink-soft">{siteConfig.tagline}</p>
           </div>

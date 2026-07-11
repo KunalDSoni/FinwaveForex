@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
-import { Waves } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { siteConfig } from "@/content/site";
@@ -26,12 +26,15 @@ export function Header() {
       )}
     >
       <div className="relative mx-auto flex h-[72px] max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link
-          href="/"
-          className="flex items-center gap-2 text-lg font-semibold tracking-tight text-ink"
-        >
-          <Waves className="size-5" aria-hidden />
-          Finwave Forex
+        <Link href="/" aria-label="Finwave Forex — home" className="flex items-center">
+          <Image
+            src="/logo.png"
+            alt="Finwave Forex"
+            width={1459}
+            height={379}
+            preload
+            className="h-7 w-auto sm:h-8"
+          />
         </Link>
         <nav
           aria-label="Main"

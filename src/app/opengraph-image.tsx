@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/content/site";
 
@@ -7,6 +9,11 @@ export const contentType = "image/png";
 
 // Required for `output: export` — generate the OG image at build time.
 export const dynamic = "force-static";
+
+// Inline the logo as a data URI so Satori can render it at build time.
+const logoDataUri = `data:image/png;base64,${readFileSync(
+  join(process.cwd(), "public", "logo.png"),
+).toString("base64")}`;
 
 // ImageResponse requires style objects; the site-wide no-inline-styles rule
 // applies to DOM components, not OG image generation.
@@ -25,13 +32,10 @@ export default function OpenGraphImage() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", width: 160, height: 10, backgroundColor: "#61ab77" }} />
+        <img src={logoDataUri} width={520} height={135} alt="Finwave Forex" />
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", fontSize: 84, fontWeight: 700, color: "#2f2c25", letterSpacing: -3 }}>
-            Finwave&nbsp;
-            <span style={{ color: "#61ab77" }}>Forex</span>
-          </div>
-          <div style={{ display: "flex", marginTop: 20, fontSize: 32, color: "#6f6a5e", maxWidth: 900 }}>
+          <div style={{ display: "flex", width: 160, height: 10, backgroundColor: "#eaa300" }} />
+          <div style={{ display: "flex", marginTop: 28, fontSize: 40, fontWeight: 700, color: "#2f2c25", letterSpacing: -1, maxWidth: 980 }}>
             {siteConfig.tagline}
           </div>
         </div>
