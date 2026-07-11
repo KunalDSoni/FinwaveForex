@@ -342,6 +342,26 @@ em{font-style:italic}
 .ani.vis{opacity:1;transform:translateY(0)}
 
 /* =============================================
+   NEED HELP CTA
+   ============================================= */
+.need-help-cta{padding:64px 0}
+.need-help-card{background:var(--beige);border-radius:20px;padding:48px 40px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}
+.need-help-card h3{font-family:var(--serif);font-size:28px;font-weight:400}
+.need-help-card p{font-size:15px;color:var(--dark-50)}
+
+/* =============================================
+   RATING BLOCK
+   ============================================= */
+.rating-block{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:48px}
+.rating-stars{display:flex;gap:3px}
+.rating-text{font-size:14px;color:var(--dark-50)}
+
+/* =============================================
+   PRICING INCLUDES
+   ============================================= */
+.pricing-includes{font-size:13px;font-weight:600;margin-bottom:4px}
+
+/* =============================================
    RESPONSIVE
    ============================================= */
 @media(max-width:1024px){

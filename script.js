@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
         '.feature-card, .feature-img, .bento-quote, .bento-photo, .widget, ' +
         '.ai-card, .video-test-card, .testimonial-card, .pricing-card, ' +
         '.performance-content, .perf-img, .newsletter-content, .newsletter-image, ' +
-        '.scale-phones, .section-header, .chat-preview-card, .scale-icon-item, .ai-feature-item'
+        '.scale-phones, .section-header, .chat-preview-card, .scale-icon-item, .ai-feature-item, ' +
+        '.need-help-card, .rating-block'
     );
     const obs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
