@@ -3,6 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { StatsBand } from "@/components/sections/StatsBand";
+import { Section } from "@/components/ui/section";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -42,40 +43,27 @@ export default function AboutPage() {
         />
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <div className="grid gap-5 sm:grid-cols-3">
+      <Section>
+        <div className="hairline-grid sm:grid-cols-3">
           {values.map((value, index) => (
-            <Reveal key={value.title} delay={index * 0.08}>
-              <div className="group shadow-rich relative h-full overflow-hidden rounded-[20px] border border-hairline bg-white p-8 transition-[border-color,box-shadow] duration-300 hover:border-brand/40 hover:shadow-rich-lg">
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -top-10 -right-10 size-44 rounded-full bg-[radial-gradient(circle,rgb(234_163_0_/_0.18),transparent_65%)] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
-                />
-                <span className="relative flex size-11 items-center justify-center rounded-xl bg-brand-tint text-brand">
-                  <value.icon className="size-5" aria-hidden />
-                </span>
-                <h2 className="relative mt-6 text-xl font-semibold tracking-[-0.02em]">{value.title}</h2>
-                <p className="relative mt-2 text-sm leading-6 text-ink-soft">{value.body}</p>
-              </div>
+            <Reveal
+              key={value.title}
+              delay={index * 0.08}
+              className="hairline-cell group relative p-8"
+            >
+              <span className="flex size-11 items-center justify-center rounded-xl bg-brand-tint text-brand">
+                <value.icon className="size-5" aria-hidden />
+              </span>
+              <h2 className="mt-6 text-xl font-semibold tracking-[-0.02em]">{value.title}</h2>
+              <p className="mt-2 text-sm leading-6 text-ink-soft">{value.body}</p>
             </Reveal>
           ))}
         </div>
-      </section>
+      </Section>
 
-      <div className="border-y border-hairline bg-sand/60">
-        <StatsBand />
-      </div>
+      <StatsBand />
 
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <Reveal>
-          <div className="rounded-2xl border border-dashed border-hairline bg-white p-8">
-            <h2 className="text-lg font-semibold tracking-tight">Leadership</h2>
-            <p className="mt-2 text-sm leading-6 text-ink-soft">
-              TODO: team details to be provided by Finwave Forex.
-            </p>
-          </div>
-        </Reveal>
-      </section>
+      {/* Leadership block intentionally omitted until Finwave provides real team details. */}
 
       <CtaBand />
     </>
