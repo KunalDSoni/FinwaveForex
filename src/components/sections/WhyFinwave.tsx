@@ -5,32 +5,14 @@ import { Reveal } from "@/components/motion/Reveal";
 import { RevealScale } from "@/components/motion/RevealScale";
 import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
-import { services } from "@/content/services";
+import { Card } from "@/components/ui/card";
+import { Section } from "@/components/ui/section";
 import { siteConfig } from "@/content/site";
 import { cn } from "@/lib/utils";
 
-function StepsVisual() {
-  const steps = services[0].steps;
-  return (
-    <ol className="space-y-3 rounded-2xl border border-hairline bg-white p-6 shadow-[0_24px_60px_-32px_rgb(47_44_37_/_0.14)]">
-      {steps.map((step, index) => (
-        <li key={step.title} className="flex items-start gap-4 rounded-xl bg-sand/50 p-4">
-          <span className="text-sm font-semibold text-brand">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <div>
-            <p className="text-sm font-semibold tracking-tight">{step.title}</p>
-            <p className="mt-1 text-xs leading-5 text-ink-soft">{step.body}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
-  );
-}
-
 function TrustVisual() {
   return (
-    <div className="flex flex-col items-center gap-4 rounded-2xl border border-hairline bg-white p-10 text-center shadow-[0_24px_60px_-32px_rgb(47_44_37_/_0.14)]">
+    <Card className="items-center gap-4 p-10 text-center">
       <RevealScale variant="icon">
         <span className="flex size-16 items-center justify-center rounded-2xl bg-brand-tint">
           <ShieldCheck className="size-8 text-brand" aria-hidden />
@@ -41,13 +23,13 @@ function TrustVisual() {
         <BadgeCheck className="size-4 text-brand" aria-hidden />
         Full KYC on every transaction
       </p>
-    </div>
+    </Card>
   );
 }
 
 function DeliveryVisual() {
   return (
-    <div className="rounded-2xl border border-hairline bg-white p-8 shadow-[0_24px_60px_-32px_rgb(47_44_37_/_0.14)]">
+    <Card>
       <div className="flex items-center gap-3">
         <span className="flex size-11 items-center justify-center rounded-xl bg-brand-tint">
           <Truck className="size-5 text-brand" aria-hidden />
@@ -65,7 +47,7 @@ function DeliveryVisual() {
           </li>
         ))}
       </ul>
-    </div>
+    </Card>
   );
 }
 
@@ -77,16 +59,6 @@ type Row = {
 };
 
 const rows: Row[] = [
-  {
-    eyebrow: "Simple process",
-    title: (
-      <>
-        From quote to cash, in <Em>three steps.</Em>
-      </>
-    ),
-    body: "Tell us what you need, confirm a live rate over phone or email, and receive your currency at home or at our Ahmedabad office.",
-    visual: <StepsVisual />,
-  },
   {
     eyebrow: "Trust",
     title: (
@@ -111,7 +83,7 @@ const rows: Row[] = [
 
 export function WhyFinwave() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:py-32">
+    <Section>
       <SectionHeading
         align="center"
         eyebrow="Why Finwave"
@@ -123,12 +95,9 @@ export function WhyFinwave() {
       />
       <div className="mt-16 space-y-20 lg:space-y-28">
         {rows.map((row, index) => (
-          <div
-            key={row.eyebrow}
-            className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
-          >
+          <div key={row.eyebrow} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <Reveal className={cn(index % 2 === 1 && "lg:order-2")}>
-              <p className="text-xs font-semibold tracking-widest text-brand uppercase">
+              <p className="text-xs font-semibold tracking-widest text-brand-deep uppercase">
                 {row.eyebrow}
               </p>
               <h3 className="mt-3 font-serif text-[2rem] leading-[1.1] font-normal tracking-tight text-balance sm:text-4xl">
@@ -142,6 +111,6 @@ export function WhyFinwave() {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 }
