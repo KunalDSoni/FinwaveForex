@@ -25,7 +25,7 @@ export function RatesTable() {
         <div className="flex items-start gap-3 rounded-2xl border border-hairline bg-brand-tint/60 p-5">
           <Info className="mt-0.5 size-5 shrink-0 text-brand-deep" aria-hidden />
           <p className="text-sm leading-6 text-brand-deep">
-            Rates shown are indicative only. We can surely better this rate for you — call{" "}
+            Rates shown are indicative only. We can surely better this rate for you, call{" "}
             <a href={siteConfig.phoneHref} className="font-semibold underline underline-offset-2">
               {siteConfig.phone}
             </a>{" "}

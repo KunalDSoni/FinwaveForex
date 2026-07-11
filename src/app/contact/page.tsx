@@ -22,7 +22,7 @@ export default function ContactPage() {
             as="h1"
             eyebrow="Contact"
             lines={["Talk to a real", "forex desk."]}
-            sub="Tell us the currency, the amount, and your city — we'll come back with a rate we'll work to better."
+            sub="Tell us the currency, the amount, and your city, we'll come back with a rate we'll work to better."
           />
           <Reveal delay={0.25}>
             <ul className="mt-10 space-y-5 text-sm leading-6">
@@ -45,7 +45,7 @@ export default function ContactPage() {
                   <br />
                   {address.line1}, {address.line2},
                   <br />
-                  {address.city} — {address.postalCode}
+                  {address.city}, {address.postalCode}
                 </address>
               </li>
               <li className="flex items-start gap-3">

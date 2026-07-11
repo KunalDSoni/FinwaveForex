@@ -41,7 +41,7 @@ export function Hero() {
           />
           <Reveal delay={0.25}>
             <p className="mt-6 max-w-xl text-lg leading-8 text-ink-soft">
-              Buy and sell 15+ currencies, send money abroad, and load travel cards — at rates
+              Buy and sell 15+ currencies, send money abroad, and load travel cards, at rates
               we&apos;ll work to better. Home delivery in six cities across India.
             </p>
           </Reveal>

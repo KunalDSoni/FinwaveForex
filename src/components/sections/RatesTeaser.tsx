@@ -20,7 +20,7 @@ export function RatesTeaser() {
                 to <Em>better.</Em>
               </Fragment>,
             ]}
-            sub="Our rates are an approximate guide — we can surely better the rate for you. Call for today's live quote."
+            sub="Our rates are an approximate guide, we can surely better the rate for you. Call for today's live quote."
           />
           <Reveal delay={0.25}>
             <Button asChild size="lg" className="group mt-8">

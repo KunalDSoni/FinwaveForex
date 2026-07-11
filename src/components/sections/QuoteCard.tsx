@@ -10,7 +10,7 @@ export function QuoteCard() {
     <motion.div
       animate={reduce ? undefined : { y: [-6, 6] }}
       transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
-      className="mx-auto w-full max-w-sm rounded-2xl border border-hairline bg-white p-6 shadow-[0_24px_60px_-24px_rgb(47_44_37_/_0.16)]"
+      className="shadow-rich-lg mx-auto w-full max-w-sm rounded-2xl border border-hairline bg-white p-6"
     >
       <div className="flex items-center justify-between">
         <span className="text-xs font-medium tracking-widest text-ink-soft uppercase">
@@ -23,8 +23,9 @@ export function QuoteCard() {
 
       <div className="mt-5 rounded-xl border border-hairline bg-sand/50 p-4">
         <p className="text-xs text-ink-soft">You send</p>
-        <p className="mt-1 text-2xl font-semibold tracking-tight">
-          USD <span className="text-ink-soft">· US Dollar</span>
+        <p className="mt-1 text-2xl tracking-tight">
+          <span className="font-mono">USD</span>{" "}
+          <span className="text-ink-soft">· US Dollar</span>
         </p>
       </div>
 

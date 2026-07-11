@@ -5,16 +5,18 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-paper: #fefaf3;
-  --color-ink: #2f2c25;
-  --color-ink-soft: #6f6a5e;
+  --color-paper: #ece4d6;
+  --color-ink: #1c1a15;
+  --color-ink-soft: #5c574d;
   --color-brand: #eaa300;
   --color-brand-deep: #9c6b00;
-  --color-brand-tint: #fbf0d0;
-  --color-sand: #f1eadd;
-  --color-hairline: #e7ded0;
+  --color-brand-tint: #f7e9c4;
+  --color-sand: #e3d9c6;
+  --color-hairline: #d8ccb7;
   --color-accent-blue: #369be4;
   --color-accent-red: #fa4661;
+  --shadow-rich: 0 24px 60px -28px rgb(28 26 21 / 0.3);
+  --shadow-rich-lg: 0 44px 96px -36px rgb(28 26 21 / 0.42);
   --animate-marquee: marquee var(--marquee-duration, 28s) linear infinite;
 }
 
@@ -116,24 +118,24 @@
 }
 
 :root {
-  --background: #fefaf3;
-  --foreground: #2f2c25;
-  --card: #fffdf7;
-  --card-foreground: #2f2c25;
-  --popover: #fffdf7;
-  --popover-foreground: #2f2c25;
-  --primary: #2f2c25;
-  --primary-foreground: #fefaf3;
-  --secondary: #f1eadd;
-  --secondary-foreground: #2f2c25;
-  --muted: #f1eadd;
-  --muted-foreground: #6f6a5e;
-  --accent: #fbf0d0;
+  --background: #ece4d6;
+  --foreground: #1c1a15;
+  --card: #ffffff;
+  --card-foreground: #1c1a15;
+  --popover: #ffffff;
+  --popover-foreground: #1c1a15;
+  --primary: #1c1a15;
+  --primary-foreground: #f6efe2;
+  --secondary: #e3d9c6;
+  --secondary-foreground: #1c1a15;
+  --muted: #e3d9c6;
+  --muted-foreground: #5c574d;
+  --accent: #f7e9c4;
   --accent-foreground: #9c6b00;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #e7ded0;
-  --input: #e7ded0;
-  --ring: #2f2c25;
+  --border: #d8ccb7;
+  --input: #d8ccb7;
+  --ring: #1c1a15;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -189,7 +191,14 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-paper text-ink antialiased;
+    @apply text-ink antialiased;
+    background-color: var(--color-paper);
+    background-image:
+      radial-gradient(60% 55% at 78% -8%, rgb(234 163 0 / 0.2), transparent 60%),
+      radial-gradient(55% 48% at 6% 0%, rgb(250 240 214 / 0.65), transparent 62%),
+      radial-gradient(95% 75% at 50% 118%, rgb(28 26 21 / 0.06), transparent 72%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
   }
   html {
     @apply scroll-smooth font-sans;
@@ -208,5 +217,15 @@
   }
   .animate-gradient-shift {
     animation: gradient-shift 6s ease-in-out infinite;
+  }
+  .shadow-rich {
+    box-shadow: var(--shadow-rich);
+  }
+  .shadow-rich-lg {
+    box-shadow: var(--shadow-rich-lg);
+  }
+  .tnum {
+    font-feature-settings: "tnum" 1;
+    font-variant-numeric: tabular-nums;
   }
 }

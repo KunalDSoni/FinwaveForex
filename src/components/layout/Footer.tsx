@@ -12,7 +12,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1.2fr_1fr]">
           <div>
-            <Link href="/" aria-label="Finwave Forex — home" className="inline-flex">
+            <Link href="/" aria-label="Finwave Forex, home" className="inline-flex">
               <Image
                 src="/logo.png"
                 alt="Finwave Forex"
@@ -55,7 +55,7 @@ export function Footer() {
                 <address className="not-italic">
                   {address.line1}, {address.line2},
                   <br />
-                  {address.city} — {address.postalCode}
+                  {address.city}, {address.postalCode}
                 </address>
               </li>
             </ul>
@@ -73,11 +73,7 @@ export function Footer() {
             </ul>
           </nav>
         </div>
-        <div
-          aria-hidden
-          className="mt-16 text-center text-[clamp(3rem,11vw,8.5rem)] leading-none font-semibold tracking-tighter text-ink/5 select-none after:content-['Finwave_Forex']"
-        />
-        <div className="mt-10 flex flex-col gap-2 border-t border-hairline pt-6 text-xs text-ink-soft sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-2 border-t border-hairline pt-6 text-xs text-ink-soft sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {siteConfig.legalName} All rights reserved.
           </p>

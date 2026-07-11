@@ -19,12 +19,12 @@ export const services: Service[] = [
     blurb:
       "Buy and sell foreign currency notes and traveller's cheques at competitive market rates.",
     description:
-      "Exchange 15+ major currencies — from US dollars to Kuwaiti dinar — with an RBI-approved money changer. We buy and sell currency notes and traveller's cheques, with home delivery or branch pick-up in six cities.",
+      "Exchange 15+ major currencies, from US dollars to Kuwaiti dinar, with an RBI-approved money changer. We buy and sell currency notes and traveller's cheques, with home delivery or branch pick-up in six cities.",
     features: [
       "15+ currencies bought and sold",
       "Traveller's cheques encashed and issued",
       "Home delivery or branch pick-up",
-      "Competitive rates — ask us to better your quote",
+      "Competitive rates: ask us to better your quote",
     ],
     steps: [
       {
@@ -33,7 +33,7 @@ export const services: Service[] = [
       },
       {
         title: "Get a live quote",
-        body: "We confirm today's rate over phone or email — and try to better any rate you have.",
+        body: "We confirm today's rate over phone or email, and try to better any rate you have.",
       },
       {
         title: "Delivery or pick-up",
@@ -96,7 +96,7 @@ export const services: Service[] = [
     name: "Travel Currency Cards",
     shortName: "Travel Cards",
     icon: "CreditCard",
-    blurb: "Prepaid multi-currency cards — a safer way to carry money abroad.",
+    blurb: "Prepaid multi-currency cards, a safer way to carry money abroad.",
     description:
       "Load a traveller's currency card before you fly and spend abroad without carrying large amounts of cash. Reloadable and safer than notes.",
     features: [
@@ -132,7 +132,7 @@ export const services: Service[] = [
     shortName: "Corporate FX",
     icon: "Building2",
     blurb:
-      "Foreign-exchange support for businesses — bulk exchange, transfers, and employee travel.",
+      "Foreign-exchange support for businesses: bulk exchange, transfers, and employee travel.",
     description:
       "Dedicated foreign-exchange support for companies: bulk currency for business travel, outward transfers, and traveller's cards for teams. TODO: confirm the corporate service scope with Finwave Forex.",
     features: [

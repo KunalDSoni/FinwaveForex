@@ -16,7 +16,7 @@ const values = [
   {
     icon: Handshake,
     title: "Transparency",
-    body: "Rates quoted up front — and we'll try to better any quote you bring us.",
+    body: "Rates quoted up front, and we'll try to better any quote you bring us.",
   },
   {
     icon: ShieldCheck,

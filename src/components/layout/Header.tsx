@@ -26,7 +26,7 @@ export function Header() {
       )}
     >
       <div className="relative mx-auto flex h-[72px] max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" aria-label="Finwave Forex — home" className="flex items-center">
+        <Link href="/" aria-label="Finwave Forex, home" className="flex items-center">
           <Image
             src="/logo.png"
             alt="Finwave Forex"

@@ -52,11 +52,11 @@ export function ContactForm({ defaultSubject = "general" }: { defaultSubject?: C
         return;
       }
 
-      const subject = `[Website] ${contactSubjectLabels[data.subject]} — ${data.name}`;
+      const subject = `[Website] ${contactSubjectLabels[data.subject]} - ${data.name}`;
       const lines = [
         `Name: ${data.name}`,
         `Email: ${data.email}`,
-        `Phone: ${data.phone || "—"}`,
+        `Phone: ${data.phone || "-"}`,
         "",
         data.message,
       ];
@@ -75,7 +75,7 @@ export function ContactForm({ defaultSubject = "general" }: { defaultSubject?: C
       <div className="rounded-2xl border border-hairline bg-white p-8 text-center" role="status">
         <CheckCircle2 className="mx-auto size-10 text-brand" aria-hidden />
         <h3 className="mt-4 text-lg font-semibold tracking-tight">
-          Thanks — we&apos;ll get back to you shortly.
+          Thanks, we&apos;ll get back to you shortly.
         </h3>
         {!status.delivered ? (
           <p className="mt-2 text-sm leading-6 text-ink-soft">
@@ -157,7 +157,7 @@ export function ContactForm({ defaultSubject = "general" }: { defaultSubject?: C
         <Textarea
           id="message"
           rows={5}
-          placeholder="Currency, amount, and city — we'll come back with a rate."
+          placeholder="Currency, amount, and city, we'll come back with a rate."
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "message-error" : undefined}
           {...register("message")}

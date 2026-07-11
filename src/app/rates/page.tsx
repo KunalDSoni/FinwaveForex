@@ -18,7 +18,7 @@ export default function RatesPage() {
           as="h1"
           eyebrow="Rates"
           lines={["Today's rates,", "on request."]}
-          sub="Fifteen major currencies, bought and sold. One call gets you a live quote — and we'll try to better any rate you bring us."
+          sub="Fifteen major currencies, bought and sold. One call gets you a live quote, and we'll try to better any rate you bring us."
         />
       </section>
       <section className="py-16 pb-24">

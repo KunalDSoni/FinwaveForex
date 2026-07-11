@@ -6,7 +6,7 @@ export type LegalPage = {
 };
 
 const TODO_LEGAL =
-  "TODO: This section requires review and final wording from Finwave Forex Pvt. Ltd. and its legal counsel. Placeholder only — not legal text.";
+  "TODO: This section requires review and final wording from Finwave Forex Pvt. Ltd. and its legal counsel. Placeholder only, not legal text.";
 
 export const legalPages: LegalPage[] = [
   {

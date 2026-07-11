@@ -104,7 +104,7 @@ const rows: Row[] = [
         Currency, <Em>delivered.</Em>
       </>
     ),
-    body: "Home delivery and branch pick-up across six cities in India — so collecting your currency never becomes the errand.",
+    body: "Home delivery and branch pick-up across six cities in India, so collecting your currency never becomes the errand.",
     visual: <DeliveryVisual />,
   },
 ];

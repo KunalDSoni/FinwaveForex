@@ -10,7 +10,7 @@ import { WhyFinwave } from "@/components/sections/WhyFinwave";
 import { pageMetadata } from "@/lib/seo";
 
 const base = pageMetadata({
-  title: "Finwave Forex — RBI-Approved Money Changers in Ahmedabad",
+  title: "Finwave Forex: RBI-Approved Money Changers in Ahmedabad",
   description:
     "Buy and sell 15+ currencies, send money abroad, and load travel cards with RBI-approved money changers. Home delivery in six cities across India.",
   path: "/",
@@ -18,7 +18,7 @@ const base = pageMetadata({
 
 export const metadata: Metadata = {
   ...base,
-  title: { absolute: "Finwave Forex — RBI-Approved Money Changers in Ahmedabad" },
+  title: { absolute: "Finwave Forex: RBI-Approved Money Changers in Ahmedabad" },
 };
 
 export default function Home() {

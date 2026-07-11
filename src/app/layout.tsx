@@ -30,8 +30,8 @@ const fragmentMono = Fragment_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Finwave Forex — RBI-Approved Money Changers",
-    template: "%s — Finwave Forex",
+    default: "Finwave Forex: RBI-Approved Money Changers",
+    template: "%s - Finwave Forex",
   },
   description: siteConfig.tagline,
 };
