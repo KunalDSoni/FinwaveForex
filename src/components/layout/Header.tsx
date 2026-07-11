@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
+import { Waves } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { siteConfig } from "@/content/site";
@@ -21,27 +22,44 @@ export function Header() {
       transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
-        scrolled ? "border-b border-hairline bg-paper/80 backdrop-blur-md" : "bg-transparent",
+        scrolled ? "border-b border-hairline bg-paper/85 backdrop-blur-md" : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          Finwave <span className="text-brand">Forex</span>
+      <div className="relative mx-auto flex h-[72px] max-w-6xl items-center justify-between px-4 sm:px-6">
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-lg font-semibold tracking-tight text-ink"
+        >
+          <Waves className="size-5" aria-hidden />
+          Finwave Forex
         </Link>
-        <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
+        <nav
+          aria-label="Main"
+          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex"
+        >
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="relative text-sm text-ink-soft transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 hover:text-ink hover:after:scale-x-100"
+              className="rounded-lg px-3.5 py-2 text-sm font-medium text-ink/75 transition-colors hover:bg-ink/[0.06] hover:text-ink"
             >
               {item.label}
             </Link>
           ))}
+        </nav>
+        <div className="hidden items-center gap-2.5 md:flex">
+          <Button
+            asChild
+            size="sm"
+            variant="outline"
+            className="border-ink/25 bg-transparent hover:bg-ink hover:text-paper"
+          >
+            <a href={siteConfig.phoneHref}>Call us</a>
+          </Button>
           <Button asChild size="sm">
             <Link href="/contact">Get a quote</Link>
           </Button>
-        </nav>
+        </div>
         <MobileNav />
       </div>
     </motion.header>

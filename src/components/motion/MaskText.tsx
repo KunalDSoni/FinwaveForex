@@ -15,6 +15,17 @@ type MaskTextProps = {
 
 export function MaskText({ lines, className, delay = 0, as: Tag = "h2" }: MaskTextProps) {
   const reduce = useReducedMotion();
+  if (reduce) {
+    return (
+      <Tag className={cn(className)}>
+        {lines.map((line, i) => (
+          <span key={i} className="block">
+            {line}
+          </span>
+        ))}
+      </Tag>
+    );
+  }
   return (
     <Tag className={cn(className)}>
       {lines.map((line, i) => (
