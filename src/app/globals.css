@@ -17,6 +17,9 @@
   --color-accent-red: #fa4661;
   --shadow-rich: 0 24px 60px -28px rgb(28 26 21 / 0.3);
   --shadow-rich-lg: 0 44px 96px -36px rgb(28 26 21 / 0.42);
+  --shadow-soft: 0 10px 30px -18px rgb(28 26 21 / 0.22);
+  --color-pos: #15803d;
+  --color-neg: #b91c1c;
   --animate-marquee: marquee var(--marquee-duration, 28s) linear infinite;
 }
 
@@ -223,6 +226,31 @@
   }
   .shadow-rich-lg {
     box-shadow: var(--shadow-rich-lg);
+  }
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  .text-pos {
+    color: var(--color-pos);
+  }
+  .text-neg {
+    color: var(--color-neg);
+  }
+  /* Enterprise hairline grid: 1px lines between cells (money2abroad "built for"). */
+  .hairline-grid {
+    display: grid;
+    gap: 1px;
+    background-color: var(--color-hairline);
+    border: 1px solid var(--color-hairline);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+  }
+  .hairline-cell {
+    background-color: var(--color-paper);
+    transition: background-color 0.25s ease;
+  }
+  .hairline-cell:hover {
+    background-color: #fff;
   }
   .tnum {
     font-feature-settings: "tnum" 1;
