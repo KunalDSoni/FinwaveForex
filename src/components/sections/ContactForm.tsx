@@ -33,17 +33,38 @@ export function ContactForm({ defaultSubject = "general" }: { defaultSubject?: C
     defaultValues: { subject: defaultSubject, phone: "" },
   });
 
+  // On a static host there is no server. If a form-backend endpoint is
+  // configured (e.g. Formspree / Web3Forms) we POST to it for real inbox
+  // delivery; otherwise we fall back to opening the visitor's email client.
+  const endpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
+
   async function onSubmit(data: ContactInput) {
     setStatus({ state: "submitting" });
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json();
-      if (!res.ok || !json.ok) throw new Error("Request failed");
-      setStatus({ state: "success", delivered: json.delivered });
+      if (endpoint) {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error("Request failed");
+        setStatus({ state: "success", delivered: true });
+        return;
+      }
+
+      const subject = `[Website] ${contactSubjectLabels[data.subject]} — ${data.name}`;
+      const lines = [
+        `Name: ${data.name}`,
+        `Email: ${data.email}`,
+        `Phone: ${data.phone || "—"}`,
+        "",
+        data.message,
+      ];
+      const mailto = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
+        subject,
+      )}&body=${encodeURIComponent(lines.join("\n"))}`;
+      window.location.assign(mailto);
+      setStatus({ state: "success", delivered: false });
     } catch {
       setStatus({ state: "error" });
     }
@@ -58,7 +79,8 @@ export function ContactForm({ defaultSubject = "general" }: { defaultSubject?: C
         </h3>
         {!status.delivered ? (
           <p className="mt-2 text-sm leading-6 text-ink-soft">
-            Email delivery isn&apos;t configured yet, so please also call us on{" "}
+            Your email app should open with the details ready to send. If it doesn&apos;t, call us
+            on{" "}
             <a href={siteConfig.phoneHref} className="font-medium text-brand underline underline-offset-2">
               {siteConfig.phone}
             </a>

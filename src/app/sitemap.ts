@@ -2,6 +2,9 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/content/site";
 import { services } from "@/content/services";
 
+// Required for `output: export` — generate at build time.
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = ["", "/services", "/rates", "/about", "/contact", "/privacy", "/terms"];
   const servicePaths = services.map((s) => `/services/${s.slug}`);

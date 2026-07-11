@@ -14,19 +14,16 @@ npm run lint             # ESLint
 
 ## Environment
 
-```bash
-cp .env.example .env.local
-```
+The site is a fully static export (`output: "export"`) — no server runtime. Build-time env vars:
 
-- `RESEND_API_KEY` — Resend key for contact-form email delivery. Without it, submissions are validated and logged server-side, and the UI tells the visitor to also call.
-- `CONTACT_TO_EMAIL` — recipient address (defaults to info@finwaveforex.com).
+- `NEXT_PUBLIC_BASE_PATH` — subpath the site is served from on a project page (e.g. `/FinwaveForex` for GitHub Pages). Leave unset for a root domain or local dev.
+- `NEXT_PUBLIC_FORM_ENDPOINT` — optional Formspree/Web3Forms endpoint for contact-form inbox delivery. Without it, the form opens the visitor's email client (`mailto:`) prefilled with their message.
 
 ## Structure
 
 ```
 src/
   app/                  # routes, sitemap.ts, robots.ts, opengraph-image.tsx
-    api/contact/        # Resend-backed contact endpoint (+ tests)
     services/[slug]/    # SSG service detail pages
   components/
     layout/             # Header, MobileNav, Footer, JsonLd
@@ -46,7 +43,11 @@ All copy, contact details, services, and rates live in `src/content/` — pages 
 
 ## Deployment
 
-Vercel-ready — no special configuration. Set `RESEND_API_KEY` in the project env. Update `siteConfig.url` in `src/content/site.ts` if the production domain differs.
+Static export — deploys to any static host (GitHub Pages, Netlify, Cloudflare Pages, S3).
+
+**GitHub Pages** (automated): `.github/workflows/deploy.yml` builds and publishes on every push to `dev`. In the repo, set **Settings → Pages → Source: GitHub Actions**. The workflow sets `NEXT_PUBLIC_BASE_PATH=/FinwaveForex`; set a repo variable `NEXT_PUBLIC_FORM_ENDPOINT` for real contact-form delivery.
+
+**Any static host**: `NEXT_PUBLIC_BASE_PATH=<subpath> npm run build`, then serve the generated `out/` directory. Update `siteConfig.url` in `src/content/site.ts` if the production domain differs.
 
 ## Outstanding content TODOs
 
@@ -61,5 +62,5 @@ These need real information from Finwave Forex (searchable as `TODO:` in `src/co
 - Corporate FX service scope, onboarding, credit terms (`src/content/services.ts`)
 - Privacy Policy and Terms of Service final legal wording + effective dates (`src/content/legal.ts`)
 - Leadership/team details for the About page
-- Verified Resend sender domain for the contact form (`src/app/api/contact/route.ts`)
+- Contact-form delivery endpoint (`NEXT_PUBLIC_FORM_ENDPOINT`) — currently falls back to the visitor's email client
 - Logo asset (currently a typographic wordmark), social links, brand photography

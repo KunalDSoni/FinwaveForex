@@ -5,6 +5,9 @@ export const alt = "Finwave Forex — RBI-approved money changers";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// Required for `output: export` — generate the OG image at build time.
+export const dynamic = "force-static";
+
 // ImageResponse requires style objects; the site-wide no-inline-styles rule
 // applies to DOM components, not OG image generation.
 export default function OpenGraphImage() {
