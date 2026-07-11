@@ -4,6 +4,7 @@ import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { JsonLd } from "@/components/layout/JsonLd";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { siteConfig } from "@/content/site";
 
 const geist = Geist({
@@ -53,6 +54,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <ScrollProgress />
         <JsonLd />
         <Header />
         <main id="content">{children}</main>
