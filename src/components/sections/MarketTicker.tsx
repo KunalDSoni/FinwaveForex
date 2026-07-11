@@ -3,51 +3,25 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { tickerQuotes, type TickerQuote } from "@/content/ticker";
-
-// Free, keyless, CORS-enabled FX data (community-run, ~daily updates).
-// Primary: jsDelivr CDN. Fallback: the project's Cloudflare Pages mirror.
-// Docs: https://github.com/fawazahmed0/exchange-api
-type InrResponse = { date: string; inr: Record<string, number> };
-
-function datedUrls(tag: string): string[] {
-  // tag is "latest" or a "YYYY-MM-DD" date.
-  return [
-    `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@${tag}/v1/currencies/inr.json`,
-    `https://${tag}.currency-api.pages.dev/v1/currencies/inr.json`,
-  ];
-}
-
-async function fetchInr(tag: string): Promise<InrResponse | null> {
-  for (const url of datedUrls(tag)) {
-    try {
-      const res = await fetch(url);
-      if (!res.ok) continue;
-      const json = (await res.json()) as InrResponse;
-      if (json?.inr) return json;
-    } catch {
-      // try next url
-    }
-  }
-  return null;
-}
+import {
+  changePct,
+  fetchInrWithPrev,
+  formatPrice,
+  priceFromInr,
+  type InrResponse,
+} from "@/lib/fx";
 
 function buildQuotes(today: InrResponse, prev: InrResponse | null): TickerQuote[] {
   return tickerQuotes.map((quote) => {
     const code = quote.pair.split("/")[0].toLowerCase();
     const todayInr = today.inr[code];
     if (!todayInr) return quote; // unknown code — keep illustrative fallback
-    const price = 1 / todayInr; // API gives INR→X; we want INR per 1 X
-    const prevInr = prev?.inr[code];
-    // Change in price (INR per X): prevInr/todayInr - 1, since price = 1/inr.
-    const changePct =
-      prevInr && prevInr > 0 ? (prevInr / todayInr - 1) * 100 : quote.changePct;
-    return { ...quote, price, changePct };
+    return {
+      ...quote,
+      price: priceFromInr(todayInr),
+      changePct: changePct(todayInr, prev?.inr[code], quote.changePct),
+    };
   });
-}
-
-function formatPrice(price: number) {
-  // Small-value pairs (e.g. JPY/INR) need more precision to be meaningful.
-  return price >= 1 ? price.toFixed(4) : price.toFixed(6);
 }
 
 function Quote({ quote }: { quote: TickerQuote }) {
@@ -90,20 +64,8 @@ export function MarketTicker({ className }: { className?: string }) {
   useEffect(() => {
     let active = true;
     (async () => {
-      const today = await fetchInr("latest");
-      if (!today) return; // keep illustrative fallback
-
-      // Walk back up to 5 days to find the previous published rate (skips
-      // weekends/holidays) for a real 24h change.
-      let prev: InrResponse | null = null;
-      const base = new Date(`${today.date}T00:00:00Z`);
-      for (let i = 1; i <= 5 && !prev; i += 1) {
-        const d = new Date(base);
-        d.setUTCDate(d.getUTCDate() - i);
-        prev = await fetchInr(d.toISOString().slice(0, 10));
-      }
-
-      if (active) setQuotes(buildQuotes(today, prev));
+      const res = await fetchInrWithPrev();
+      if (res && active) setQuotes(buildQuotes(res.today, res.prev));
     })();
     return () => {
       active = false;
