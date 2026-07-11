@@ -10,7 +10,7 @@ export function QuoteCard() {
     <motion.div
       animate={reduce ? undefined : { y: [-6, 6] }}
       transition={{ duration: 6, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
-      className="mx-auto w-full max-w-sm rounded-2xl border border-hairline bg-white p-6 shadow-[0_24px_60px_-24px_rgb(11_11_14_/_0.18)]"
+      className="mx-auto w-full max-w-sm rounded-2xl border border-hairline bg-white p-6 shadow-[0_24px_60px_-24px_rgb(47_44_37_/_0.16)]"
     >
       <div className="flex items-center justify-between">
         <span className="text-xs font-medium tracking-widest text-ink-soft uppercase">

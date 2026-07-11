@@ -11,7 +11,7 @@ export function CtaBand() {
     <section className="px-4 pb-24 sm:px-6 lg:pb-32">
       <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-ink px-6 py-20 text-center sm:px-12 lg:py-28">
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_120%_at_80%_0%,rgb(14_110_92_/_0.4),transparent)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_120%_at_80%_0%,rgb(97_171_119_/_0.38),transparent)]"
           aria-hidden
         />
         <div className="relative">
@@ -23,7 +23,7 @@ export function CtaBand() {
                 in one <Em>phone call.</Em>
               </Fragment>,
             ]}
-            className="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl lg:text-5xl"
+            className="font-serif text-4xl leading-[1.05] font-normal tracking-tight text-balance text-white sm:text-5xl lg:text-6xl"
           />
           <Reveal delay={0.2}>
             <a

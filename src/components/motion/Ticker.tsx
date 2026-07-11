@@ -6,7 +6,7 @@ function TickerRow({ items, hidden }: { items: string[]; hidden?: boolean }) {
   return (
     <ul aria-hidden={hidden || undefined} className="flex shrink-0 items-center gap-10 pr-10">
       {items.map((item) => (
-        <li key={item} className="flex items-center gap-2 text-sm tracking-wide text-ink-soft">
+        <li key={item} className="flex items-center gap-2 font-mono text-[13px] tracking-wide text-ink-soft">
           <span className="size-1.5 rounded-full bg-brand" aria-hidden />
           {item}
         </li>

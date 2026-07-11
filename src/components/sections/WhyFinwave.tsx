@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 function StepsVisual() {
   const steps = services[0].steps;
   return (
-    <ol className="space-y-3 rounded-2xl border border-hairline bg-white p-6 shadow-[0_24px_60px_-32px_rgb(11_11_14_/_0.16)]">
+    <ol className="space-y-3 rounded-2xl border border-hairline bg-white p-6 shadow-[0_24px_60px_-32px_rgb(47_44_37_/_0.14)]">
       {steps.map((step, index) => (
         <li key={step.title} className="flex items-start gap-4 rounded-xl bg-sand/50 p-4">
           <span className="text-sm font-semibold text-brand">
@@ -29,7 +29,7 @@ function StepsVisual() {
 
 function TrustVisual() {
   return (
-    <div className="flex flex-col items-center gap-4 rounded-2xl border border-hairline bg-white p-10 text-center shadow-[0_24px_60px_-32px_rgb(11_11_14_/_0.16)]">
+    <div className="flex flex-col items-center gap-4 rounded-2xl border border-hairline bg-white p-10 text-center shadow-[0_24px_60px_-32px_rgb(47_44_37_/_0.14)]">
       <span className="flex size-16 items-center justify-center rounded-2xl bg-brand-tint">
         <ShieldCheck className="size-8 text-brand" aria-hidden />
       </span>
@@ -44,7 +44,7 @@ function TrustVisual() {
 
 function DeliveryVisual() {
   return (
-    <div className="rounded-2xl border border-hairline bg-white p-8 shadow-[0_24px_60px_-32px_rgb(11_11_14_/_0.16)]">
+    <div className="rounded-2xl border border-hairline bg-white p-8 shadow-[0_24px_60px_-32px_rgb(47_44_37_/_0.14)]">
       <div className="flex items-center gap-3">
         <span className="flex size-11 items-center justify-center rounded-xl bg-brand-tint">
           <Truck className="size-5 text-brand" aria-hidden />
@@ -110,6 +110,7 @@ export function WhyFinwave() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:py-32">
       <SectionHeading
+        align="center"
         eyebrow="Why Finwave"
         lines={[
           <span key="line">
@@ -127,7 +128,7 @@ export function WhyFinwave() {
               <p className="text-xs font-semibold tracking-widest text-brand uppercase">
                 {row.eyebrow}
               </p>
-              <h3 className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              <h3 className="mt-3 font-serif text-[2rem] leading-[1.1] font-normal tracking-tight text-balance sm:text-4xl">
                 {row.title}
               </h3>
               <p className="mt-4 max-w-md text-lg leading-8 text-ink-soft">{row.body}</p>

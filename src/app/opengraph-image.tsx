@@ -18,21 +18,21 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 80,
-          backgroundColor: "#fafaf7",
+          backgroundColor: "#fefaf3",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", width: 160, height: 10, backgroundColor: "#0e6e5c" }} />
+        <div style={{ display: "flex", width: 160, height: 10, backgroundColor: "#61ab77" }} />
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", fontSize: 84, fontWeight: 700, color: "#0b0b0e", letterSpacing: -3 }}>
+          <div style={{ display: "flex", fontSize: 84, fontWeight: 700, color: "#2f2c25", letterSpacing: -3 }}>
             Finwave&nbsp;
-            <span style={{ color: "#0e6e5c" }}>Forex</span>
+            <span style={{ color: "#61ab77" }}>Forex</span>
           </div>
-          <div style={{ display: "flex", marginTop: 20, fontSize: 32, color: "#52525e", maxWidth: 900 }}>
+          <div style={{ display: "flex", marginTop: 20, fontSize: 32, color: "#6f6a5e", maxWidth: 900 }}>
             {siteConfig.tagline}
           </div>
         </div>
-        <div style={{ display: "flex", fontSize: 26, color: "#52525e" }}>{siteConfig.url}</div>
+        <div style={{ display: "flex", fontSize: 26, color: "#6f6a5e" }}>{siteConfig.url}</div>
       </div>
     ),
     size,

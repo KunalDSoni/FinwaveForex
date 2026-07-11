@@ -8,6 +8,7 @@ export function ServicesGrid() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:py-32">
       <SectionHeading
+        align="center"
         eyebrow="Services"
         lines={[
           <Fragment key="l1">Everything foreign exchange,</Fragment>,
