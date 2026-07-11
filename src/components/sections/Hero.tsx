@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -26,10 +27,10 @@ export function Hero() {
           <MaskText
             as="h1"
             lines={[
-              <>The clearer way</>,
-              <>
+              <Fragment key="l1">The clearer way</Fragment>,
+              <Fragment key="l2">
                 to exchange <Em>currency.</Em>
-              </>,
+              </Fragment>,
             ]}
             delay={0.1}
             className="mt-5 text-5xl font-semibold tracking-tighter text-balance sm:text-6xl lg:text-7xl xl:text-[5.25rem] xl:leading-[1.02]"

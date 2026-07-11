@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MaskText } from "@/components/motion/MaskText";
@@ -17,10 +18,10 @@ export function CtaBand() {
           <MaskText
             as="h2"
             lines={[
-              <>Get a better rate</>,
-              <>
+              <Fragment key="l1">Get a better rate</Fragment>,
+              <Fragment key="l2">
                 in one <Em>phone call.</Em>
-              </>,
+              </Fragment>,
             ]}
             className="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl lg:text-5xl"
           />

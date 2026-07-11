@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { ServiceCard } from "@/components/sections/ServiceCard";
@@ -9,10 +10,10 @@ export function ServicesGrid() {
       <SectionHeading
         eyebrow="Services"
         lines={[
-          <>Everything foreign exchange,</>,
-          <>
+          <Fragment key="l1">Everything foreign exchange,</Fragment>,
+          <Fragment key="l2">
             under <Em>one roof.</Em>
-          </>,
+          </Fragment>,
         ]}
       />
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

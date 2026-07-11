@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,10 +15,10 @@ export function RatesTeaser() {
           <SectionHeading
             eyebrow="Rates"
             lines={[
-              <>Rates we&apos;ll work</>,
-              <>
+              <Fragment key="l1">Rates we&apos;ll work</Fragment>,
+              <Fragment key="l2">
                 to <Em>better.</Em>
-              </>,
+              </Fragment>,
             ]}
             sub="Our rates are an approximate guide — we can surely better the rate for you. Call for today's live quote."
           />

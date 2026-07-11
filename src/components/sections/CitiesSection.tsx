@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { MapPin, Truck } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Em } from "@/components/sections/Em";
@@ -12,10 +13,10 @@ export function CitiesSection() {
       <SectionHeading
         eyebrow="Coverage"
         lines={[
-          <>Six cities.</>,
-          <>
+          <Fragment key="l1">Six cities.</Fragment>,
+          <Fragment key="l2">
             <Em>Doorstep</Em> delivery.
-          </>,
+          </Fragment>,
         ]}
       />
       <ul className="mt-10 flex flex-wrap gap-3">
