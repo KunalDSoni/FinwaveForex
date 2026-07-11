@@ -2,11 +2,12 @@ import { Fragment } from "react";
 import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { ServiceCard } from "@/components/sections/ServiceCard";
+import { Section } from "@/components/ui/section";
 import { services } from "@/content/services";
 
 export function ServicesGrid() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:py-32">
+    <Section>
       <SectionHeading
         align="center"
         eyebrow="Services"
@@ -17,11 +18,11 @@ export function ServicesGrid() {
           </Fragment>,
         ]}
       />
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="hairline-grid mt-12 sm:grid-cols-2 lg:grid-cols-4">
         {services.map((service, index) => (
-          <ServiceCard key={service.slug} service={service} index={index} />
+          <ServiceCard key={service.slug} service={service} index={index} variant="cell" />
         ))}
       </div>
-    </section>
+    </Section>
   );
 }
