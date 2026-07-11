@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { siteConfig } from "@/content/site";
@@ -11,10 +11,14 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
+  const reduce = useReducedMotion();
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 8));
 
   return (
-    <header
+    <motion.header
+      initial={{ y: reduce ? 0 : -16, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         scrolled ? "border-b border-hairline bg-paper/80 backdrop-blur-md" : "bg-transparent",
@@ -29,7 +33,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm text-ink-soft transition-colors hover:text-ink"
+              className="relative text-sm text-ink-soft transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 hover:text-ink hover:after:scale-x-100"
             >
               {item.label}
             </Link>
@@ -40,6 +44,6 @@ export function Header() {
         </nav>
         <MobileNav />
       </div>
-    </header>
+    </motion.header>
   );
 }

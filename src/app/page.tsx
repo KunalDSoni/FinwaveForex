@@ -6,6 +6,7 @@ import { PullQuote } from "@/components/sections/PullQuote";
 import { RatesTeaser } from "@/components/sections/RatesTeaser";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { StatsBand } from "@/components/sections/StatsBand";
+import { WhyFinwave } from "@/components/sections/WhyFinwave";
 import { pageMetadata } from "@/lib/seo";
 
 const base = pageMetadata({
@@ -25,6 +26,7 @@ export default function Home() {
     <>
       <Hero />
       <ServicesGrid />
+      <WhyFinwave />
       <RatesTeaser />
       <StatsBand />
       <PullQuote />

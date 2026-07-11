@@ -66,7 +66,11 @@ export function Footer() {
             </ul>
           </nav>
         </div>
-        <div className="mt-12 flex flex-col gap-2 border-t border-hairline pt-6 text-xs text-ink-soft sm:flex-row sm:items-center sm:justify-between">
+        <div
+          aria-hidden
+          className="mt-16 text-center text-[clamp(3rem,11vw,8.5rem)] leading-none font-semibold tracking-tighter text-ink/5 select-none after:content-['Finwave_Forex']"
+        />
+        <div className="mt-10 flex flex-col gap-2 border-t border-hairline pt-6 text-xs text-ink-soft sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {siteConfig.legalName} All rights reserved.
           </p>

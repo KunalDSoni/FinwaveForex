@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MaskText } from "@/components/motion/MaskText";
+import { Parallax } from "@/components/motion/Parallax";
 import { Reveal } from "@/components/motion/Reveal";
 import { Ticker } from "@/components/motion/Ticker";
 import { Em } from "@/components/sections/Em";
@@ -10,7 +11,11 @@ import { tickerPairs } from "@/content/rates";
 
 export function Hero() {
   return (
-    <section className="pt-32 pb-0 lg:pt-44">
+    <section className="relative pt-32 pb-0 lg:pt-44">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(55%_45%_at_72%_8%,rgb(14_110_92_/_0.09),transparent)]"
+      />
       <div className="mx-auto grid max-w-6xl items-center gap-16 px-4 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <Reveal>
@@ -53,7 +58,9 @@ export function Hero() {
           </Reveal>
         </div>
         <Reveal delay={0.3}>
-          <QuoteCard />
+          <Parallax range={28}>
+            <QuoteCard />
+          </Parallax>
         </Reveal>
       </div>
       <div className="[--marquee-duration:28s]">

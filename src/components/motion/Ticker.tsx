@@ -17,8 +17,8 @@ function TickerRow({ items, hidden }: { items: string[]; hidden?: boolean }) {
 
 export function Ticker({ items, className }: TickerProps) {
   return (
-    <div className={cn("overflow-hidden border-y border-hairline bg-sand/60 py-3", className)}>
-      <div className="flex w-max animate-marquee motion-reduce:animate-none">
+    <div className={cn("group overflow-hidden border-y border-hairline bg-sand/60 py-3", className)}>
+      <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:animate-none">
         <TickerRow items={items} />
         <TickerRow items={items} hidden />
       </div>
