@@ -8,29 +8,47 @@ type SectionHeadingProps = {
   lines: ReactNode[];
   sub?: string;
   as?: "h1" | "h2";
+  align?: "left" | "center";
   className?: string;
 };
 
-export function SectionHeading({ eyebrow, lines, sub, as = "h2", className }: SectionHeadingProps) {
+export function SectionHeading({
+  eyebrow,
+  lines,
+  sub,
+  as = "h2",
+  align = "left",
+  className,
+}: SectionHeadingProps) {
+  const centered = align === "center";
   return (
-    <div className={cn("max-w-3xl", className)}>
+    <div className={cn(centered ? "mx-auto max-w-2xl text-center" : "max-w-3xl", className)}>
       <Reveal>
-        <p className="text-xs font-semibold tracking-widest text-brand uppercase">{eyebrow}</p>
+        <span className="inline-block rounded-full bg-sand px-3.5 py-1.5 text-[13px] font-semibold text-ink">
+          {eyebrow}
+        </span>
       </Reveal>
       <MaskText
         as={as}
         lines={lines}
         delay={0.1}
         className={cn(
-          "mt-4 font-semibold tracking-tight text-balance",
+          "mt-5 font-serif font-normal tracking-tight text-balance",
           as === "h1"
-            ? "text-4xl sm:text-5xl lg:text-6xl tracking-tighter"
-            : "text-3xl sm:text-4xl lg:text-5xl",
+            ? "text-4xl sm:text-5xl lg:text-6xl"
+            : "text-[2rem] leading-[1.1] sm:text-4xl lg:text-5xl",
         )}
       />
       {sub ? (
         <Reveal delay={0.2}>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-ink-soft">{sub}</p>
+          <p
+            className={cn(
+              "mt-5 text-lg leading-8 text-ink-soft",
+              centered ? "mx-auto max-w-2xl" : "max-w-2xl",
+            )}
+          >
+            {sub}
+          </p>
         </Reveal>
       ) : null}
     </div>

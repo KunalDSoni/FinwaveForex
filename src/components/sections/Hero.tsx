@@ -12,17 +12,21 @@ import { tickerPairs } from "@/content/rates";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-0 lg:pt-44">
+    <section className="relative overflow-hidden pt-32 pb-0 lg:pt-44">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(55%_45%_at_72%_8%,rgb(14_110_92_/_0.09),transparent)]"
+        className="pointer-events-none absolute -top-24 right-[4%] -z-10 size-[26rem] rounded-full bg-brand/25 blur-[90px]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-8 left-[6%] -z-10 size-[20rem] rounded-full bg-accent-blue/15 blur-[90px]"
       />
       <div className="mx-auto grid max-w-6xl items-center gap-16 px-4 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <Reveal>
-            <p className="text-xs font-semibold tracking-widest text-brand uppercase">
+            <span className="inline-block rounded-full bg-sand px-3.5 py-1.5 text-[13px] font-semibold text-ink">
               RBI-approved · 10+ years in foreign exchange
-            </p>
+            </span>
           </Reveal>
           <MaskText
             as="h1"
@@ -33,7 +37,7 @@ export function Hero() {
               </Fragment>,
             ]}
             delay={0.1}
-            className="mt-5 text-5xl font-semibold tracking-tighter text-balance sm:text-6xl lg:text-7xl xl:text-[5.25rem] xl:leading-[1.02]"
+            className="mt-6 font-serif text-6xl font-normal tracking-tight text-balance sm:text-7xl lg:text-[5rem] lg:leading-[0.98] xl:text-[5.5rem]"
           />
           <Reveal delay={0.25}>
             <p className="mt-6 max-w-xl text-lg leading-8 text-ink-soft">

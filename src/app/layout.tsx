@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Inter } from "next/font/google";
+import { Fragment_Mono, Geist, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { JsonLd } from "@/components/layout/JsonLd";
 import { siteConfig } from "@/content/site";
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
@@ -14,9 +14,16 @@ const inter = Inter({
 
 const instrumentSerif = Instrument_Serif({
   weight: "400",
-  style: "italic",
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  variable: "--font-accent",
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const fragmentMono = Fragment_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -35,7 +42,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable}`}>
+    <html
+      lang="en"
+      className={`${geist.variable} ${instrumentSerif.variable} ${fragmentMono.variable}`}
+    >
       <body className="font-sans">
         <a
           href="#content"
