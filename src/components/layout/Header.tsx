@@ -33,7 +33,7 @@ export function Header() {
             width={1459}
             height={379}
             preload
-            className="h-7 w-auto sm:h-8"
+            className="h-10 w-auto sm:h-12"
           />
         </Link>
         <nav

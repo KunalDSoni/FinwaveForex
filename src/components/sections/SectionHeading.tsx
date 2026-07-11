@@ -34,10 +34,10 @@ export function SectionHeading({
         lines={lines}
         delay={0.1}
         className={cn(
-          "mt-5 font-serif font-normal tracking-tight text-balance",
+          "mt-5 font-serif font-normal tracking-[-0.03em] text-balance",
           as === "h1"
-            ? "text-4xl sm:text-5xl lg:text-6xl"
-            : "text-[2rem] leading-[1.1] sm:text-4xl lg:text-5xl",
+            ? "text-4xl sm:text-5xl lg:text-[4rem] lg:leading-[1.02]"
+            : "text-[2.25rem] leading-[1.05] sm:text-5xl lg:text-[3.5rem]",
         )}
       />
       {sub ? (

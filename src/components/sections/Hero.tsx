@@ -5,14 +5,12 @@ import { Button } from "@/components/ui/button";
 import { MaskText } from "@/components/motion/MaskText";
 import { Parallax } from "@/components/motion/Parallax";
 import { Reveal } from "@/components/motion/Reveal";
-import { Ticker } from "@/components/motion/Ticker";
 import { Em } from "@/components/sections/Em";
 import { QuoteCard } from "@/components/sections/QuoteCard";
-import { tickerPairs } from "@/content/rates";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-32 pb-0 lg:pt-44">
+    <section className="relative overflow-hidden pt-12 pb-0 lg:pt-16">
       <div
         aria-hidden
         className="animate-orb pointer-events-none absolute -top-24 right-[4%] -z-10 size-[26rem] rounded-full bg-brand/25 blur-[90px]"
@@ -37,7 +35,7 @@ export function Hero() {
               </Fragment>,
             ]}
             delay={0.1}
-            className="mt-6 font-serif text-6xl font-normal tracking-tight text-balance sm:text-7xl lg:text-[5rem] lg:leading-[0.98] xl:text-[5.5rem]"
+            className="mt-6 font-serif text-6xl font-normal tracking-[-0.03em] text-balance sm:text-7xl lg:text-[5.75rem] lg:leading-[0.95] xl:text-[6.5rem]"
           />
           <Reveal delay={0.25}>
             <p className="mt-6 max-w-xl text-lg leading-8 text-ink-soft">
@@ -54,7 +52,7 @@ export function Hero() {
                 <Link href="/rates">
                   See rates
                   <ArrowRight
-                    className="size-4 transition-transform group-hover:translate-x-0.5"
+                    className="size-4 transition-transform duration-300 group-hover:translate-x-1"
                     aria-hidden
                   />
                 </Link>
@@ -67,9 +65,6 @@ export function Hero() {
             <QuoteCard />
           </Parallax>
         </Reveal>
-      </div>
-      <div className="[--marquee-duration:28s]">
-        <Ticker items={tickerPairs} />
       </div>
     </section>
   );

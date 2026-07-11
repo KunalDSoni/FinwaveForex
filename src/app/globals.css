@@ -228,4 +228,33 @@
     font-feature-settings: "tnum" 1;
     font-variant-numeric: tabular-nums;
   }
+  /* Signature CTA: gold diagonal sweep-fills on hover (from money2abroad) */
+  .btn-sweep {
+    background-color: var(--color-ink);
+    background-image: linear-gradient(
+      118deg,
+      var(--color-brand) 0%,
+      var(--color-brand-deep) 46%,
+      transparent 46.1%
+    );
+    background-size: 240% 100%;
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    color: var(--color-paper);
+    transition:
+      background-position 0.55s cubic-bezier(0.7, 0.05, 0.25, 1),
+      color 0.3s ease,
+      box-shadow 0.3s ease,
+      transform 0.15s ease;
+  }
+  .btn-sweep:hover {
+    background-position: 0 0;
+    color: var(--color-ink);
+    box-shadow: 0 14px 30px -10px rgb(234 163 0 / 0.55);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-sweep {
+      transition: box-shadow 0.3s ease;
+    }
+  }
 }

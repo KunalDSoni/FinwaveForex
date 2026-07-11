@@ -46,12 +46,16 @@ export default function AboutPage() {
         <div className="grid gap-5 sm:grid-cols-3">
           {values.map((value, index) => (
             <Reveal key={value.title} delay={index * 0.08}>
-              <div className="h-full rounded-[20px] border border-hairline bg-sand p-8 transition-[border-color,box-shadow] duration-300 hover:border-ink/15 hover:shadow-[0_18px_40px_-24px_rgb(47_44_37_/_0.25)]">
-                <span className="flex size-11 items-center justify-center rounded-xl bg-brand-tint text-brand">
+              <div className="group shadow-rich relative h-full overflow-hidden rounded-[20px] border border-hairline bg-white p-8 transition-[border-color,box-shadow] duration-300 hover:border-brand/40 hover:shadow-rich-lg">
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -top-10 -right-10 size-44 rounded-full bg-[radial-gradient(circle,rgb(234_163_0_/_0.18),transparent_65%)] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+                />
+                <span className="relative flex size-11 items-center justify-center rounded-xl bg-brand-tint text-brand">
                   <value.icon className="size-5" aria-hidden />
                 </span>
-                <h2 className="mt-6 text-lg font-semibold tracking-tight">{value.title}</h2>
-                <p className="mt-2 text-sm leading-6 text-ink-soft">{value.body}</p>
+                <h2 className="relative mt-6 text-xl font-semibold tracking-[-0.02em]">{value.title}</h2>
+                <p className="relative mt-2 text-sm leading-6 text-ink-soft">{value.body}</p>
               </div>
             </Reveal>
           ))}

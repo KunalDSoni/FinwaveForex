@@ -15,21 +15,25 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
   return (
     <Reveal delay={index * 0.08} className="h-full">
       <motion.div
-        whileHover={{ y: -4 }}
+        whileHover={{ y: -5 }}
         transition={{ type: "spring", stiffness: 300, damping: 22 }}
-        className="group flex h-full flex-col rounded-[20px] border border-hairline bg-sand/60 p-8 shadow-sm backdrop-blur-sm transition-[border-color,box-shadow] duration-300 hover:border-ink/15 hover:shadow-[0_18px_40px_-24px_rgb(47_44_37_/_0.25)]"
+        className="group shadow-rich relative flex h-full flex-col overflow-hidden rounded-[20px] border border-hairline bg-white p-8 transition-[border-color,box-shadow] duration-300 hover:border-brand/40 hover:shadow-rich-lg"
       >
-        <span className="flex size-11 items-center justify-center rounded-xl bg-brand-tint text-brand">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -top-10 -right-10 size-44 rounded-full bg-[radial-gradient(circle,rgb(234_163_0_/_0.18),transparent_65%)] opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+        />
+        <span className="relative flex size-11 items-center justify-center rounded-xl bg-brand-tint text-brand">
           <Icon className="size-5 transition-transform duration-300 group-hover:-rotate-6" aria-hidden />
         </span>
-        <h3 className="mt-6 text-lg font-semibold tracking-tight">{service.name}</h3>
-        <p className="mt-2 flex-1 text-sm leading-6 text-ink-soft">{service.blurb}</p>
+        <h3 className="relative mt-6 text-xl font-semibold tracking-[-0.02em]">{service.name}</h3>
+        <p className="relative mt-2 flex-1 text-sm leading-6 text-ink-soft">{service.blurb}</p>
         <Link
           href={`/services/${service.slug}`}
-          className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand transition-colors hover:text-brand-deep"
+          className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand transition-colors hover:text-brand-deep"
         >
           Learn more<span className="sr-only"> about {service.name.toLowerCase()}</span>
-          <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
+          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
         </Link>
       </motion.div>
     </Reveal>

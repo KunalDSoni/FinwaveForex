@@ -35,8 +35,9 @@ export function QuoteCard() {
 
       <div className="rounded-xl border border-hairline bg-sand/50 p-4">
         <p className="text-xs text-ink-soft">You receive</p>
-        <p className="mt-1 text-2xl font-semibold tracking-tight">
-          INR <span className="text-ink-soft">· Indian Rupee</span>
+        <p className="mt-1 text-2xl tracking-tight">
+          <span className="font-mono">INR</span>{" "}
+          <span className="text-ink-soft">· Indian Rupee</span>
         </p>
       </div>
 

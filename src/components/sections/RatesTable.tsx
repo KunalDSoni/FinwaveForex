@@ -6,7 +6,7 @@ import { siteConfig } from "@/content/site";
 
 function RateCell({ value }: { value: number | null }) {
   if (value !== null) {
-    return <span className="font-medium">₹ {value.toFixed(2)}</span>;
+    return <span className="font-mono tabular-nums">₹ {value.toFixed(2)}</span>;
   }
   return (
     <Link
@@ -51,7 +51,7 @@ export function RatesTable() {
                   <th scope="row" className="px-6 py-4 font-medium">
                     {currency.name}
                   </th>
-                  <td className="px-6 py-4 text-sm text-ink-soft">{currency.code}</td>
+                  <td className="px-6 py-4 font-mono text-sm text-ink-soft">{currency.code}</td>
                   <td className="px-6 py-4">
                     <RateCell value={currency.indicativeBuy} />
                   </td>

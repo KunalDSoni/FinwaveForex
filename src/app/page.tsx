@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CitiesSection } from "@/components/sections/CitiesSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Hero } from "@/components/sections/Hero";
+import { MarketTicker } from "@/components/sections/MarketTicker";
 import { PullQuote } from "@/components/sections/PullQuote";
 import { RatesTeaser } from "@/components/sections/RatesTeaser";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <MarketTicker className="mt-[72px]" />
       <Hero />
       <ServicesGrid />
       <WhyFinwave />
