@@ -57,6 +57,18 @@ export default function ContactPage() {
               </li>
             </ul>
           </Reveal>
+          <Reveal delay={0.35}>
+            <div className="mt-10 flex flex-wrap gap-2">
+              {["RBI-approved", "Full KYC", "6 cities", "Home delivery"].map((chip) => (
+                <span
+                  key={chip}
+                  className="rounded-full border border-hairline bg-white px-3.5 py-1.5 text-xs font-medium text-ink-soft"
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+          </Reveal>
         </div>
         <Reveal delay={0.2}>
           <ContactForm />
