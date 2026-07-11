@@ -1,20 +1,24 @@
 import Link from "next/link";
 import { Info } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
+import { LiveRate } from "@/components/sections/LiveRate";
 import { currencies } from "@/content/rates";
 import { siteConfig } from "@/content/site";
 
-function RateCell({ value }: { value: number | null }) {
+function RateCell({ value, code }: { value: number | null; code: string }) {
   if (value !== null) {
     return <span className="font-mono tabular-nums">₹ {value.toFixed(2)}</span>;
   }
   return (
-    <Link
-      href="/contact"
-      className="inline-block rounded-full bg-brand-tint px-3 py-1 text-xs font-medium text-brand-deep transition-colors hover:bg-brand hover:text-white"
-    >
-      Ask us
-    </Link>
+    <span className="flex items-center gap-2">
+      <LiveRate code={code} className="font-mono text-sm tabular-nums text-ink-soft" />
+      <Link
+        href="/contact"
+        className="inline-block rounded-full bg-brand-tint px-3 py-1 text-xs font-medium text-brand-deep transition-colors hover:bg-brand hover:text-white"
+      >
+        Ask us
+      </Link>
+    </span>
   );
 }
 
@@ -37,7 +41,7 @@ export function RatesTable() {
         <div className="mt-8 overflow-x-auto rounded-2xl border border-hairline bg-white">
           <table className="w-full min-w-130 text-left">
             <caption className="sr-only">Indicative buy and sell rates by currency</caption>
-            <thead>
+            <thead className="sticky top-0 bg-white">
               <tr className="border-b border-hairline text-xs font-semibold tracking-widest text-ink-soft uppercase">
                 <th scope="col" className="px-6 py-4">Currency</th>
                 <th scope="col" className="px-6 py-4">Code</th>
@@ -53,10 +57,10 @@ export function RatesTable() {
                   </th>
                   <td className="px-6 py-4 font-mono text-sm text-ink-soft">{currency.code}</td>
                   <td className="px-6 py-4">
-                    <RateCell value={currency.indicativeBuy} />
+                    <RateCell value={currency.indicativeBuy} code={currency.code} />
                   </td>
                   <td className="px-6 py-4">
-                    <RateCell value={currency.indicativeSell} />
+                    <RateCell value={currency.indicativeSell} code={currency.code} />
                   </td>
                 </tr>
               ))}

@@ -4,13 +4,15 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/Reveal";
 import { Em } from "@/components/sections/Em";
+import { LiveRate } from "@/components/sections/LiveRate";
 import { SectionHeading } from "@/components/sections/SectionHeading";
+import { Section } from "@/components/ui/section";
 import { currencies } from "@/content/rates";
 
 export function RatesTeaser() {
   return (
-    <section className="border-y border-hairline bg-sand/60">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-24 sm:px-6 lg:grid-cols-2 lg:py-32">
+    <Section variant="sand" bordered>
+      <div className="grid items-center gap-12 lg:grid-cols-2">
         <div>
           <SectionHeading
             eyebrow="Rates"
@@ -39,17 +41,23 @@ export function RatesTeaser() {
             {currencies.slice(0, 5).map((currency) => (
               <li key={currency.code} className="flex items-center justify-between py-4">
                 <div className="flex items-baseline gap-3">
-                  <span className="font-semibold tracking-tight">{currency.code}</span>
+                  <span className="font-mono font-semibold tracking-tight">{currency.code}</span>
                   <span className="text-sm text-ink-soft">{currency.name}</span>
                 </div>
-                <span className="rounded-full bg-brand-tint px-3 py-1 text-xs font-medium text-brand-deep">
-                  Ask us
+                <span className="flex items-center gap-3">
+                  <LiveRate
+                    code={currency.code}
+                    className="font-mono text-sm tabular-nums text-ink-soft"
+                  />
+                  <span className="rounded-full bg-brand-tint px-3 py-1 text-xs font-medium text-brand-deep">
+                    Ask us
+                  </span>
                 </span>
               </li>
             ))}
           </ul>
         </Reveal>
       </div>
-    </section>
+    </Section>
   );
 }
