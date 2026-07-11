@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { BadgeCheck, MapPin, ShieldCheck, Truck } from "lucide-react";
 import { Parallax } from "@/components/motion/Parallax";
 import { Reveal } from "@/components/motion/Reveal";
+import { RevealScale } from "@/components/motion/RevealScale";
 import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { services } from "@/content/services";
@@ -30,9 +31,11 @@ function StepsVisual() {
 function TrustVisual() {
   return (
     <div className="flex flex-col items-center gap-4 rounded-2xl border border-hairline bg-white p-10 text-center shadow-[0_24px_60px_-32px_rgb(47_44_37_/_0.14)]">
-      <span className="flex size-16 items-center justify-center rounded-2xl bg-brand-tint">
-        <ShieldCheck className="size-8 text-brand" aria-hidden />
-      </span>
+      <RevealScale variant="icon">
+        <span className="flex size-16 items-center justify-center rounded-2xl bg-brand-tint">
+          <ShieldCheck className="size-8 text-brand" aria-hidden />
+        </span>
+      </RevealScale>
       <p className="text-lg font-semibold tracking-tight">RBI-approved money changer</p>
       <p className="flex items-center gap-1.5 text-sm text-ink-soft">
         <BadgeCheck className="size-4 text-brand" aria-hidden />

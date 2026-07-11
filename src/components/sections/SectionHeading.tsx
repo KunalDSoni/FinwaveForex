@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { MaskText } from "@/components/motion/MaskText";
 import { Reveal } from "@/components/motion/Reveal";
+import { RevealScale } from "@/components/motion/RevealScale";
 import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
@@ -23,11 +24,11 @@ export function SectionHeading({
   const centered = align === "center";
   return (
     <div className={cn(centered ? "mx-auto max-w-2xl text-center" : "max-w-3xl", className)}>
-      <Reveal>
+      <RevealScale variant="tag">
         <span className="inline-block rounded-full bg-sand px-3.5 py-1.5 text-[13px] font-semibold text-ink">
           {eyebrow}
         </span>
-      </Reveal>
+      </RevealScale>
       <MaskText
         as={as}
         lines={lines}

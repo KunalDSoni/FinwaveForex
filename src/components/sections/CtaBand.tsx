@@ -11,7 +11,7 @@ export function CtaBand() {
     <section className="px-4 pb-24 sm:px-6 lg:pb-32">
       <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-ink px-6 py-20 text-center sm:px-12 lg:py-28">
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_120%_at_80%_0%,rgb(97_171_119_/_0.38),transparent)]"
+          className="animate-gradient-shift pointer-events-none absolute inset-0 bg-[radial-gradient(80%_120%_at_80%_0%,rgb(97_171_119_/_0.38),transparent)]"
           aria-hidden
         />
         <div className="relative">

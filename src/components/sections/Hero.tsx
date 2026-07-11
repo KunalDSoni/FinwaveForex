@@ -15,11 +15,11 @@ export function Hero() {
     <section className="relative overflow-hidden pt-32 pb-0 lg:pt-44">
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 right-[4%] -z-10 size-[26rem] rounded-full bg-brand/25 blur-[90px]"
+        className="animate-orb pointer-events-none absolute -top-24 right-[4%] -z-10 size-[26rem] rounded-full bg-brand/25 blur-[90px]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-8 left-[6%] -z-10 size-[20rem] rounded-full bg-accent-blue/15 blur-[90px]"
+        className="animate-orb-reverse pointer-events-none absolute bottom-8 left-[6%] -z-10 size-[20rem] rounded-full bg-accent-blue/15 blur-[90px]"
       />
       <div className="mx-auto grid max-w-6xl items-center gap-16 px-4 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr]">
         <div>

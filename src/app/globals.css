@@ -27,6 +27,48 @@
   }
 }
 
+@keyframes orb-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.08) rotate(8deg);
+    opacity: 0.75;
+  }
+}
+
+@keyframes orb-float-reverse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(20px) scale(1.05) rotate(-6deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    opacity: 0.38;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orb,
+  .animate-orb-reverse,
+  .animate-gradient-shift {
+    animation: none !important;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -154,5 +196,17 @@
   }
   ::selection {
     @apply bg-brand-tint text-brand-deep;
+  }
+}
+
+@layer utilities {
+  .animate-orb {
+    animation: orb-float 8s ease-in-out infinite;
+  }
+  .animate-orb-reverse {
+    animation: orb-float-reverse 10s ease-in-out infinite;
+  }
+  .animate-gradient-shift {
+    animation: gradient-shift 6s ease-in-out infinite;
   }
 }

@@ -21,7 +21,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5">
               {siteConfig.nav.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-ink-soft transition-colors hover:text-ink">
+                  <Link href={item.href} className="relative text-sm text-ink-soft transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 hover:text-ink hover:after:scale-x-100">
                     {item.label}
                   </Link>
                 </li>
@@ -58,7 +58,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5">
               {siteConfig.footerLegal.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-ink-soft transition-colors hover:text-ink">
+                  <Link href={item.href} className="relative text-sm text-ink-soft transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 hover:text-ink hover:after:scale-x-100">
                     {item.label}
                   </Link>
                 </li>

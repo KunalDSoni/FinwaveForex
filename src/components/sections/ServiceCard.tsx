@@ -17,7 +17,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ type: "spring", stiffness: 300, damping: 22 }}
-        className="group flex h-full flex-col rounded-[20px] border border-hairline bg-sand p-8 transition-[border-color,box-shadow] duration-300 hover:border-ink/15 hover:shadow-[0_18px_40px_-24px_rgb(47_44_37_/_0.25)]"
+        className="group flex h-full flex-col rounded-[20px] border border-hairline bg-sand/60 p-8 shadow-sm backdrop-blur-sm transition-[border-color,box-shadow] duration-300 hover:border-ink/15 hover:shadow-[0_18px_40px_-24px_rgb(47_44_37_/_0.25)]"
       >
         <span className="flex size-11 items-center justify-center rounded-xl bg-brand-tint text-brand">
           <Icon className="size-5 transition-transform duration-300 group-hover:-rotate-6" aria-hidden />
