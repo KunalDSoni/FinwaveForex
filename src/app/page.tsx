@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CitiesSection } from "@/components/sections/CitiesSection";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { DeskShowcase } from "@/components/sections/DeskShowcase";
 import { Hero } from "@/components/sections/Hero";
 import { MarketTicker } from "@/components/sections/MarketTicker";
 import { PullQuote } from "@/components/sections/PullQuote";
@@ -28,6 +29,7 @@ export default function Home() {
       <MarketTicker className="mt-[72px]" />
       <Hero />
       <ServicesGrid />
+      <DeskShowcase />
       <WhyFinwave />
       <RatesTeaser />
       <StatsBand />
