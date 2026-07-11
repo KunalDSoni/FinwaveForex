@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { tickerQuotes, type TickerQuote } from "@/content/ticker";
 import {
+  cachedInrWithPrev,
   changePct,
-  fetchInrWithPrev,
   formatPrice,
   priceFromInr,
   type InrResponse,
@@ -64,7 +64,7 @@ export function MarketTicker({ className }: { className?: string }) {
   useEffect(() => {
     let active = true;
     (async () => {
-      const res = await fetchInrWithPrev();
+      const res = await cachedInrWithPrev();
       if (res && active) setQuotes(buildQuotes(res.today, res.prev));
     })();
     return () => {

@@ -43,6 +43,18 @@ export async function fetchInrWithPrev(): Promise<{
   return { today, prev };
 }
 
+let inrPromise: ReturnType<typeof fetchInrWithPrev> | null = null;
+
+/**
+ * Shared, memoized `fetchInrWithPrev` so many live components on one page
+ * (e.g. every row of the rates table) resolve from a single network round-trip
+ * instead of stampeding the CDN.
+ */
+export function cachedInrWithPrev(): ReturnType<typeof fetchInrWithPrev> {
+  if (!inrPromise) inrPromise = fetchInrWithPrev();
+  return inrPromise;
+}
+
 /** API gives INR→X; we want INR per 1 X. */
 export function priceFromInr(inrPerUnit: number): number {
   return 1 / inrPerUnit;

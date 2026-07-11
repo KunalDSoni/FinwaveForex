@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown, BadgeCheck } from "lucide-react";
-import { changePct, fetchInrWithPrev, formatPrice, priceFromInr } from "@/lib/fx";
+import { cachedInrWithPrev, changePct, formatPrice, priceFromInr } from "@/lib/fx";
 import { tickerQuotes } from "@/content/ticker";
 import { cn } from "@/lib/utils";
 
@@ -23,7 +23,7 @@ export function QuoteCard() {
   useEffect(() => {
     let active = true;
     (async () => {
-      const res = await fetchInrWithPrev();
+      const res = await cachedInrWithPrev();
       if (!active) return;
       const inr = res?.today.inr["usd"];
       if (res && inr) {
