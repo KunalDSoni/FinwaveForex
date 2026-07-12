@@ -3,9 +3,9 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Section } from "@/components/ui/section";
 import { siteConfig } from "@/content/site";
 
-export function StatsBand() {
+export function StatsBand({ innerClassName }: { innerClassName?: string }) {
   return (
-    <Section>
+    <Section innerClassName={innerClassName}>
       <div className="grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline text-center sm:grid-cols-3">
         {siteConfig.stats.map((stat, index) => (
           <Reveal key={stat.label} delay={index * 0.1} className="bg-paper px-6 py-12">
