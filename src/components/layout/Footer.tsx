@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/content/site";
+import { asset } from "@/lib/base-path";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -14,7 +15,7 @@ export function Footer() {
           <div>
             <Link href="/" aria-label="Finwave Forex, home" className="inline-flex">
               <Image
-                src="/logo.png"
+                src={asset("/logo.png")}
                 alt="Finwave Forex"
                 width={1459}
                 height={379}
