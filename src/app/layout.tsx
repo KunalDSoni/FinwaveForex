@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fragment_Mono, Geist, Instrument_Serif } from "next/font/google";
+import { Fragment_Mono, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -7,17 +7,10 @@ import { JsonLd } from "@/components/layout/JsonLd";
 import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { siteConfig } from "@/content/site";
 
-const geist = Geist({
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
   style: ["normal", "italic"],
-  subsets: ["latin"],
-  variable: "--font-serif",
+  variable: "--font-sans",
   display: "swap",
 });
 
@@ -43,10 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geist.variable} ${instrumentSerif.variable} ${fragmentMono.variable}`}
-    >
+    <html lang="en" className={`${hanken.variable} ${fragmentMono.variable}`}>
       <body className="font-sans">
         <a
           href="#content"
