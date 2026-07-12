@@ -7,6 +7,7 @@ import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { siteConfig } from "@/content/site";
+import { asset } from "@/lib/base-path";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -28,7 +29,7 @@ export function Header() {
       <div className="relative mx-auto flex h-[72px] max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" aria-label="Finwave Forex, home" className="flex items-center">
           <Image
-            src="/logo.png"
+            src={asset("/logo.png")}
             alt="Finwave Forex"
             width={1459}
             height={379}
