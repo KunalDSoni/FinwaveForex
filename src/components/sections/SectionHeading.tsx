@@ -28,10 +28,10 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const centered = align === "center";
   const titleCls = cn(
-    "mt-5 font-serif font-normal tracking-[-0.03em] text-balance",
+    "mt-5 font-serif font-normal tracking-[-0.02em] text-balance",
     as === "h1"
-      ? "text-4xl sm:text-5xl lg:text-[4rem] lg:leading-[1.02]"
-      : "text-[2.25rem] leading-[1.05] sm:text-5xl lg:text-[3.5rem]",
+      ? "text-4xl leading-[1.1] sm:text-[2.5rem] lg:text-5xl"
+      : "text-[1.75rem] leading-[1.15] sm:text-3xl lg:text-4xl",
   );
 
   if (layout === "split") {

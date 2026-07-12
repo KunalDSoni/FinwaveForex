@@ -23,7 +23,7 @@ export function CtaBand() {
                 in one <Em>phone call.</Em>
               </Fragment>,
             ]}
-            className="font-serif text-4xl leading-[1.05] font-normal tracking-tight text-balance text-white sm:text-5xl lg:text-6xl"
+            className="font-serif text-3xl leading-[1.1] font-normal tracking-[-0.02em] text-balance text-white sm:text-4xl lg:text-5xl"
           />
           <Reveal delay={0.2}>
             <a

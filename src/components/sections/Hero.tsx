@@ -35,7 +35,7 @@ export function Hero() {
               </Fragment>,
             ]}
             delay={0.1}
-            className="mt-6 font-serif text-6xl font-normal tracking-[-0.03em] text-balance sm:text-7xl lg:text-[5.75rem] lg:leading-[0.95] xl:text-[6.5rem]"
+            className="mt-6 font-serif text-4xl leading-[1.1] font-normal tracking-[-0.02em] text-balance sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem]"
           />
           <Reveal delay={0.25}>
             <p className="mt-6 max-w-xl text-lg leading-8 text-ink-soft">
