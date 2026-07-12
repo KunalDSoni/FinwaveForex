@@ -199,10 +199,12 @@
   body {
     @apply text-ink antialiased;
     background-color: var(--color-paper);
+    /* Two-tone canvas: warm near-white at the top settling into the cream
+       lower down, with a soft gold glow toward the top-right (behind the hero
+       card). */
     background-image:
-      radial-gradient(60% 55% at 78% -8%, rgb(234 163 0 / 0.2), transparent 60%),
-      radial-gradient(55% 48% at 6% 0%, rgb(250 240 214 / 0.65), transparent 62%),
-      radial-gradient(95% 75% at 50% 118%, rgb(28 26 21 / 0.06), transparent 72%);
+      radial-gradient(52% 46% at 85% 2%, rgb(234 163 0 / 0.12), transparent 62%),
+      linear-gradient(180deg, #fdfaf4 0%, #f3ecdf 44%, var(--color-paper) 100%);
     background-attachment: fixed;
     background-repeat: no-repeat;
   }
