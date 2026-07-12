@@ -31,7 +31,7 @@ export function MobileNav() {
               <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="block py-3 font-serif text-4xl font-normal tracking-tight"
+                className="block py-3 font-serif text-2xl font-normal tracking-[-0.02em]"
               >
                 {link.label}
               </Link>

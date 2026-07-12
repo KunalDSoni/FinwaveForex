@@ -100,7 +100,7 @@ export function WhyFinwave() {
               <p className="text-xs font-semibold tracking-widest text-brand-deep uppercase">
                 {row.eyebrow}
               </p>
-              <h3 className="mt-3 font-serif text-[2rem] leading-[1.1] font-normal tracking-tight text-balance sm:text-4xl">
+              <h3 className="mt-3 font-serif text-2xl leading-[1.2] font-normal tracking-[-0.02em] text-balance sm:text-[1.75rem]">
                 {row.title}
               </h3>
               <p className="mt-4 max-w-md text-lg leading-8 text-ink-soft">{row.body}</p>

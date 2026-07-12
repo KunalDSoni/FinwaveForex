@@ -24,7 +24,7 @@ export function ServiceDetail({ service }: { service: Service }) {
           as="h1"
           lines={[service.name]}
           delay={0.1}
-          className="mt-4 font-serif text-4xl font-normal tracking-tight text-balance sm:text-5xl lg:text-6xl"
+          className="mt-4 font-serif text-4xl font-normal tracking-[-0.02em] text-balance sm:text-[2.5rem] lg:text-5xl"
         />
         <Reveal delay={0.2}>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-soft">{service.description}</p>
@@ -51,7 +51,7 @@ export function ServiceDetail({ service }: { service: Service }) {
       <section className="border-y border-hairline bg-sand/60">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
           <Reveal>
-            <h2 className="font-serif text-3xl font-normal tracking-tight sm:text-4xl">How it works</h2>
+            <h2 className="font-serif text-2xl font-normal tracking-[-0.02em] sm:text-3xl">How it works</h2>
           </Reveal>
           <ol className="mt-10 grid gap-8 sm:grid-cols-3">
             {service.steps.map((step, index) => (
@@ -71,7 +71,7 @@ export function ServiceDetail({ service }: { service: Service }) {
 
       <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:py-24">
         <Reveal>
-          <h2 className="font-serif text-3xl font-normal tracking-tight sm:text-4xl">
+          <h2 className="font-serif text-2xl font-normal tracking-[-0.02em] sm:text-3xl">
             Frequently asked questions
           </h2>
         </Reveal>
