@@ -34,7 +34,7 @@ const values = [
 export default function AboutPage() {
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-32 sm:px-6 lg:pt-44">
+      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-32">
         <SectionHeading
           as="h1"
           eyebrow="About us"
@@ -43,7 +43,7 @@ export default function AboutPage() {
         />
       </section>
 
-      <Section>
+      <Section innerClassName="pt-16 pb-10 lg:pt-20 lg:pb-12">
         <div className="hairline-grid sm:grid-cols-3">
           {values.map((value, index) => (
             <Reveal
@@ -61,7 +61,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <StatsBand />
+      <StatsBand innerClassName="pt-6 pb-24 lg:pt-8 lg:pb-32" />
 
       {/* Leadership block intentionally omitted until Finwave provides real team details. */}
 

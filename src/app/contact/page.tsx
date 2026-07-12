@@ -60,7 +60,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <section className="mx-auto max-w-6xl px-4 pt-32 pb-24 sm:px-6 lg:pt-40 lg:pb-32">
+    <section className="mx-auto max-w-6xl px-4 pt-28 pb-20 sm:px-6 lg:pt-32 lg:pb-28">
       <SectionHeading
         as="h1"
         eyebrow="Contact"
