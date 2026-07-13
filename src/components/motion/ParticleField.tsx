@@ -12,6 +12,7 @@ type Particle = {
   vx: number;
   vy: number;
   size: number;
+  sym: number;
   phase: number;
   freq: number;
   amp: number;
@@ -45,22 +46,28 @@ export function ParticleField({ className }: { className?: string }) {
     const pointer = { x: -9999, y: -9999, active: false, last: 0 };
     const ripples: { x: number; y: number; start: number }[] = [];
 
-    // Pre-rendered soft warm dot — drawn once, blitted per particle.
-    const S = 24;
-    const sprite = document.createElement("canvas");
-    sprite.width = sprite.height = S;
-    const sc = sprite.getContext("2d");
-    if (sc) {
-      const g = sc.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
-      g.addColorStop(0, "rgba(255,235,225,0.26)");
-      g.addColorStop(0.45, "rgba(255,235,225,0.1)");
-      g.addColorStop(1, "rgba(255,235,225,0)");
-      sc.fillStyle = g;
-      sc.fillRect(0, 0, S, S);
-    }
+    // Currency glyphs pre-rendered once (with a baked soft glow), then blitted
+    // per particle — keeps thousands of them cheap enough for 60fps.
+    const SYMBOLS = ["$", "£", "€", "¥", "฿"];
+    const S = 44;
+    const sprites = SYMBOLS.map((sym) => {
+      const c = document.createElement("canvas");
+      c.width = c.height = S;
+      const g = c.getContext("2d");
+      if (g) {
+        g.textAlign = "center";
+        g.textBaseline = "middle";
+        g.font = `600 ${Math.round(S * 0.6)}px "Hanken Grotesk", system-ui, sans-serif`;
+        g.shadowColor = "rgba(255,235,225,0.4)";
+        g.shadowBlur = S * 0.16;
+        g.fillStyle = "rgba(255,235,225,0.62)";
+        g.fillText(sym, S / 2, S / 2 + S * 0.04);
+      }
+      return c;
+    });
 
     function build() {
-      const target = w < 640 ? 600 : w < 1024 ? 1200 : 2000;
+      const target = w < 640 ? 450 : w < 1024 ? 900 : 1500;
       const cx = w / 2;
       const cy = h / 2;
       const maxD = Math.hypot(cx, cy) || 1;
@@ -80,7 +87,8 @@ export function ParticleField({ className }: { className?: string }) {
             y,
             vx: 0,
             vy: 0,
-            size: 0.8 + Math.random() * 1.7,
+            size: 9 + Math.random() * 8,
+            sym: (Math.random() * SYMBOLS.length) | 0,
             phase: Math.random() * Math.PI * 2,
             freq: 0.15 + Math.random() * 0.4,
             amp: 3 + Math.random() * 8,
@@ -105,7 +113,6 @@ export function ParticleField({ className }: { className?: string }) {
     function draw(now: number) {
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx!.clearRect(0, 0, w, h);
-      ctx!.globalCompositeOperation = "lighter";
 
       const t = now / 1000;
       const REPEL = 120;
@@ -157,8 +164,8 @@ export function ParticleField({ className }: { className?: string }) {
           p.y += p.vy;
         }
 
-        const s = p.size * 3.6;
-        ctx!.drawImage(sprite, p.x - s / 2, p.y - s / 2, s, s);
+        const s = p.size;
+        ctx!.drawImage(sprites[p.sym], p.x - s / 2, p.y - s / 2, s, s);
       }
 
       if (pointer.active) {
@@ -168,12 +175,12 @@ export function ParticleField({ className }: { className?: string }) {
           const g = ctx!.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, R);
           g.addColorStop(0, `rgba(255,235,225,${0.12 * a})`);
           g.addColorStop(1, "rgba(255,235,225,0)");
+          ctx!.globalCompositeOperation = "lighter";
           ctx!.fillStyle = g;
           ctx!.fillRect(pointer.x - R, pointer.y - R, R * 2, R * 2);
+          ctx!.globalCompositeOperation = "source-over";
         }
       }
-
-      ctx!.globalCompositeOperation = "source-over";
     }
 
     function loop(now: number) {
