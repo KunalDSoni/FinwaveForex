@@ -16,13 +16,14 @@ export function Hero() {
       style={{
         backgroundColor: "#2A100D",
         backgroundImage:
-          "radial-gradient(58% 60% at 80% 16%, #331613 0%, rgba(51,22,19,0) 62%)," +
-          "radial-gradient(120% 95% at 50% 125%, #210B09 0%, rgba(33,11,9,0) 60%)",
+          "radial-gradient(55% 62% at 82% 20%, #3a1a15 0%, rgba(58,26,21,0) 60%)," +
+          "radial-gradient(75% 80% at 22% 42%, rgba(51,22,19,0.55) 0%, rgba(51,22,19,0) 55%)," +
+          "radial-gradient(130% 115% at 50% 122%, #1d0908 0%, rgba(29,9,8,0) 55%)",
       }}
     >
       <ParticleField />
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-16 px-4 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
+        <div data-particle-safe>
           <Reveal>
             <span className="inline-block rounded-full bg-white/10 px-3.5 py-1.5 text-[13px] font-semibold text-[#F5EAE6] ring-1 ring-white/15 backdrop-blur-sm">
               RBI-approved · 10+ years in foreign exchange
@@ -72,11 +73,13 @@ export function Hero() {
             </div>
           </Reveal>
         </div>
-        <Reveal delay={0.3}>
-          <Parallax range={28}>
-            <QuoteCard />
-          </Parallax>
-        </Reveal>
+        <div data-particle-safe>
+          <Reveal delay={0.3}>
+            <Parallax range={28}>
+              <QuoteCard />
+            </Parallax>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
