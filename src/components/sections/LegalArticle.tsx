@@ -1,18 +1,145 @@
+import Link from "next/link";
+import { Mail, PhoneCall } from "lucide-react";
+import { Reveal } from "@/components/motion/Reveal";
+import { Eyebrow } from "@/components/ui/eyebrow";
+import { siteConfig } from "@/content/site";
 import type { LegalPage } from "@/content/legal";
 
+/** Stable anchor id from a section heading. */
+function slugify(heading: string): string {
+  return heading
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 export function LegalArticle({ page }: { page: LegalPage }) {
+  // A contents rail earns its place on long documents only.
+  const showContents = page.sections.length > 2;
+
   return (
-    <article className="mx-auto max-w-3xl px-4 pt-32 pb-24 sm:px-6 lg:pt-44">
-      <h1 className="font-serif text-3xl font-normal tracking-[-0.02em] sm:text-4xl">{page.title}</h1>
-      <p className="mt-4 text-sm text-ink-soft">Last updated: {page.updated}</p>
-      <div className="mt-10 space-y-8">
-        {page.sections.map((section) => (
-          <section key={section.heading} className="scroll-mt-24">
-            <h2 className="text-xl font-semibold tracking-tight">{section.heading}</h2>
-            <p className="mt-3 leading-7 text-ink-soft">{section.body}</p>
-          </section>
-        ))}
-      </div>
-    </article>
+    <>
+      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
+        <Reveal>
+          <Eyebrow>Legal</Eyebrow>
+          <h1 className="mt-5 font-serif text-4xl leading-[1.08] font-normal tracking-[-0.03em] text-balance sm:text-5xl">
+            {page.title}
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-soft">{page.intro}</p>
+          {page.updated ? (
+            <p className="mt-6 text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase">
+              Last updated {page.updated}
+            </p>
+          ) : null}
+        </Reveal>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pt-14 pb-24 sm:px-6 lg:pt-16 lg:pb-32">
+        <div className={showContents ? "grid gap-10 lg:grid-cols-[14rem_1fr] lg:gap-16" : "max-w-3xl"}>
+          {showContents ? (
+            <nav aria-label="On this page" className="lg:sticky lg:top-28 lg:self-start">
+              <p className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+                On this page
+              </p>
+              <ol className="mt-4 flex flex-col gap-1">
+                {page.sections.map((section, index) => (
+                  <li key={section.heading}>
+                    <a
+                      href={`#${slugify(section.heading)}`}
+                      className="flex gap-2.5 rounded-lg px-3 py-2 text-sm leading-6 text-ink-soft transition-colors hover:bg-white hover:text-brand-deep focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+                    >
+                      <span className="tnum shrink-0 text-xs text-ink-soft/60">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      {section.heading}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          ) : null}
+
+          <div className="min-w-0">
+            {page.sections.map((section, index) => (
+              <section
+                key={section.heading}
+                id={slugify(section.heading)}
+                className={index === 0 ? "scroll-mt-28" : "mt-12 scroll-mt-28"}
+              >
+                <Reveal>
+                  <h2 className="flex gap-3 font-serif text-xl leading-snug font-normal tracking-[-0.02em] sm:text-2xl">
+                    {showContents ? (
+                      <span className="tnum mt-1.5 shrink-0 text-sm text-brand-deep">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                    ) : null}
+                    {section.heading}
+                  </h2>
+                  <div className="mt-5 flex flex-col gap-4">
+                    {section.blocks.map((block, blockIndex) =>
+                      block.type === "paragraph" ? (
+                        <p key={blockIndex} className="text-sm leading-7 text-ink-soft">
+                          {block.text}
+                        </p>
+                      ) : (
+                        <ul key={blockIndex} className="flex flex-col gap-3">
+                          {block.items.map((item) => (
+                            <li key={item} className="flex gap-3 text-sm leading-7 text-ink-soft">
+                              <span
+                                className="mt-3 size-1.5 shrink-0 rounded-full bg-brand"
+                                aria-hidden
+                              />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      ),
+                    )}
+                  </div>
+                </Reveal>
+              </section>
+            ))}
+
+            {/* Where to take a question about this document. */}
+            <Reveal delay={0.1}>
+              <div className="mt-14 rounded-2xl border border-hairline bg-white p-8">
+                <h2 className="text-base font-semibold tracking-[-0.01em]">
+                  Questions about this policy?
+                </h2>
+                <p className="mt-2 text-sm leading-6 text-ink-soft">
+                  Write to us or call the desk and we&apos;ll put you through to the right person.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="flex items-center gap-2 font-medium text-brand-deep transition-colors hover:text-ink"
+                  >
+                    <Mail className="size-4 shrink-0" aria-hidden />
+                    {siteConfig.email}
+                  </a>
+                  <a
+                    href={siteConfig.phoneHref}
+                    className="flex items-center gap-2 font-medium text-brand-deep transition-colors hover:text-ink"
+                  >
+                    <PhoneCall className="size-4 shrink-0" aria-hidden />
+                    {siteConfig.phone}
+                  </a>
+                </div>
+                <p className="mt-6 border-t border-hairline pt-5 text-xs leading-6 text-ink-soft">
+                  {siteConfig.legalName} · {siteConfig.address.line1}, {siteConfig.address.line2},{" "}
+                  {siteConfig.address.city} {siteConfig.address.postalCode} ·{" "}
+                  <Link
+                    href="/contact"
+                    className="underline underline-offset-4 transition-colors hover:text-ink"
+                  >
+                    Contact us
+                  </Link>
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

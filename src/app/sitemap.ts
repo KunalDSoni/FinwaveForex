@@ -6,7 +6,16 @@ import { services } from "@/content/services";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPaths = ["", "/services", "/rates", "/about", "/contact", "/privacy", "/terms"];
+  const staticPaths = [
+    "",
+    "/services",
+    "/rates",
+    "/about",
+    "/investors",
+    "/faq",
+    "/contact",
+    "/privacy",
+  ];
   const servicePaths = services.map((s) => `/services/${s.slug}`);
   return [...staticPaths, ...servicePaths].map((path) => ({
     url: `${siteConfig.url}${path}`,
