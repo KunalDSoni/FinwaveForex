@@ -11,12 +11,12 @@ export function StatsBand({ innerClassName }: { innerClassName?: string }) {
           <Reveal
             key={stat.label}
             delay={index * 0.1}
-            className="hairline-cell px-6 py-12 text-center sm:px-8"
+            className="hairline-cell px-7 py-10 sm:px-8 lg:py-12"
           >
             <p className="tnum text-5xl font-semibold tracking-[-0.04em] lg:text-6xl">
               <CountUp value={stat.value} suffix={stat.suffix} />
             </p>
-            <p className="mx-auto mt-4 max-w-[14rem] text-sm leading-6 text-ink-soft">
+            <p className="mt-3 max-w-[14rem] text-sm leading-6 text-ink-soft">
               {stat.label}
             </p>
           </Reveal>

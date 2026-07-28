@@ -26,8 +26,8 @@ export function Header() {
         scrolled ? "border-b border-hairline bg-paper/85 backdrop-blur-md" : "bg-transparent",
       )}
     >
-      <div className="relative mx-auto flex h-[72px] max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" aria-label="Finwave Forex, home" className="flex items-center">
+      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <Link href="/" aria-label="Finwave Forex, home" className="flex shrink-0 items-center">
           <Image
             src={asset("/logo.png")}
             alt="Finwave Forex"
@@ -39,19 +39,19 @@ export function Header() {
         </Link>
         <nav
           aria-label="Main"
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex"
+          className="hidden items-center gap-0.5 lg:flex"
         >
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-lg px-3.5 py-2 text-sm font-medium text-ink/75 transition-colors hover:bg-ink/[0.06] hover:text-ink"
+              className="rounded-lg px-3 py-2 text-sm font-medium whitespace-nowrap text-ink/75 transition-colors hover:bg-ink/[0.06] hover:text-ink"
             >
               {item.label}
             </Link>
           ))}
         </nav>
-        <div className="hidden items-center gap-2.5 md:flex">
+        <div className="hidden shrink-0 items-center gap-2.5 lg:flex">
           <Button
             asChild
             size="sm"

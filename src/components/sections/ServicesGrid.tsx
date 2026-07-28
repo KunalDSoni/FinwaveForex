@@ -12,7 +12,7 @@ export function ServicesGrid() {
   return (
     <Section>
       <SectionHeading
-        align="center"
+        layout="split"
         eyebrow="Services"
         lines={[
           <Fragment key="l1">Everything foreign exchange,</Fragment>,
@@ -28,7 +28,7 @@ export function ServicesGrid() {
         ))}
       </div>
       <Reveal delay={0.15}>
-        <div className="mt-10 text-center">
+        <div className="mt-10">
           <Link
             href="/services"
             className="group inline-flex items-center gap-2 text-sm font-semibold text-brand-deep transition-colors hover:text-ink"

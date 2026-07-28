@@ -16,7 +16,7 @@ export function HowItWorks() {
   return (
     <Section variant="sand" bordered>
       <SectionHeading
-        align="center"
+        layout="split"
         eyebrow="How it works"
         lines={[
           <Fragment key="l1">From quote to cash,</Fragment>,
@@ -50,7 +50,7 @@ export function HowItWorks() {
       </ol>
 
       <Reveal delay={0.2}>
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-10 flex flex-col items-start gap-3 sm:flex-row">
           <Button asChild size="lg">
             <Link href="/contact">
               Start a quote

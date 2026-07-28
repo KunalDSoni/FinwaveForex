@@ -50,13 +50,14 @@ export function WhyFinwave() {
   return (
     <Section>
       <SectionHeading
-        align="center"
+        layout="split"
         eyebrow="Why Finwave"
         lines={[
           <span key="line">
             Built on a decade of <Em>better rates.</Em>
           </span>,
         ]}
+        sub="Approved, documented and delivered — the two things that decide whether a money changer is worth calling twice."
       />
       <div className="mt-14 grid gap-5 lg:grid-cols-2">
         {pillars.map((pillar, index) => (

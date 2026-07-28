@@ -7,10 +7,12 @@ export const siteConfig = {
   url: "https://finwaveforex.com",
   phone: "+91 79 4891 6100",
   phoneHref: "tel:+917948916100",
+  mobile: "+91 98983 05022",
+  mobileHref: "tel:+919898305022",
   email: "info@finwaveforex.com",
   address: {
     line1: "Ground Floor, Raja Complex",
-    line2: "Vijay Cross Road",
+    line2: "Vijay Cross Roads, Navrangpura",
     city: "Ahmedabad",
     postalCode: "380009",
     region: "Gujarat",
@@ -24,9 +26,10 @@ export const siteConfig = {
     { value: 6, suffix: "", label: "Cities served across India" },
   ],
   nav: [
-    { label: "Services", href: "/services" },
+    { label: "About Us", href: "/about" },
+    { label: "Investors", href: "/investors" },
+    { label: "Products & Services", href: "/services" },
     { label: "Rates", href: "/rates" },
-    { label: "About", href: "/about" },
     { label: "Contact Us", href: "/contact" },
   ],
   footerLegal: [
