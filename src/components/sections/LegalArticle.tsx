@@ -14,8 +14,8 @@ function slugify(heading: string): string {
 }
 
 export function LegalArticle({ page }: { page: LegalPage }) {
-  // A contents rail earns its place on long documents only.
-  const showContents = page.sections.length > 2;
+  // A contents rail earns its place once a document has more than one part.
+  const showContents = page.sections.length > 1;
 
   return (
     <>
@@ -81,6 +81,22 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                         <p key={blockIndex} className="text-sm leading-7 text-ink-soft">
                           {block.text}
                         </p>
+                      ) : block.type === "clauses" ? (
+                        // Verbatim contract clauses, numbered so they can be
+                        // cited — the source publishes them as one long block.
+                        <ol key={blockIndex} className="flex flex-col gap-5">
+                          {block.items.map((clause, clauseIndex) => (
+                            <li
+                              key={clause.slice(0, 60)}
+                              className="grid grid-cols-[2rem_1fr] gap-x-3 border-t border-hairline pt-5 first:border-t-0 first:pt-0"
+                            >
+                              <span className="tnum pt-0.5 text-xs font-semibold text-brand-deep">
+                                {String(clauseIndex + 1).padStart(2, "0")}
+                              </span>
+                              <span className="text-sm leading-7 text-ink-soft">{clause}</span>
+                            </li>
+                          ))}
+                        </ol>
                       ) : (
                         <ul key={blockIndex} className="flex flex-col gap-3">
                           {block.items.map((item) => (

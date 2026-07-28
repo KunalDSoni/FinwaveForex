@@ -35,6 +35,7 @@ export const siteConfig = {
   ],
   footerLegal: [
     { label: "Privacy Policy", href: "/privacy" },
+    { label: "Disclaimer", href: "/disclaimer" },
   ],
   // TODO: RBI licence number not published on the current site.
   rbiLicence: "TODO: RBI licence number",
