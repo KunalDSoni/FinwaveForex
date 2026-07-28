@@ -1,108 +1,174 @@
-import { Mail, MapPin, Phone, Truck } from "lucide-react";
+import { Fragment } from "react";
+import { ArrowUpRight, Mail, MapPin, Phone, ShieldCheck, Truck } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
-import { ContactForm } from "@/components/sections/ContactForm";
+import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { Card } from "@/components/ui/card";
+import { Section } from "@/components/ui/section";
 import { siteConfig } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Contact",
+  title: "Contact Us",
   description:
-    "Call, email, or message Finwave Forex for a live exchange-rate quote. Ground Floor, Raja Complex, Vijay Cross Road, Ahmedabad.",
+    "Call or visit Finwave Forex for a live exchange-rate quote. Ground Floor, Raja Complex, Vijay Cross Road, Ahmedabad 380009.",
   path: "/contact",
 });
 
 export default function ContactPage() {
   const { address } = siteConfig;
 
-  const details = [
-    {
-      icon: Phone,
-      label: "Call the desk",
-      value: (
-        <a href={siteConfig.phoneHref} className="transition-colors hover:text-brand-deep">
-          {siteConfig.phone}
-        </a>
-      ),
-    },
-    {
-      icon: Mail,
-      label: "Email us",
-      value: (
-        <a href={`mailto:${siteConfig.email}`} className="transition-colors hover:text-brand-deep">
-          {siteConfig.email}
-        </a>
-      ),
-    },
-    {
-      icon: MapPin,
-      label: "Visit the branch",
-      value: (
-        <address className="not-italic">
-          {siteConfig.legalName}
-          <br />
-          {address.line1}, {address.line2},
-          <br />
-          {address.city}, {address.postalCode}
-        </address>
-      ),
-    },
-    {
-      icon: Truck,
-      label: "Delivery & pick-up",
-      value: (
-        <span>
-          {siteConfig.cities.slice(0, -1).join(", ")} and {siteConfig.cities.at(-1)}.
-        </span>
-      ),
-    },
-  ];
+  const fullAddress = `${siteConfig.legalName}, ${address.line1}, ${address.line2}, ${address.city}, ${address.postalCode}`;
+  const mapQuery = encodeURIComponent(fullAddress);
+  const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`;
 
   return (
-    <section className="mx-auto max-w-6xl px-4 pt-28 pb-20 sm:px-6 lg:pt-32 lg:pb-28">
-      <SectionHeading
-        as="h1"
-        eyebrow="Contact"
-        lines={["Talk to a real", "forex desk."]}
-        sub="Tell us the currency, the amount, and your city, we'll come back with a rate we'll work to better."
-      />
+    <>
+      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
+        <SectionHeading
+          as="h1"
+          layout="split"
+          eyebrow="Contact us"
+          lines={[
+            <Fragment key="l1">Talk to a real</Fragment>,
+            <Fragment key="l2">
+              <Em>forex</Em> desk.
+            </Fragment>,
+          ]}
+          sub="Tell us the currency, the amount, and your city, and we'll come back with a rate we'll work to better."
+        />
+      </section>
 
-      <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-        <Reveal delay={0.15}>
-          <Card className="h-full justify-between gap-8">
-            <ul className="divide-y divide-hairline">
-              {details.map((item) => (
-                <li key={item.label} className="flex items-start gap-4 py-5 first:pt-0">
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand-tint text-brand">
-                    <item.icon className="size-5" aria-hidden />
-                  </span>
-                  <div>
-                    <p className="text-xs font-semibold tracking-widest text-ink-soft uppercase">
-                      {item.label}
-                    </p>
-                    <div className="mt-1 text-sm leading-6 font-medium">{item.value}</div>
-                  </div>
+      <Section innerClassName="pt-14 pb-24 lg:pt-16 lg:pb-32">
+        <div className="grid gap-5 lg:grid-cols-3">
+          {/* Calling is the primary channel, so it gets the primary treatment. */}
+          <Reveal className="h-full">
+            <Card hover glow className="h-full ring-1 ring-brand/25">
+              <div>
+                <span className="flex size-12 items-center justify-center rounded-2xl bg-brand text-ink">
+                  <Phone className="size-[22px]" aria-hidden />
+                </span>
+                <p className="mt-6 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+                  Call the desk
+                </p>
+              </div>
+              <a
+                href={siteConfig.phoneHref}
+                className="mt-3 block text-2xl font-semibold tracking-[-0.02em] transition-colors hover:text-brand-deep focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+              >
+                {siteConfig.phone}
+              </a>
+              <p className="mt-2 text-sm text-ink-soft">
+                Fastest way to a live rate. We&apos;ll try to better any quote you have.
+              </p>
+            </Card>
+          </Reveal>
+
+          <Reveal delay={0.08} className="h-full">
+            <Card hover glow className="h-full">
+              <div>
+                <span className="flex size-12 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-colors duration-300 group-hover:bg-brand group-hover:text-ink">
+                  <Mail className="size-[22px]" aria-hidden />
+                </span>
+                <p className="mt-6 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+                  Email us
+                </p>
+              </div>
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="mt-3 block text-lg font-semibold tracking-[-0.01em] break-all transition-colors hover:text-brand-deep focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+              >
+                {siteConfig.email}
+              </a>
+              <p className="mt-2 text-sm text-ink-soft">
+                Send your requirement and we&apos;ll reply with today&apos;s rate.
+              </p>
+            </Card>
+          </Reveal>
+
+          <Reveal delay={0.16} className="h-full">
+            <Card hover glow className="h-full">
+              <div>
+                <span className="flex size-12 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-colors duration-300 group-hover:bg-brand group-hover:text-ink">
+                  <MapPin className="size-[22px]" aria-hidden />
+                </span>
+                <p className="mt-6 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+                  Visit the branch
+                </p>
+              </div>
+              <address className="mt-3 text-sm leading-6 font-medium not-italic">
+                {siteConfig.legalName}
+                <br />
+                {address.line1}, {address.line2}
+                <br />
+                {address.city}, {address.region} {address.postalCode}
+              </address>
+              <a
+                href={directionsHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-brand-deep transition-colors hover:text-ink focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+              >
+                Get directions
+                <ArrowUpRight
+                  className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  aria-hidden
+                />
+              </a>
+            </Card>
+          </Reveal>
+        </div>
+
+        {/* Map */}
+        <Reveal delay={0.1}>
+          <div className="shadow-card mt-5 overflow-hidden rounded-2xl border border-hairline bg-white">
+            <iframe
+              title={`${siteConfig.legalName} on Google Maps`}
+              src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+              className="block h-[320px] w-full border-0 lg:h-[420px]"
+            />
+          </div>
+        </Reveal>
+
+        {/* Coverage + assurances */}
+        <div className="hairline-grid mt-5 lg:grid-cols-2">
+          <Reveal className="hairline-cell p-8">
+            <p className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+              <Truck className="size-4 text-brand-deep" aria-hidden />
+              Delivery &amp; pick-up
+            </p>
+            <p className="mt-3 text-sm leading-6">
+              {siteConfig.cities.slice(0, -1).join(", ")} and {siteConfig.cities.at(-1)}.
+            </p>
+            <p className="mt-1.5 text-sm text-ink-soft">
+              {siteConfig.fulfilment.join(" · ")}.
+            </p>
+          </Reveal>
+          <Reveal delay={0.08} className="hairline-cell p-8">
+            <p className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+              <ShieldCheck className="size-4 text-brand-deep" aria-hidden />
+              Before you visit
+            </p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {["RBI-approved", "Full KYC on every transaction", "15+ currencies"].map((chip) => (
+                <li
+                  key={chip}
+                  className="rounded-full bg-white px-3.5 py-1.5 text-xs font-medium ring-1 ring-hairline"
+                >
+                  {chip}
                 </li>
               ))}
             </ul>
-            <div className="flex flex-wrap gap-2 border-t border-hairline pt-6">
-              {["RBI-approved", "Full KYC", "6 cities", "Home delivery"].map((chip) => (
-                <span
-                  key={chip}
-                  className="rounded-full bg-sand/70 px-3.5 py-1.5 text-xs font-medium text-ink-soft"
-                >
-                  {chip}
-                </span>
-              ))}
-            </div>
-          </Card>
-        </Reveal>
-
-        <Reveal delay={0.2}>
-          <ContactForm />
-        </Reveal>
-      </div>
-    </section>
+            <p className="mt-3 text-sm text-ink-soft">
+              Carry a valid ID and your travel documents so we can complete KYC in one visit.
+            </p>
+          </Reveal>
+        </div>
+        {/* Business hours intentionally omitted — siteConfig.hours is still a TODO. */}
+      </Section>
+    </>
   );
 }

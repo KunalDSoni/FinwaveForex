@@ -27,7 +27,7 @@ export const siteConfig = {
     { label: "Services", href: "/services" },
     { label: "Rates", href: "/rates" },
     { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { label: "Contact Us", href: "/contact" },
   ],
   footerLegal: [
     { label: "Privacy Policy", href: "/privacy" },
