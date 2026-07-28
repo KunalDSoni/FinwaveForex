@@ -58,6 +58,12 @@ export default function ContactPage() {
               >
                 {siteConfig.phone}
               </a>
+              <a
+                href={siteConfig.mobileHref}
+                className="mt-1.5 block text-lg font-semibold tracking-[-0.01em] transition-colors hover:text-brand-deep focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+              >
+                {siteConfig.mobile}
+              </a>
               <p className="mt-2 text-sm text-ink-soft">
                 Fastest way to a live rate. We&apos;ll try to better any quote you have.
               </p>

@@ -30,6 +30,7 @@ export const siteConfig = {
     { label: "Investors", href: "/investors" },
     { label: "Products & Services", href: "/services" },
     { label: "Rates", href: "/rates" },
+    { label: "FAQ's", href: "/faq" },
     { label: "Contact Us", href: "/contact" },
   ],
   footerLegal: [
