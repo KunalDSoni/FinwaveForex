@@ -76,16 +76,23 @@ export function MarketTicker({ className }: { className?: string }) {
     <section
       aria-label="Indicative exchange rates"
       className={cn(
-        "group overflow-hidden border-y border-hairline bg-white/70 py-3 backdrop-blur-sm",
+        "group flex items-center border-b border-hairline bg-white/70 backdrop-blur-sm",
         className,
       )}
     >
       <p className="sr-only">
         Indicative INR exchange rates. Illustrative only — call us for a live quote.
       </p>
-      <div className="flex w-max animate-marquee [--marquee-duration:48s] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
-        <TickerRow quotes={quotes} />
-        <TickerRow quotes={quotes} hidden />
+      <span className="hidden shrink-0 items-center gap-2 border-r border-hairline py-3 pr-5 pl-4 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase sm:flex sm:pl-6">
+        <span className="animate-live size-1.5 rounded-full bg-pos" aria-hidden />
+        Rates
+      </span>
+      {/* Edges fade so quotes enter and leave rather than being clipped. */}
+      <div className="overflow-hidden py-3 [mask-image:linear-gradient(to_right,transparent,black_3rem,black_calc(100%-3rem),transparent)]">
+        <div className="flex w-max animate-marquee [--marquee-duration:64s] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+          <TickerRow quotes={quotes} />
+          <TickerRow quotes={quotes} hidden />
+        </div>
       </div>
     </section>
   );

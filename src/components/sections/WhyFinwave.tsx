@@ -1,65 +1,23 @@
+import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
-import { BadgeCheck, MapPin, ShieldCheck, Truck } from "lucide-react";
-import { Parallax } from "@/components/motion/Parallax";
+import { BadgeCheck, Building, FileCheck2, ShieldCheck, Truck } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
-import { RevealScale } from "@/components/motion/RevealScale";
 import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
-import { siteConfig } from "@/content/site";
-import { cn } from "@/lib/utils";
 
-function TrustVisual() {
-  return (
-    <Card className="items-center gap-4 p-10 text-center">
-      <RevealScale variant="icon">
-        <span className="flex size-16 items-center justify-center rounded-2xl bg-brand-tint">
-          <ShieldCheck className="size-8 text-brand" aria-hidden />
-        </span>
-      </RevealScale>
-      <p className="text-lg font-semibold tracking-tight">RBI-approved money changer</p>
-      <p className="flex items-center gap-1.5 text-sm text-ink-soft">
-        <BadgeCheck className="size-4 text-brand" aria-hidden />
-        Full KYC on every transaction
-      </p>
-    </Card>
-  );
-}
-
-function DeliveryVisual() {
-  return (
-    <Card>
-      <div className="flex items-center gap-3">
-        <span className="flex size-11 items-center justify-center rounded-xl bg-brand-tint">
-          <Truck className="size-5 text-brand" aria-hidden />
-        </span>
-        <p className="font-semibold tracking-tight">Home delivery &amp; branch pick-up</p>
-      </div>
-      <ul className="mt-6 flex flex-wrap gap-2">
-        {siteConfig.cities.map((city) => (
-          <li
-            key={city}
-            className="flex items-center gap-1.5 rounded-full bg-sand/70 px-3.5 py-1.5 text-xs font-medium"
-          >
-            <MapPin className="size-3 text-brand" aria-hidden />
-            {city}
-          </li>
-        ))}
-      </ul>
-    </Card>
-  );
-}
-
-type Row = {
+type Pillar = {
+  icon: LucideIcon;
   eyebrow: string;
   title: ReactNode;
   body: string;
-  visual: ReactNode;
+  points: { icon: LucideIcon; label: string }[];
 };
 
-const rows: Row[] = [
+const pillars: Pillar[] = [
   {
+    icon: ShieldCheck,
     eyebrow: "Trust",
     title: (
       <>
@@ -67,9 +25,13 @@ const rows: Row[] = [
       </>
     ),
     body: "Finwave Forex Pvt. Ltd. is an RBI-approved money changer with 10 years' experience in foreign exchange.",
-    visual: <TrustVisual />,
+    points: [
+      { icon: BadgeCheck, label: "RBI-approved money changer" },
+      { icon: FileCheck2, label: "Full KYC on every transaction" },
+    ],
   },
   {
+    icon: Truck,
     eyebrow: "Convenience",
     title: (
       <>
@@ -77,7 +39,10 @@ const rows: Row[] = [
       </>
     ),
     body: "Home delivery and branch pick-up across six cities in India, so collecting your currency never becomes the errand.",
-    visual: <DeliveryVisual />,
+    points: [
+      { icon: Truck, label: "Home delivery to your door" },
+      { icon: Building, label: "Branch pick-up in Ahmedabad" },
+    ],
   },
 ];
 
@@ -93,22 +58,30 @@ export function WhyFinwave() {
           </span>,
         ]}
       />
-      <div className="mt-16 space-y-20 lg:space-y-28">
-        {rows.map((row, index) => (
-          <div key={row.eyebrow} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <Reveal className={cn(index % 2 === 1 && "lg:order-2")}>
-              <p className="text-xs font-semibold tracking-widest text-brand-deep uppercase">
-                {row.eyebrow}
+      <div className="mt-14 grid gap-5 lg:grid-cols-2">
+        {pillars.map((pillar, index) => (
+          <Reveal key={pillar.eyebrow} delay={index * 0.12} className="h-full">
+            <Card hover glow className="h-full gap-0 p-8 lg:p-10">
+              <span className="relative flex size-14 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-colors duration-300 group-hover:bg-brand group-hover:text-ink">
+                <pillar.icon className="size-6" aria-hidden />
+              </span>
+              <p className="relative mt-7 text-xs font-semibold tracking-[0.16em] text-brand-deep uppercase">
+                {pillar.eyebrow}
               </p>
-              <h3 className="mt-3 font-serif text-2xl leading-[1.2] font-normal tracking-[-0.02em] text-balance sm:text-[1.75rem]">
-                {row.title}
+              <h3 className="relative mt-3 font-serif text-2xl leading-[1.2] font-normal tracking-[-0.025em] text-balance sm:text-[1.75rem]">
+                {pillar.title}
               </h3>
-              <p className="mt-4 max-w-md text-lg leading-8 text-ink-soft">{row.body}</p>
-            </Reveal>
-            <Reveal delay={0.15} className={cn(index % 2 === 1 && "lg:order-1")}>
-              <Parallax range={20}>{row.visual}</Parallax>
-            </Reveal>
-          </div>
+              <p className="relative mt-4 text-base leading-7 text-ink-soft">{pillar.body}</p>
+              <ul className="relative mt-7 flex flex-col gap-2.5 border-t border-hairline pt-6">
+                {pillar.points.map((point) => (
+                  <li key={point.label} className="flex items-center gap-2.5 text-sm font-medium">
+                    <point.icon className="size-4 shrink-0 text-brand-deep" aria-hidden />
+                    {point.label}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </Reveal>
         ))}
       </div>
     </Section>

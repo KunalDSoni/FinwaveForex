@@ -3,6 +3,7 @@ import { CitiesSection } from "@/components/sections/CitiesSection";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { DeskShowcase } from "@/components/sections/DeskShowcase";
 import { Hero } from "@/components/sections/Hero";
+import { HowItWorks } from "@/components/sections/HowItWorks";
 import { MarketTicker } from "@/components/sections/MarketTicker";
 import { PullQuote } from "@/components/sections/PullQuote";
 import { RatesTeaser } from "@/components/sections/RatesTeaser";
@@ -26,13 +27,16 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      {/* Live rate tape sits directly under the fixed header. */}
       <MarketTicker className="mt-[72px]" />
       <Hero />
+      {/* Proof of scale, then what we do, then how simple it is. */}
+      <StatsBand innerClassName="pt-2 pb-20 lg:pt-4 lg:pb-24" />
       <ServicesGrid />
-      <DeskShowcase />
+      <HowItWorks />
       <WhyFinwave />
+      <DeskShowcase />
       <RatesTeaser />
-      <StatsBand />
       <PullQuote />
       <CitiesSection />
       <CtaBand />

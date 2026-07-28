@@ -1,34 +1,44 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Banknote, ShieldCheck, Truck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MaskText } from "@/components/motion/MaskText";
-import { Parallax } from "@/components/motion/Parallax";
 import { ParticleField } from "@/components/motion/ParticleField";
 import { Reveal } from "@/components/motion/Reveal";
 import { Em } from "@/components/sections/Em";
 import { QuoteCard } from "@/components/sections/QuoteCard";
 
+/** Proof points that answer "can I trust this?" before the first scroll. */
+const trustPoints = [
+  { icon: ShieldCheck, label: "RBI-approved money changer" },
+  { icon: Banknote, label: "15+ currencies bought & sold" },
+  { icon: Truck, label: "Home delivery in six cities" },
+];
+
 export function Hero() {
   return (
-    <section
-      className="relative isolate overflow-hidden pt-12 pb-0 lg:pt-16"
-      style={{
-        backgroundColor: "#2A100D",
-        backgroundImage:
-          "radial-gradient(55% 62% at 82% 20%, #3a1a15 0%, rgba(58,26,21,0) 60%)," +
-          "radial-gradient(75% 80% at 22% 42%, rgba(51,22,19,0.55) 0%, rgba(51,22,19,0) 55%)," +
-          "radial-gradient(130% 115% at 50% 122%, #1d0908 0%, rgba(29,9,8,0) 55%)",
-      }}
-    >
-      <ParticleField />
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-16 px-4 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <div data-particle-safe>
+    <section className="relative isolate overflow-hidden">
+      {/* Warm gold aurora behind the quote card, fading into the page cream. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+        <div className="animate-orb absolute -top-40 -right-24 size-[38rem] rounded-full bg-[radial-gradient(circle,rgb(234_163_0_/_0.22),transparent_66%)]" />
+        <div className="animate-orb-reverse absolute -bottom-32 -left-32 size-[30rem] rounded-full bg-[radial-gradient(circle,rgb(234_163_0_/_0.1),transparent_68%)]" />
+      </div>
+      <ParticleField tone="light" className="-z-10" />
+
+      {/* On mobile the quote card follows the headline so the primary tool is
+          reachable without scrolling past the trust list; on large screens it
+          sits alongside, spanning both rows of the left column. */}
+      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 pt-14 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-16 lg:gap-y-10 lg:pt-20 lg:pb-28">
+        <div data-particle-safe className="lg:col-start-1 lg:row-start-1">
           <Reveal>
-            <span className="inline-block rounded-full bg-white/10 px-3.5 py-1.5 text-[13px] font-semibold text-[#F5EAE6] ring-1 ring-white/15 backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-white/70 py-1.5 pr-4 pl-2 text-[13px] font-semibold backdrop-blur-sm">
+              <span className="flex size-6 items-center justify-center rounded-full bg-brand-tint">
+                <ShieldCheck className="size-3.5 text-brand-deep" aria-hidden />
+              </span>
               RBI-approved · 10+ years in foreign exchange
             </span>
           </Reveal>
+
           <MaskText
             as="h1"
             lines={[
@@ -38,32 +48,29 @@ export function Hero() {
               </Fragment>,
             ]}
             delay={0.1}
-            className="mt-6 font-serif text-4xl leading-[1.1] font-normal tracking-[-0.02em] text-balance text-[#F5EAE6] sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem]"
+            className="mt-7 font-serif text-[2.75rem] leading-[1.06] font-normal tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4.25rem]"
           />
+
           <Reveal delay={0.25}>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-[#F5EAE6]/70">
-              Buy and sell 15+ currencies, send money abroad, and load travel cards, at rates
-              we&apos;ll work to better. Home delivery in six cities across India.
+            <p className="mt-6 max-w-lg text-lg leading-8 text-ink-soft">
+              Buy and sell foreign currency, send money abroad, and load travel cards, at rates
+              we&apos;ll work to better. Delivered to your door in six cities across India.
             </p>
           </Reveal>
+
           <Reveal delay={0.35}>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Button
-                asChild
-                size="lg"
-                variant="secondary"
-                className="bg-[#F5EAE6] text-[#2A100D] hover:bg-white"
-              >
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <Button asChild size="lg">
                 <Link href="/contact">Get a quote</Link>
               </Button>
               <Button
                 asChild
                 size="lg"
-                variant="ghost"
-                className="group text-[#F5EAE6] hover:bg-white/10 hover:text-white"
+                variant="outline"
+                className="group border-ink/20 bg-white/60 backdrop-blur-sm hover:bg-white"
               >
                 <Link href="/rates">
-                  See rates
+                  See today&apos;s rates
                   <ArrowRight
                     className="size-4 transition-transform duration-300 group-hover:translate-x-1"
                     aria-hidden
@@ -72,14 +79,25 @@ export function Hero() {
               </Button>
             </div>
           </Reveal>
+
         </div>
-        <div data-particle-safe>
+
+        <div data-particle-safe className="lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
           <Reveal delay={0.3}>
-            <Parallax range={28}>
-              <QuoteCard />
-            </Parallax>
+            <QuoteCard />
           </Reveal>
         </div>
+
+        <Reveal delay={0.45} className="lg:col-start-1 lg:row-start-2">
+          <ul className="grid gap-3 border-t border-hairline pt-7 sm:grid-cols-3 sm:gap-x-5">
+            {trustPoints.map(({ icon: Icon, label }) => (
+              <li key={label} className="flex items-start gap-2.5 text-sm leading-6 text-ink-soft">
+                <Icon className="mt-0.5 size-4 shrink-0 text-brand-deep" aria-hidden />
+                {label}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

@@ -11,8 +11,8 @@ import { currencies } from "@/content/rates";
 
 export function RatesTeaser() {
   return (
-    <Section variant="sand" bordered>
-      <div className="grid items-center gap-12 lg:grid-cols-2">
+    <Section bordered>
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <SectionHeading
             eyebrow="Rates"
@@ -27,35 +27,48 @@ export function RatesTeaser() {
           <Reveal delay={0.25}>
             <Button asChild size="lg" className="group mt-8">
               <Link href="/rates">
-                See all rates
+                See all 15 currencies
                 <ArrowRight
-                  className="size-4 transition-transform group-hover:translate-x-0.5"
+                  className="size-4 transition-transform group-hover:translate-x-1"
                   aria-hidden
                 />
               </Link>
             </Button>
           </Reveal>
         </div>
+
         <Reveal delay={0.15}>
-          <ul className="divide-y divide-hairline rounded-2xl border border-hairline bg-white px-6">
-            {currencies.slice(0, 5).map((currency) => (
-              <li key={currency.code} className="flex items-center justify-between py-4">
-                <div className="flex items-baseline gap-3">
-                  <span className="font-mono font-semibold tracking-tight">{currency.code}</span>
-                  <span className="text-sm text-ink-soft">{currency.name}</span>
-                </div>
-                <span className="flex items-center gap-3">
-                  <LiveRate
-                    code={currency.code}
-                    className="font-mono text-sm tabular-nums text-ink-soft"
-                  />
-                  <span className="rounded-full bg-brand-tint px-3 py-1 text-xs font-medium text-brand-deep">
-                    Ask us
+          <div className="shadow-card overflow-hidden rounded-2xl border border-hairline bg-white">
+            <div className="flex items-center justify-between border-b border-hairline px-6 py-3.5">
+              <span className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+                Indicative
+              </span>
+              <span className="text-[11px] font-medium text-ink-soft">Rupees per unit</span>
+            </div>
+            <ul className="divide-y divide-hairline px-6">
+              {currencies.slice(0, 5).map((currency) => (
+                <li key={currency.code} className="flex items-center justify-between gap-3 py-4">
+                  <span className="flex min-w-0 items-center gap-3">
+                    <span className="text-lg leading-none" aria-hidden>
+                      {currency.flag}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-sm font-semibold tracking-tight">
+                        {currency.code}
+                      </span>
+                      <span className="block truncate text-xs text-ink-soft">{currency.name}</span>
+                    </span>
                   </span>
-                </span>
-              </li>
-            ))}
-          </ul>
+                  <span className="flex shrink-0 items-center gap-3">
+                    <LiveRate code={currency.code} className="tnum text-sm font-medium" />
+                    <span className="rounded-full bg-brand-tint px-3 py-1 text-xs font-semibold text-brand-deep">
+                      Ask us
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </Reveal>
       </div>
     </Section>

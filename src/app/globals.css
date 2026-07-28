@@ -9,7 +9,10 @@
   --color-ink: #1c1a15;
   --color-ink-soft: #5c574d;
   --color-brand: #eaa300;
-  --color-brand-deep: #9c6b00;
+  /* Text-only companion to the brand gold. Darkened from #9c6b00 so 12–14px
+     labels clear WCAG AA (4.5:1) on paper, cream and white — the bright gold
+     above stays the fill colour. */
+  --color-brand-deep: #7a5400;
   --color-brand-tint: #f7e9c4;
   --color-sand: #e3d9c6;
   --color-hairline: #d8ccb7;
@@ -20,7 +23,30 @@
   --shadow-soft: 0 10px 30px -18px rgb(28 26 21 / 0.22);
   --color-pos: #15803d;
   --color-neg: #b91c1c;
+  /* Crisp warm near-white for elevated surfaces that need to read brighter
+     than the cream page ground (hero, quote card, stat cells). */
+  --color-canvas: #fbf8f2;
+  --color-hairline-soft: #e7ddca;
+  /* Card elevation ladder: resting cards, then the hero quote card, which is
+     the single most-elevated object on the page. */
+  --shadow-card: 0 1px 2px rgb(28 26 21 / 0.04), 0 14px 34px -18px rgb(28 26 21 / 0.2);
+  --shadow-quote:
+    0 2px 4px rgb(28 26 21 / 0.03), 0 36px 72px -28px rgb(28 26 21 / 0.26),
+    0 0 0 1px rgb(216 204 183 / 0.6);
   --animate-marquee: marquee var(--marquee-duration, 28s) linear infinite;
+  --animate-live: live-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
 }
 
 @keyframes marquee {
@@ -69,7 +95,8 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-orb,
   .animate-orb-reverse,
-  .animate-gradient-shift {
+  .animate-gradient-shift,
+  .animate-live {
     animation: none !important;
   }
 }
@@ -137,7 +164,7 @@
   --muted: #e3d9c6;
   --muted-foreground: #5c574d;
   --accent: #f7e9c4;
-  --accent-foreground: #9c6b00;
+  --accent-foreground: #7a5400;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #d8ccb7;
   --input: #d8ccb7;
@@ -203,8 +230,8 @@
        lower down, with a soft gold glow toward the top-right (behind the hero
        card). */
     background-image:
-      radial-gradient(52% 46% at 85% 2%, rgb(234 163 0 / 0.12), transparent 62%),
-      linear-gradient(180deg, #fdfaf4 0%, #f3ecdf 44%, var(--color-paper) 100%);
+      radial-gradient(52% 46% at 85% 2%, rgb(234 163 0 / 0.13), transparent 62%),
+      linear-gradient(180deg, #fdfbf6 0%, #f7f1e6 40%, var(--color-paper) 100%);
     background-attachment: fixed;
     background-repeat: no-repeat;
   }
@@ -235,6 +262,27 @@
   .shadow-soft {
     box-shadow: var(--shadow-soft);
   }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-quote {
+    box-shadow: var(--shadow-quote);
+  }
+  /* Numbered rule that walks down the "how it works" steps: a hairline that
+     stops short of the last item so the sequence reads as finite. */
+  .step-rule::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 1.375rem;
+    inset-block: 3rem 0;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-hairline) 0%,
+      var(--color-hairline) 70%,
+      transparent 100%
+    );
+  }
   .text-pos {
     color: var(--color-pos);
   }
@@ -264,10 +312,13 @@
   /* Signature CTA: gold diagonal sweep-fills on hover (from money2abroad) */
   .btn-sweep {
     background-color: var(--color-ink);
+    /* The darker stop is pinned rather than using `brand-deep`: it is a fill,
+       not a text colour, and needs to stay light enough for ink-coloured
+       button text to clear AA across the whole sweep (#b07b00 → 4.7:1). */
     background-image: linear-gradient(
       118deg,
       var(--color-brand) 0%,
-      var(--color-brand-deep) 46%,
+      #b07b00 46%,
       transparent 46.1%
     );
     background-size: 240% 100%;

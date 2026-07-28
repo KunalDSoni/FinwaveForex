@@ -18,6 +18,38 @@ type Particle = {
   phase: number;
 };
 
+/** Glyph ink and cursor-spotlight wash per background tone. */
+const TONES = {
+  dark: {
+    fill: "rgba(255,235,225,0.92)",
+    glow: "rgba(255,235,225,0.5)",
+    spotlight: "255,235,225",
+    spotlightAlpha: 0.07,
+    composite: "lighter" as GlobalCompositeOperation,
+    baseAlpha: 0.1,
+    depthAlpha: 0.3,
+    maxAlpha: 0.72,
+    sizeBase: 10,
+    sizeDepth: 12,
+    density: 1,
+  },
+  // Gold-on-cream needs to sit far further back than white-on-oxblood, or the
+  // glyphs read as speckle rather than texture.
+  light: {
+    fill: "rgba(156,107,0,0.8)",
+    glow: "rgba(234,163,0,0.25)",
+    spotlight: "234,163,0",
+    spotlightAlpha: 0.09,
+    composite: "source-over" as GlobalCompositeOperation,
+    baseAlpha: 0.03,
+    depthAlpha: 0.075,
+    maxAlpha: 0.2,
+    sizeBase: 7,
+    sizeDepth: 7,
+    density: 0.5,
+  },
+};
+
 /**
  * Calm, layered currency-symbol field for the hero. A sparse set of glyphs sits
  * toward the edges (kept out of the headline / card zones marked with
@@ -25,7 +57,13 @@ type Particle = {
  * and opacity. The cursor is a soft spotlight that gently reveals and nudges
  * nearby glyphs — no repulsion, no chaos. Reduced-motion renders a still field.
  */
-export function ParticleField({ className }: { className?: string }) {
+export function ParticleField({
+  className,
+  tone = "dark",
+}: {
+  className?: string;
+  tone?: keyof typeof TONES;
+}) {
   const ref = useRef<HTMLCanvasElement>(null);
   const reduce = useReducedMotion();
 
@@ -45,6 +83,7 @@ export function ParticleField({ className }: { className?: string }) {
     let disposed = false;
 
     const pointer = { x: -9999, y: -9999, active: false, last: 0 };
+    const palette = TONES[tone];
 
     // Each currency glyph pre-rendered once (white, with a soft baked glow);
     // per-particle opacity is applied at draw time for depth layering.
@@ -58,9 +97,9 @@ export function ParticleField({ className }: { className?: string }) {
         g.textAlign = "center";
         g.textBaseline = "middle";
         g.font = `500 ${Math.round(S * 0.58)}px "Hanken Grotesk", system-ui, sans-serif`;
-        g.shadowColor = "rgba(255,235,225,0.5)";
+        g.shadowColor = palette.glow;
         g.shadowBlur = S * 0.2;
-        g.fillStyle = "rgba(255,235,225,0.92)";
+        g.fillStyle = palette.fill;
         g.fillText(sym, S / 2, S / 2 + S * 0.04);
       }
       return c;
@@ -91,7 +130,7 @@ export function ParticleField({ className }: { className?: string }) {
 
     function build() {
       // 80% sparser than the dot field — a quiet, luxurious scatter.
-      const target = w < 640 ? 90 : w < 1024 ? 180 : 300;
+      const target = Math.round((w < 640 ? 90 : w < 1024 ? 180 : 300) * palette.density);
       const cx = w / 2;
       const cy = h / 2;
       const maxD = Math.hypot(cx, cy) || 1;
@@ -111,10 +150,10 @@ export function ParticleField({ className }: { className?: string }) {
           oy: y,
           x,
           y,
-          size: 10 + depth * 12,
+          size: palette.sizeBase + depth * palette.sizeDepth,
           sym: (Math.random() * SYMBOLS.length) | 0,
           depth,
-          alpha: 0.1 + depth * 0.3,
+          alpha: palette.baseAlpha + depth * palette.depthAlpha,
           amp: 2.5 + depth * 3.5, // 5–10px of travel at most
           freq: 0.03 + Math.random() * 0.05, // ~4× slower than before
           phase: Math.random() * Math.PI * 2,
@@ -179,7 +218,7 @@ export function ParticleField({ className }: { className?: string }) {
           p.y = ty;
         }
 
-        ctx!.globalAlpha = Math.min(0.72, p.alpha + boost * 0.4);
+        ctx!.globalAlpha = Math.min(palette.maxAlpha, p.alpha + boost * 0.4);
         const s = p.size;
         ctx!.drawImage(sprites[p.sym], p.x - s / 2, p.y - s / 2, s, s);
       }
@@ -188,9 +227,9 @@ export function ParticleField({ className }: { className?: string }) {
       // Soft warm spotlight following the cursor.
       if (glowFade > 0.01) {
         const g = ctx!.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, R);
-        g.addColorStop(0, `rgba(255,235,225,${0.07 * glowFade})`);
-        g.addColorStop(1, "rgba(255,235,225,0)");
-        ctx!.globalCompositeOperation = "lighter";
+        g.addColorStop(0, `rgba(${palette.spotlight},${palette.spotlightAlpha * glowFade})`);
+        g.addColorStop(1, `rgba(${palette.spotlight},0)`);
+        ctx!.globalCompositeOperation = palette.composite;
         ctx!.fillStyle = g;
         ctx!.fillRect(pointer.x - R, pointer.y - R, R * 2, R * 2);
         ctx!.globalCompositeOperation = "source-over";
@@ -259,7 +298,7 @@ export function ParticleField({ className }: { className?: string }) {
       window.removeEventListener("touchstart", onTouch);
       document.removeEventListener("visibilitychange", onVis);
     };
-  }, [reduce]);
+  }, [reduce, tone]);
 
   return (
     <canvas
