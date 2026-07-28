@@ -37,6 +37,22 @@ export function MobileNav() {
               </Link>
             </motion.li>
           ))}
+          {/* Legal pages were previously unreachable from the mobile menu. */}
+          <motion.li variants={item} className="pt-6">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 border-t border-hairline pt-6">
+              {siteConfig.footerLegal.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.li>
         </motion.ul>
       </SheetContent>
     </Sheet>

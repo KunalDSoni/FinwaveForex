@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { siteConfig } from "@/content/site";
@@ -50,6 +51,37 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+
+          {/* Legal pages live under one menu so they stay in the header without
+              pushing it past its width. Opens on hover and on focus-within, so
+              it works by keyboard without any JavaScript. */}
+          <div className="group/legal relative">
+            <button
+              type="button"
+              aria-haspopup="true"
+              className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium whitespace-nowrap text-ink/75 transition-colors group-hover/legal:bg-ink/[0.06] group-hover/legal:text-ink group-focus-within/legal:bg-ink/[0.06] group-focus-within/legal:text-ink"
+            >
+              Legal
+              <ChevronDown
+                className="size-3.5 transition-transform duration-200 group-hover/legal:rotate-180 group-focus-within/legal:rotate-180"
+                aria-hidden
+              />
+            </button>
+            <div className="invisible absolute top-full left-0 z-10 pt-1 opacity-0 transition-opacity duration-150 group-hover/legal:visible group-hover/legal:opacity-100 group-focus-within/legal:visible group-focus-within/legal:opacity-100">
+              <ul className="shadow-card min-w-[11rem] rounded-xl border border-hairline bg-white p-1.5">
+                {siteConfig.footerLegal.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="block rounded-lg px-3 py-2 text-sm font-medium whitespace-nowrap text-ink/75 transition-colors hover:bg-brand-tint/50 hover:text-ink focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </nav>
         <div className="hidden shrink-0 items-center gap-2.5 lg:flex">
           <Button
