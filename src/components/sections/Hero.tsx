@@ -11,7 +11,7 @@ import { QuoteCard } from "@/components/sections/QuoteCard";
 /** Proof points that answer "can I trust this?" before the first scroll. */
 const trustPoints = [
   { icon: ShieldCheck, label: "RBI-approved money changer" },
-  { icon: Banknote, label: "15+ currencies bought & sold" },
+  { icon: Banknote, label: "30 currencies bought & sold" },
   { icon: Truck, label: "Home delivery in six cities" },
 ];
 

@@ -27,7 +27,7 @@ export function RatesTeaser() {
           <Reveal delay={0.25}>
             <Button asChild size="lg" className="group mt-8">
               <Link href="/rates">
-                See all 15 currencies
+                See all rates
                 <ArrowRight
                   className="size-4 transition-transform group-hover:translate-x-1"
                   aria-hidden

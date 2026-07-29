@@ -20,7 +20,7 @@ export function ServicesGrid() {
             under <Em>one roof.</Em>
           </Fragment>,
         ]}
-        sub="Notes, wire transfers, travel cards and corporate FX, handled by one desk that knows your file."
+        sub="Currency notes, travellers' cheques, travel cards and outbound transfers, handled by one desk that knows your file."
       />
       <div className="hairline-grid mt-14 sm:grid-cols-2 lg:grid-cols-4">
         {services.map((service, index) => (

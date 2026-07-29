@@ -159,7 +159,7 @@ export default function ContactPage() {
               Before you visit
             </p>
             <ul className="mt-3 flex flex-wrap gap-2">
-              {["RBI-approved", "Full KYC on every transaction", "15+ currencies"].map((chip) => (
+              {["RBI-approved", "Full KYC on every transaction", "30 major currencies"].map((chip) => (
                 <li
                   key={chip}
                   className="rounded-full bg-white px-3.5 py-1.5 text-xs font-medium ring-1 ring-hairline"

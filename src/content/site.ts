@@ -22,7 +22,7 @@ export const siteConfig = {
   fulfilment: ["Home delivery", "Branch pick-up"],
   stats: [
     { value: 10, suffix: "+", label: "Years in foreign exchange" },
-    { value: 15, suffix: "+", label: "Currencies exchanged" },
+    { value: 30, suffix: "", label: "Major currencies exchanged" },
     { value: 6, suffix: "", label: "Cities served across India" },
   ],
   nav: [

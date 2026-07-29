@@ -1,8 +1,18 @@
+/**
+ * Products and services, matched to what Finwave publishes on
+ * finwaveforex.com/services.html: three products (currency exchange,
+ * travellers' cheques, travel cards) plus outbound services (TT/DD).
+ *
+ * "Corporate & Business FX" previously listed here does not exist on the live
+ * site and has been removed. Blurbs and features restate published copy;
+ * nothing is claimed that Finwave does not advertise.
+ */
+
 export type Service = {
   slug: string;
   name: string;
   shortName: string;
-  icon: "Banknote" | "Send" | "CreditCard" | "Building2";
+  icon: "Banknote" | "Send" | "CreditCard" | "ScrollText";
   blurb: string;
   description: string;
   features: string[];
@@ -16,15 +26,14 @@ export const services: Service[] = [
     name: "Currency Exchange",
     shortName: "Exchange",
     icon: "Banknote",
-    blurb:
-      "Buy and sell foreign currency notes and traveller's cheques at competitive market rates.",
+    blurb: "Buy and sell all major 30 currencies at competitive market rates.",
     description:
-      "Exchange 15+ major currencies, from US dollars to Kuwaiti dinar, with an RBI-approved money changer. We buy and sell currency notes and traveller's cheques, with home delivery or branch pick-up in six cities.",
+      "We buy and sell all major 30 currencies — US Dollar, British Pound, Euro, Singapore Dollar, Canadian Dollar, Australian Dollar, New Zealand Dollar and more — as an RBI-approved money changer, with home delivery or branch pick-up across six cities.",
     features: [
-      "15+ currencies bought and sold",
-      "Traveller's cheques encashed and issued",
+      "All major 30 currencies bought and sold",
+      "Competitive rates — bring us a quote and we'll work to better it",
       "Home delivery or branch pick-up",
-      "Competitive rates: ask us to better your quote",
+      "Full KYC completed in a single visit",
     ],
     steps: [
       {
@@ -43,51 +52,46 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Which currencies do you exchange?",
-        a: "USD, GBP, EUR, AUD, SGD, THB, SAR, AED, CAD, NZD, HKD, CNY, OMR, KWD and CHF.",
+        a: "All major 30 currencies, including USD, GBP, Euro, SGD, CAD, AUD and NZD. If you need one you don't see listed, call the desk and ask.",
       },
       {
-        q: "What documents do I need?",
-        a: "TODO: confirm KYC document list with Finwave Forex.",
+        q: "Are your published rates final?",
+        a: "No. Rates shown online are indicative and move through the day. The rate that applies is the one we confirm with you at the time of the transaction.",
       },
     ],
   },
   {
-    slug: "remittance",
-    name: "Wire Transfers & Remittance",
-    shortName: "Remittance",
-    icon: "Send",
-    blurb:
-      "Outward wire transfers (TT/DD) for education, family maintenance, and travel.",
+    slug: "travellers-cheques",
+    name: "Travellers' Cheques",
+    shortName: "Cheques",
+    icon: "ScrollText",
+    blurb: "We buy and sell all valid American Express travellers' cheques.",
     description:
-      "Send money abroad through wire transfer (TT) or demand draft (DD) with an RBI-approved money changer handling the paperwork and compliance.",
+      "Finwave Forex buys and sells all valid American Express travellers' cheques. A long-standing way to carry funds abroad with the ability to replace them if they are lost or stolen.",
     features: [
-      "Telegraphic transfers (TT) and demand drafts (DD)",
-      "RBI-compliant documentation handled for you",
-      "Competitive exchange rates on transfers",
-      "TODO: confirm supported remittance purposes and limits",
+      "All valid American Express travellers' cheques",
+      "Both issued and encashed",
+      "Handled by an RBI-approved money changer",
+      "Home delivery or branch pick-up",
     ],
     steps: [
       {
-        title: "Share transfer details",
-        body: "Beneficiary, destination, currency, and purpose of the remittance.",
+        title: "Tell us what you hold",
+        body: "Let us know the currency and value of the cheques you want to buy or encash.",
       },
       {
-        title: "Complete documentation",
-        body: "We guide you through the KYC and LRS paperwork required by RBI.",
+        title: "Get a live quote",
+        body: "We confirm today's rate and the documentation required for the transaction.",
       },
       {
-        title: "Funds dispatched",
-        body: "Your transfer is sent by TT or DD and we confirm once it's on its way.",
+        title: "Complete at the desk",
+        body: "Finish KYC and settle, either at our Ahmedabad office or by home delivery.",
       },
     ],
     faqs: [
       {
-        q: "How long does a wire transfer take?",
-        a: "TODO: confirm typical TT/DD timelines with Finwave Forex.",
-      },
-      {
-        q: "What are the transfer limits?",
-        a: "TODO: confirm limits under the RBI Liberalised Remittance Scheme.",
+        q: "Which travellers' cheques do you accept?",
+        a: "All valid American Express travellers' cheques, both for purchase and encashment.",
       },
     ],
   },
@@ -96,69 +100,78 @@ export const services: Service[] = [
     name: "Travel Currency Cards",
     shortName: "Travel Cards",
     icon: "CreditCard",
-    blurb: "Prepaid multi-currency cards, a safer way to carry money abroad.",
+    blurb: "Prepaid travel cards in all major currencies, a safer way to carry money abroad.",
     description:
-      "Load a traveller's currency card before you fly and spend abroad without carrying large amounts of cash. Reloadable and safer than notes.",
+      "We provide travel cards in all major currencies, including US Dollar, British Pound, Euro, Singapore Dollar, Canadian Dollar, Australian Dollar, Saudi Riyal and UAE Dirham. Load before you fly and spend abroad without carrying large amounts of cash.",
     features: [
-      "Prepaid cards loadable in major currencies",
+      "Cards in USD, GBP, Euro, SGD, CAD, AUD, SAR and AED",
       "Safer than carrying cash",
-      "TODO: confirm card partner banks and reload process",
-      "TODO: confirm supported card currencies",
+      "Usable at ATMs and merchants overseas",
+      "Loaded at the rate we confirm with you",
     ],
     steps: [
       {
         title: "Choose your currencies",
-        body: "Pick the currency mix for your trip.",
+        body: "Pick the currency mix for your trip and the amount to load.",
       },
       {
         title: "Complete KYC and load",
-        body: "Submit documents and load the card at today's rate.",
+        body: "Submit your documents and we load the card at today's confirmed rate.",
       },
       {
         title: "Spend abroad",
-        body: "Use the card at ATMs and merchants worldwide; reload if you need more.",
+        body: "Use the card at ATMs and merchants worldwide.",
       },
     ],
     faqs: [
       {
-        q: "Can I reload the card while abroad?",
-        a: "TODO: confirm reload process with Finwave Forex.",
+        q: "Which currencies can I load?",
+        a: "All major currencies, including US Dollar, British Pound, Euro, Singapore Dollar, Canadian Dollar, Australian Dollar, Saudi Riyal and UAE Dirham.",
+      },
+      {
+        q: "Why choose a card over cash?",
+        a: "A prepaid card is a safer way to carry money abroad than a large amount of notes, and it works at ATMs and merchants overseas. Many travellers carry a mix of both.",
       },
     ],
   },
   {
-    slug: "corporate-fx",
-    name: "Corporate & Business FX",
-    shortName: "Corporate FX",
-    icon: "Building2",
+    slug: "remittance",
+    name: "Outbound Services (TT/DD)",
+    shortName: "Remittance",
+    icon: "Send",
     blurb:
-      "Foreign-exchange support for businesses: bulk exchange, transfers, and employee travel.",
+      "Send money worldwide by telegraphic transfer, or arrange a demand draft in foreign currency.",
     description:
-      "Dedicated foreign-exchange support for companies: bulk currency for business travel, outward transfers, and traveller's cards for teams. TODO: confirm the corporate service scope with Finwave Forex.",
+      "Outbound services comprise sending money throughout the world by way of telegraphic transfers, and we also make arrangements for demand drafts in foreign currencies. These services are carried out in collaboration with RBI-approved banks and authorised dealers.",
     features: [
-      "Bulk currency exchange for business travel",
-      "Business wire transfers (TT/DD)",
-      "Travel cards for employees",
-      "TODO: confirm corporate onboarding and credit terms",
+      "Tour remittances",
+      "Education fees for foreign universities, institutes and colleges",
+      "Application fees for education and immigration",
+      "Sending money to close relatives staying abroad",
+      "Medical purposes, business training and conference remittances",
     ],
     steps: [
       {
-        title: "Talk to us",
-        body: "Tell us your company's FX requirement.",
+        title: "Share transfer details",
+        body: "Beneficiary, destination, currency, and the purpose of the remittance.",
       },
       {
-        title: "Agree rates and paperwork",
-        body: "We set up documentation and quote competitive rates.",
+        title: "Complete documentation",
+        body: "We guide you through the KYC and paperwork required under RBI regulations.",
       },
       {
-        title: "Ongoing support",
-        body: "A single point of contact for repeat requirements.",
+        title: "Funds dispatched",
+        body: "Your transfer is sent by TT or DD and we confirm once it's on its way.",
       },
     ],
     faqs: [
       {
-        q: "Do you offer corporate accounts?",
-        a: "TODO: confirm corporate account offering with Finwave Forex.",
+        q: "What can I send money abroad for?",
+        a: "Tour remittances; education fees for foreign universities, institutes and colleges; application fees for education and immigration; sending money to close relatives staying abroad; and remittances for medical purposes, business training and conferences.",
+      },
+      {
+        q: "Is there a limit on how much I can send?",
+        a: "Yes. All foreign exchange purchased or remitted, across every source, must stay within the limits prescribed by the Reserve Bank of India and the Exchange Control Regulations in force at the time. We'll confirm the limit that applies to your purpose before you commit.",
       },
     ],
   },

@@ -1,31 +1,34 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { ArrowRight, PhoneCall, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check, PhoneCall, Send, ShieldCheck } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { Button } from "@/components/ui/button";
+import { BrandVisual } from "@/components/ui/brand-visual";
 import { Section } from "@/components/ui/section";
 import { services } from "@/content/services";
-import { currencies } from "@/content/rates";
 import { siteConfig } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Products & Services",
   description:
-    "Currency exchange, wire transfers, travel cards and corporate FX from RBI-approved money changers.",
+    "Currency exchange in 30 major currencies, American Express travellers' cheques, travel currency cards, and outbound remittance by TT or DD.",
   path: "/services",
 });
 
-/** Quick orientation before the cards: what each service is actually for. */
+/** Mirrors the live site: three products, then outbound services. */
+const products = services.filter((s) => s.slug !== "remittance");
+const outbound = services.find((s) => s.slug === "remittance")!;
+
 const chooser = [
   { need: "Travelling abroad", pick: "Currency Exchange", slug: "currency-exchange" },
-  { need: "Paying fees or family overseas", pick: "Wire Transfers", slug: "remittance" },
+  { need: "Carrying secured funds", pick: "Travellers' Cheques", slug: "travellers-cheques" },
   { need: "Spending on a card abroad", pick: "Travel Cards", slug: "travel-cards" },
-  { need: "Running company travel", pick: "Corporate FX", slug: "corporate-fx" },
+  { need: "Paying fees or family overseas", pick: "Outbound Transfers", slug: "remittance" },
 ];
 
 export default function ServicesPage() {
@@ -42,7 +45,7 @@ export default function ServicesPage() {
               need, <Em>handled properly.</Em>
             </Fragment>,
           ]}
-          sub={`Four services, one desk: exchange currency, send money abroad, load a travel card, or set up FX for your business. ${currencies.length} currencies, six cities.`}
+          sub="Three products and one outbound desk: exchange currency, buy or encash travellers' cheques, load a travel card, or send money abroad by TT or DD."
         />
 
         {/* "Which one do I need?" — answered before the cards, not after. */}
@@ -69,16 +72,76 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Products */}
       <Section innerClassName="pt-16 pb-10 lg:pt-20 lg:pb-12">
-        <div className="grid gap-5 sm:grid-cols-2">
-          {services.map((service, index) => (
+        <Reveal>
+          <h2 className="font-serif text-2xl font-normal tracking-[-0.025em] sm:text-3xl">
+            Products
+          </h2>
+        </Reveal>
+        <div className="mt-8 grid gap-5 lg:grid-cols-3">
+          {products.map((service, index) => (
             <ServiceCard key={service.slug} service={service} index={index} />
           ))}
         </div>
+      </Section>
 
-        {/* Not-sure-which fallback: the desk answers it in one call. */}
+      {/* Outbound services — the live site treats this as its own category. */}
+      <Section variant="sand" bordered innerClassName="py-20 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
+          <div>
+            <SectionHeading
+              eyebrow="Outbound services"
+              lines={[
+                <Fragment key="l1">Send money abroad,</Fragment>,
+                <Fragment key="l2">
+                  by <Em>TT or DD.</Em>
+                </Fragment>,
+              ]}
+              sub={outbound.description}
+            />
+            <Reveal delay={0.2}>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild size="lg">
+                  <Link href={`/services/${outbound.slug}`}>
+                    Outbound services in detail
+                    <ArrowRight className="size-4" aria-hidden />
+                  </Link>
+                </Button>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.15}>
+            <div className="group shadow-card overflow-hidden rounded-2xl border border-hairline bg-white">
+              <div className="relative aspect-[16/6] w-full border-b border-hairline">
+                <BrandVisual seed="remittance" />
+                <span className="shadow-soft absolute bottom-4 left-4 flex size-12 items-center justify-center rounded-2xl bg-white/90 text-brand-deep ring-1 ring-hairline backdrop-blur-sm transition-colors duration-300 group-hover:bg-brand group-hover:text-ink">
+                  <Send className="size-[22px]" aria-hidden />
+                </span>
+              </div>
+              <div className="p-7 lg:p-8">
+                <p className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+                  Can be used for
+                </p>
+                <ul className="mt-4 flex flex-col gap-3">
+                  {outbound.features.map((purpose) => (
+                    <li key={purpose} className="flex items-start gap-3 text-sm leading-6">
+                      <Check className="mt-1 size-3.5 shrink-0 text-brand-deep" aria-hidden />
+                      {purpose}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </Section>
+
+      {/* Not-sure-which fallback: the desk answers it in one call. */}
+      <Section innerClassName="pt-12 pb-10 lg:pt-16 lg:pb-12">
         <Reveal delay={0.1}>
-          <div className="mt-5 flex flex-col items-start justify-between gap-6 rounded-2xl border border-hairline bg-white px-8 py-8 sm:flex-row sm:items-center">
+          <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-hairline bg-white px-8 py-8 sm:flex-row sm:items-center">
             <div className="flex items-start gap-4">
               <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20">
                 <ShieldCheck className="size-5" aria-hidden />

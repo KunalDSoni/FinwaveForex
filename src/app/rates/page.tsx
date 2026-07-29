@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Exchange Rates",
   description:
-    "Indicative buy and sell rates for 15+ currencies. Call Finwave Forex for today's live quote.",
+    "Indicative buy and sell rates for major currencies. Call Finwave Forex for today's live quote.",
   path: "/rates",
 });
 

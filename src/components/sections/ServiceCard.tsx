@@ -4,14 +4,14 @@
 // they are readable in view-source. Rendering on the server ships only the
 // filtered output. It has no hooks or handlers, so nothing is lost.
 import Link from "next/link";
-import { ArrowRight, Banknote, Building2, Check, CreditCard, Send } from "lucide-react";
+import { ArrowRight, Banknote, Check, CreditCard, ScrollText, Send } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { BrandVisual } from "@/components/ui/brand-visual";
 import { Card } from "@/components/ui/card";
 import type { Service } from "@/content/services";
 import { withoutPlaceholders } from "@/lib/content";
 
-const icons = { Banknote, Send, CreditCard, Building2 };
+const icons = { Banknote, Send, CreditCard, ScrollText };
 
 type ServiceCardProps = { service: Service; index: number; variant?: "card" | "cell" };
 
