@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-hairline bg-sand/60">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <div className="mx-auto max-w-page px-4 py-16 sm:px-6">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1.2fr_1fr]">
           <div>
             <Link href="/" aria-label="Finwave Forex, home" className="inline-flex">

@@ -1,5 +1,6 @@
 import { Fragment, Suspense } from "react";
 import { ArrowUpRight, Mail, MapPin, Phone, ShieldCheck, Truck } from "lucide-react";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { Reveal } from "@/components/motion/Reveal";
 import { Em } from "@/components/sections/Em";
 import { EnquirySummary } from "@/components/sections/EnquirySummary";
@@ -25,11 +26,11 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
+      <section className="mx-auto max-w-page px-5 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+        <Breadcrumb trail={[{ label: "Contact Us" }]} />
         <SectionHeading
           as="h1"
           layout="split"
-          eyebrow="Contact us"
           lines={[
             <Fragment key="l1">Talk to a real</Fragment>,
             <Fragment key="l2">

@@ -28,7 +28,7 @@ export function Hero() {
       {/* On mobile the quote card follows the headline so the primary tool is
           reachable without scrolling past the trust list; on large screens it
           sits alongside, spanning both rows of the left column. */}
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 pt-14 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-16 lg:gap-y-10 lg:pt-20 lg:pb-28">
+      <div className="relative mx-auto grid max-w-page gap-12 px-4 pt-14 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-16 lg:gap-y-10 lg:pt-20 lg:pb-28">
         <div data-particle-safe className="lg:col-start-1 lg:row-start-1">
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-white/70 py-1.5 pr-4 pl-2 text-[13px] font-semibold backdrop-blur-sm">

@@ -35,6 +35,9 @@
     0 0 0 1px rgb(216 204 183 / 0.6);
   --animate-marquee: marquee var(--marquee-duration, 28s) linear infinite;
   --animate-live: live-pulse 2.4s ease-in-out infinite;
+  /* Page measure. 1152px left ~370px of dead gutter each side on a 1900px
+     display; 1408px matches the reference composition far more closely. */
+  --container-page: 88rem;
 }
 
 @keyframes live-pulse {

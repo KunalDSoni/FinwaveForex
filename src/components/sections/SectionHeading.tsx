@@ -6,7 +6,8 @@ import { Eyebrow } from "@/components/ui/eyebrow";
 import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
-  eyebrow: string;
+  /** Omit on pages where a breadcrumb already names the section. */
+  eyebrow?: string;
   lines: ReactNode[];
   sub?: string;
   as?: "h1" | "h2";
@@ -28,15 +29,17 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const centered = align === "center";
   // Display scale lives in globals; nothing here re-guesses size or tracking.
-  const titleCls = cn("mt-5 text-balance", as === "h1" ? "display-lg" : "display-md");
+  const titleCls = cn(eyebrow && "mt-5", "text-balance", as === "h1" ? "display-lg" : "display-md");
 
   if (layout === "split") {
     return (
       <div className={cn("grid items-end gap-8 lg:grid-cols-[1.3fr_1fr] lg:gap-16", className)}>
         <div>
-          <RevealScale variant="tag">
-            <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
-          </RevealScale>
+          {eyebrow ? (
+            <RevealScale variant="tag">
+              <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
+            </RevealScale>
+          ) : null}
           <MaskText as={as} lines={lines} delay={0.1} className={titleCls} />
         </div>
         {sub ? (
@@ -57,9 +60,11 @@ export function SectionHeading({
 
   return (
     <div className={cn(centered ? "mx-auto max-w-2xl text-center" : "max-w-3xl", className)}>
-      <RevealScale variant="tag">
-        <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
-      </RevealScale>
+      {eyebrow ? (
+        <RevealScale variant="tag">
+          <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
+        </RevealScale>
+      ) : null}
       <MaskText as={as} lines={lines} delay={0.1} className={titleCls} />
       {sub ? (
         <Reveal delay={0.2}>

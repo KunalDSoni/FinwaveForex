@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Em } from "@/components/sections/Em";
 import { RatesTable } from "@/components/sections/RatesTable";
@@ -16,11 +17,11 @@ export const metadata = pageMetadata({
 export default function RatesPage() {
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
+      <section className="mx-auto max-w-page px-5 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+        <Breadcrumb trail={[{ label: "Rates" }]} />
         <SectionHeading
           as="h1"
           layout="split"
-          eyebrow="Rates"
           lines={[
             <Fragment key="l1">Today&apos;s rates,</Fragment>,
             <Fragment key="l2">

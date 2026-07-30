@@ -1,13 +1,12 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { ArrowRight, PhoneCall } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/Reveal";
 import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { Section } from "@/components/ui/section";
 import { services } from "@/content/services";
-import { siteConfig } from "@/content/site";
 
 /** The counter process, taken from the currency-exchange service definition. */
 const steps = services[0].steps;
@@ -56,12 +55,6 @@ export function HowItWorks() {
               Start a quote
               <ArrowRight className="size-4" aria-hidden />
             </Link>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="border-ink/20 bg-white/70">
-            <a href={siteConfig.phoneHref}>
-              <PhoneCall className="size-4" aria-hidden />
-              {siteConfig.phone}
-            </a>
           </Button>
         </div>
       </Reveal>

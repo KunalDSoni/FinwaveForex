@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { ArrowDownToLine, Building2, FileText, ShieldCheck } from "lucide-react";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Em } from "@/components/sections/Em";
@@ -32,11 +33,11 @@ export default function InvestorsPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
+      <section className="mx-auto max-w-page px-5 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+        <Breadcrumb trail={[{ label: "Investors" }]} />
         <SectionHeading
           as="h1"
           layout="split"
-          eyebrow="Investors"
           lines={[
             <Fragment key="l1">Financial reports,</Fragment>,
             <Fragment key="l2">

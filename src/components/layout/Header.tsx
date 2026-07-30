@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "framer-motion";
 import { ChevronDown } from "lucide-react";
@@ -12,10 +13,12 @@ import { asset } from "@/lib/base-path";
 import { cn } from "@/lib/utils";
 
 export function Header() {
+  const pathname = usePathname();
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const reduce = useReducedMotion();
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 8));
+  const legalActive = siteConfig.footerLegal.some((item) => pathname.startsWith(item.href));
 
   return (
     <motion.header
@@ -27,7 +30,7 @@ export function Header() {
         scrolled ? "border-b border-hairline bg-paper/85 backdrop-blur-md" : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-[72px] max-w-page items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
         <Link href="/" aria-label="Finwave Forex, home" className="flex shrink-0 items-center">
           <Image
             src={asset("/logo.png")}
@@ -42,15 +45,30 @@ export function Header() {
           aria-label="Main"
           className="hidden items-center gap-0.5 lg:flex"
         >
-          {siteConfig.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-lg px-3 py-2 text-sm font-medium whitespace-nowrap text-ink/75 transition-colors hover:bg-ink/[0.06] hover:text-ink"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {siteConfig.nav.map((item) => {
+            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "relative rounded-lg px-3 py-2 text-sm whitespace-nowrap transition-colors",
+                  active
+                    ? "font-semibold text-ink"
+                    : "font-medium text-ink/75 hover:bg-ink/[0.06] hover:text-ink",
+                )}
+              >
+                {item.label}
+                {active ? (
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-3 -bottom-0.5 h-[2px] rounded-full bg-brand"
+                  />
+                ) : null}
+              </Link>
+            );
+          })}
 
           {/* Legal pages live under one menu so they stay in the header without
               pushing it past its width. Opens on hover and on focus-within, so
@@ -59,9 +77,18 @@ export function Header() {
             <button
               type="button"
               aria-haspopup="true"
-              className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium whitespace-nowrap text-ink/75 transition-colors group-hover/legal:bg-ink/[0.06] group-hover/legal:text-ink group-focus-within/legal:bg-ink/[0.06] group-focus-within/legal:text-ink"
+              className={cn(
+                "relative flex items-center gap-1 rounded-lg px-3 py-2 text-sm whitespace-nowrap transition-colors group-hover/legal:bg-ink/[0.06] group-hover/legal:text-ink group-focus-within/legal:bg-ink/[0.06] group-focus-within/legal:text-ink",
+                legalActive ? "font-semibold text-ink" : "font-medium text-ink/75",
+              )}
             >
               Legal
+              {legalActive ? (
+                <span
+                  aria-hidden
+                  className="absolute inset-x-3 -bottom-0.5 h-[2px] rounded-full bg-brand"
+                />
+              ) : null}
               <ChevronDown
                 className="size-3.5 transition-transform duration-200 group-hover/legal:rotate-180 group-focus-within/legal:rotate-180"
                 aria-hidden

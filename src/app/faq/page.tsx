@@ -1,12 +1,13 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { ArrowUpRight, FileText, PhoneCall, Scale } from "lucide-react";
+import { ArrowUpRight, FileText, Scale } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Em } from "@/components/sections/Em";
@@ -14,7 +15,6 @@ import { SectionHeading } from "@/components/sections/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
 import { faqCategories, femaFramework, travelGuidelines } from "@/content/faqs";
-import { siteConfig } from "@/content/site";
 import { asset } from "@/lib/base-path";
 import { pageMetadata } from "@/lib/seo";
 
@@ -30,11 +30,11 @@ export default function FaqPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
+      <section className="mx-auto max-w-page px-5 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+        <Breadcrumb trail={[{ label: "FAQ's" }]} />
         <SectionHeading
           as="h1"
           layout="split"
-          eyebrow="FAQ's"
           lines={[
             <Fragment key="l1">Questions we get</Fragment>,
             <Fragment key="l2">
@@ -135,17 +135,9 @@ export default function FaqPage() {
                     rate too.
                   </p>
                 </div>
-                <div className="flex shrink-0 flex-wrap gap-3">
-                  <Button asChild variant="outline" className="border-ink/20 bg-white">
-                    <a href={siteConfig.phoneHref}>
-                      <PhoneCall className="size-4" aria-hidden />
-                      {siteConfig.phone}
-                    </a>
-                  </Button>
-                  <Button asChild>
-                    <Link href="/contact">Contact us</Link>
-                  </Button>
-                </div>
+                <Button asChild className="shrink-0">
+                  <Link href="/contact">Contact us</Link>
+                </Button>
               </div>
             </Reveal>
           </div>

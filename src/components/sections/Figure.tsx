@@ -71,7 +71,7 @@ export function Figure({
 
   return (
     <section className={cn("border-y border-hairline bg-sand/50", className)}>
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-24">
+      <div className="mx-auto max-w-page px-4 py-20 sm:px-6 lg:py-24">
         <Reveal>{inner}</Reveal>
       </div>
     </section>

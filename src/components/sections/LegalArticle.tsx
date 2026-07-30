@@ -19,7 +19,7 @@ export function LegalArticle({ page }: { page: LegalPage }) {
 
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
+      <section className="mx-auto max-w-page px-4 pt-28 sm:px-6 lg:pt-36">
         <Reveal>
           <Eyebrow>Legal</Eyebrow>
           <h1 className="display-lg mt-5 text-balance">
@@ -34,7 +34,7 @@ export function LegalArticle({ page }: { page: LegalPage }) {
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pt-14 pb-24 sm:px-6 lg:pt-16 lg:pb-32">
+      <section className="mx-auto max-w-page px-4 pt-14 pb-24 sm:px-6 lg:pt-16 lg:pb-32">
         <div className={showContents ? "grid gap-10 lg:grid-cols-[14rem_1fr] lg:gap-16" : "max-w-3xl"}>
           {showContents ? (
             <nav aria-label="On this page" className="lg:sticky lg:top-28 lg:self-start">

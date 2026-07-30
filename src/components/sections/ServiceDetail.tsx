@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { MaskText } from "@/components/motion/MaskText";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -25,27 +26,15 @@ export function ServiceDetail({ service }: { service: Service }) {
 
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
-        <Reveal>
-          <nav aria-label="Breadcrumb">
-            <ol className="flex items-center gap-2 text-xs font-semibold tracking-[0.12em] uppercase">
-              <li>
-                <Link
-                  href="/services"
-                  className="text-ink-soft transition-colors hover:text-brand-deep"
-                >
-                  Services
-                </Link>
-              </li>
-              <li aria-hidden className="text-ink-soft/50">
-                /
-              </li>
-              <li className="text-brand-deep">{service.shortName}</li>
-            </ol>
-          </nav>
-        </Reveal>
+      <section className="mx-auto max-w-page px-4 pt-28 sm:px-6 lg:pt-36">
+        <Breadcrumb
+          trail={[
+            { label: "Products & Services", href: "/services" },
+            { label: service.shortName },
+          ]}
+        />
 
-        <div className="mt-6 grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
             <MaskText
               as="h1"

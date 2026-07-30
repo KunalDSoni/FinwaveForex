@@ -10,6 +10,7 @@ import {
   Truck,
   Users,
 } from "lucide-react";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Em } from "@/components/sections/Em";
@@ -63,11 +64,11 @@ export default function AboutPage() {
           <div className="absolute inset-0 opacity-[0.35] [background-image:linear-gradient(to_right,var(--color-hairline)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-hairline)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:radial-gradient(70%_60%_at_50%_35%,black,transparent)]" />
         </div>
 
-        <div className="mx-auto max-w-6xl px-4 pt-28 pb-16 sm:px-6 lg:pt-36 lg:pb-20">
+        <div className="mx-auto max-w-page px-5 pt-28 pb-16 sm:px-6 lg:px-8 lg:pt-36 lg:pb-20">
+          <Breadcrumb trail={[{ label: "About Us" }]} />
           <SectionHeading
             as="h1"
             layout="split"
-            eyebrow="About us"
             lines={[
               <Fragment key="l1">Built on Trust.</Fragment>,
               <Fragment key="l2">

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { ArrowRight, Check, PhoneCall, Send, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check, Send, ShieldCheck } from "lucide-react";
+import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Em } from "@/components/sections/Em";
@@ -10,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import { BrandVisual } from "@/components/ui/brand-visual";
 import { Section } from "@/components/ui/section";
 import { services } from "@/content/services";
-import { siteConfig } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -34,11 +34,11 @@ const chooser = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
+      <section className="mx-auto max-w-page px-5 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+        <Breadcrumb trail={[{ label: "Products & Services" }]} />
         <SectionHeading
           as="h1"
           layout="split"
-          eyebrow="Products & services"
           lines={[
             <Fragment key="l1">Every foreign-exchange</Fragment>,
             <Fragment key="l2">
@@ -154,11 +154,14 @@ export default function ServicesPage() {
                 </p>
               </div>
             </div>
-            <Button asChild size="lg" variant="outline" className="shrink-0 border-ink/20">
-              <a href={siteConfig.phoneHref}>
-                <PhoneCall className="size-4" aria-hidden />
-                {siteConfig.phone}
-              </a>
+            <Button asChild size="lg" variant="outline" className="group shrink-0 border-ink/20">
+              <Link href="/contact">
+                Talk to the desk
+                <ArrowRight
+                  className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden
+                />
+              </Link>
             </Button>
           </div>
         </Reveal>
