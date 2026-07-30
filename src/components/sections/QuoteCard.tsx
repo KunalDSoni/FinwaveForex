@@ -198,8 +198,8 @@ export function QuoteCard() {
   return (
     // Deliberately static: this is a form with tabs, selects and two text
     // inputs, so a perpetual float would make every control a moving target.
-    <div className="shadow-quote mx-auto w-full max-w-md rounded-[26px] bg-white p-2.5">
-      <div className="rounded-[19px] border border-hairline-soft bg-canvas">
+    <div className="shadow-quote mx-auto w-full max-w-lg rounded-[28px] bg-white p-3">
+      <div className="rounded-[21px] border border-hairline-soft bg-canvas">
         {/* Mode + live status */}
         <div className="flex items-center justify-between gap-3 border-b border-hairline-soft px-3 py-3">
           <div role="tablist" aria-label="Exchange direction" className="flex gap-1">
