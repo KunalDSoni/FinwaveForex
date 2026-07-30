@@ -38,7 +38,7 @@ export function Section({
     >
       <div
         className={cn(
-          "mx-auto px-4 py-24 sm:px-6 lg:py-32",
+          "mx-auto px-5 py-24 sm:px-6 lg:px-8 lg:py-36",
           width === "narrow" ? "max-w-4xl" : "max-w-page",
           innerClassName,
         )}
