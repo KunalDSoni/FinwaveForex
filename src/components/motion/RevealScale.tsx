@@ -2,8 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
-
-const EASE = [0.21, 0.47, 0.32, 0.98] as const;
+import { EASE } from "@/lib/motion";
 
 type RevealScaleProps = {
   children: ReactNode;

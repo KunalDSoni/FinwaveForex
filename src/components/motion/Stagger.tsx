@@ -3,8 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-
-const EASE = [0.21, 0.47, 0.32, 0.98] as const;
+import { EASE } from "@/lib/motion";
 
 export function Stagger({
   children,
