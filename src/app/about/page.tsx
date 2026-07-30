@@ -187,7 +187,15 @@ export default function AboutPage() {
         />
       </Section>
 
-      <CtaBand />
+      <CtaBand
+        lines={[
+          <Fragment key="l1">Talk to the people</Fragment>,
+          <Fragment key="l2">
+            who&apos;ll <Em tone="dark">handle it.</Em>
+          </Fragment>,
+        ]}
+        body="No call centre and no ticket queue — the desk that quotes your rate is the desk that completes it."
+      />
     </>
   );
 }

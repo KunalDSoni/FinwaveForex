@@ -1,30 +1,49 @@
+import { Fragment } from "react";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { Em } from "@/components/sections/Em";
 import { RatesTable } from "@/components/sections/RatesTable";
 import { SectionHeading } from "@/components/sections/SectionHeading";
+import { currencies } from "@/content/rates";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Exchange Rates",
   description:
-    "Indicative buy and sell rates for major currencies. Call Finwave Forex for today's live quote.",
+    "Indicative reference rates for major currencies, updated daily. Call Finwave Forex for the rate you'll actually transact at.",
   path: "/rates",
 });
 
 export default function RatesPage() {
   return (
     <>
-      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-32">
+      <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
         <SectionHeading
           as="h1"
+          layout="split"
           eyebrow="Rates"
-          lines={["Today's rates,", "on request."]}
-          sub="Fifteen major currencies, bought and sold. One call gets you a live quote, and we'll try to better any rate you bring us."
+          lines={[
+            <Fragment key="l1">Today&apos;s rates,</Fragment>,
+            <Fragment key="l2">
+              and the <Em>real</Em> one.
+            </Fragment>,
+          ]}
+          sub={`Reference rates for our ${currencies.length} most-requested currencies, updated daily. We exchange 30 in total — and the rate you transact at is the one we confirm on the call.`}
         />
       </section>
-      <section className="py-16 pb-24">
+
+      <section className="pt-14 pb-24 lg:pt-16 lg:pb-32">
         <RatesTable />
       </section>
-      <CtaBand />
+
+      <CtaBand
+        lines={[
+          <Fragment key="l1">The rate above is</Fragment>,
+          <Fragment key="l2">
+            not your <Em tone="dark">final rate.</Em>
+          </Fragment>,
+        ]}
+        body="Tell us the currency, the amount and the product, and we'll quote the rate you actually transact at."
+      />
     </>
   );
 }

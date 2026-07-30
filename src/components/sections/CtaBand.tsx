@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight, PhoneCall, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,27 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Em } from "@/components/sections/Em";
 import { siteConfig } from "@/content/site";
 
-export function CtaBand() {
+type CtaBandProps = {
+  /** Two display lines. Defaults to the house close. */
+  lines?: ReactNode[];
+  body?: string;
+};
+
+const DEFAULT_LINES = [
+  <Fragment key="l1">Get a better rate</Fragment>,
+  <Fragment key="l2">
+    in one <Em tone="dark">phone call.</Em>
+  </Fragment>,
+];
+
+const DEFAULT_BODY =
+  "Tell us the currency and amount. We'll quote today's rate and try to better any quote you already have.";
+
+/**
+ * Closing band. Copy is overridable per page: the identical band on six pages
+ * stopped being a call to action and became wallpaper.
+ */
+export function CtaBand({ lines = DEFAULT_LINES, body = DEFAULT_BODY }: CtaBandProps = {}) {
   return (
     <section className="px-4 pb-24 sm:px-6 lg:pb-32">
       <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl bg-ink px-6 py-16 sm:px-12 lg:py-20">
@@ -20,18 +40,12 @@ export function CtaBand() {
           <div>
             <MaskText
               as="h2"
-              lines={[
-                <Fragment key="l1">Get a better rate</Fragment>,
-                <Fragment key="l2">
-                  in one <Em tone="dark">phone call.</Em>
-                </Fragment>,
-              ]}
+              lines={lines}
               className="display-lg text-balance text-white"
             />
             <Reveal delay={0.2}>
               <p className="mt-5 max-w-md text-base leading-7 text-white/60">
-                Tell us the currency and amount. We&apos;ll quote today&apos;s rate and try to
-                better any quote you already have.
+                {body}
               </p>
             </Reveal>
           </div>

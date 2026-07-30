@@ -152,7 +152,15 @@ export default function FaqPage() {
         </div>
       </Section>
 
-      <CtaBand />
+      <CtaBand
+        lines={[
+          <Fragment key="l1">Question not</Fragment>,
+          <Fragment key="l2">
+            answered <Em tone="dark">here?</Em>
+          </Fragment>,
+        ]}
+        body="The desk answers most things in under a minute, and can confirm today's rate while you're on the line."
+      />
     </>
   );
 }

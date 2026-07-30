@@ -37,7 +37,16 @@ export function EditorialSplit({
 }: EditorialSplitProps) {
   return (
     <Section variant={variant} bordered={bordered}>
-      <div className="group grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      {/* The image column is deliberately wider than the text column: a narrow
+          measure reads better and gives the photograph room to carry the section. */}
+      <div
+        className={cn(
+          "group grid items-center gap-12 lg:gap-16",
+          media === "start"
+            ? "lg:grid-cols-[1.15fr_0.85fr]"
+            : "lg:grid-cols-[0.85fr_1.15fr]",
+        )}
+      >
         <Reveal className={cn(media === "start" && "lg:order-2")}>
           <Eyebrow>{eyebrow}</Eyebrow>
           <h2 className="display-md mt-5 text-balance">{title}</h2>

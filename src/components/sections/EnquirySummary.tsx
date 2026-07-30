@@ -20,15 +20,18 @@ export function EnquirySummary() {
   const product = params.get("product");
   const city = params.get("city");
   const mode = params.get("mode");
+  const currency = params.get("currency");
 
-  if (!pay || !receive) return null;
-
+  // Arrives either from the hero quote card (amounts) or a rates row (currency).
   const rows = [
-    { label: mode === "sell" ? "You are selling" : "You are paying", value: pay },
-    { label: "You receive", value: receive },
+    pay ? { label: mode === "sell" ? "You are selling" : "You are paying", value: pay } : null,
+    receive ? { label: "You receive", value: receive } : null,
+    currency ? { label: "Currency", value: currency } : null,
     product ? { label: "Product", value: product } : null,
     city ? { label: "City", value: city } : null,
   ].filter(Boolean) as { label: string; value: string }[];
+
+  if (rows.length === 0) return null;
 
   const subject = `Forex enquiry — ${product ?? "currency"} in ${city ?? siteConfig.address.city}`;
   const body = [

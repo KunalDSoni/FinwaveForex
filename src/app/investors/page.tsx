@@ -146,7 +146,15 @@ export default function InvestorsPage() {
         </Reveal>
       </Section>
 
-      <CtaBand />
+      <CtaBand
+        lines={[
+          <Fragment key="l1">Need something</Fragment>,
+          <Fragment key="l2">
+            not <Em tone="dark">published here?</Em>
+          </Fragment>,
+        ]}
+        body="Write to us or call the office and we'll point you to the right document or person."
+      />
     </>
   );
 }

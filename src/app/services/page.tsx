@@ -164,7 +164,15 @@ export default function ServicesPage() {
         </Reveal>
       </Section>
 
-      <CtaBand />
+      <CtaBand
+        lines={[
+          <Fragment key="l1">One desk for</Fragment>,
+          <Fragment key="l2">
+            every <Em tone="dark">requirement.</Em>
+          </Fragment>,
+        ]}
+        body="Notes, cheques, cards or transfers — tell us what you need and we'll handle the route and the paperwork."
+      />
     </>
   );
 }
