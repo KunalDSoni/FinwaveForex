@@ -22,6 +22,19 @@ Explicitly out of scope: palette shift toward navy/black/corporate, new photogra
 - Bump section vertical rhythm again at `lg`/`xl` breakpoints only (building on the prior 128px → 144px change), so pages breathe more on desktop without going sparse on mobile.
 - Hero specifically: larger, tighter-leaded headline on the existing cream/paper background; the quote card gets a touch more internal padding and can sit on the slightly brighter `--color-canvas` surface already defined, to read as the most-elevated object on the page (per the existing shadow ladder) — no color or darkness change, just scale and elevation.
 
+## 2a. Concrete JPM techniques, translated to light-only
+
+"Grand like jpmorganchase.com" is otherwise vague. These are the specific techniques their site uses, and how each translates to Finwave's light palette — this is what the scale/spacing work in §2 is actually in service of, and gives implementation and review something concrete to check against:
+
+| JPM technique | Light-only Finwave translation |
+| --- | --- |
+| Full-bleed dark hero photography | Full-bleed **light** photography using existing `public/photography` assets, given more room — bigger crops, less UI competing on top of the image |
+| Numbered editorial section heads ("01 2025 Annual Report") | Extend the numbered pattern already used in Services (`01`–`04`) to other section heads site-wide — mono numeral + serif title; palette-neutral, works identically on cream |
+| Oversized serif pull-quote with named attribution | Scale up the existing `PullQuote` component; pair leadership quotes with real names/titles/photos from `team.ts` — directly serves the leadership-presence goal in §4 |
+| Minimal top chrome, content carries the page | Audit the header/nav for visual competitors above the fold; simplify if anything crowds it |
+| Single-message hero, one clear CTA | Hero keeps one headline + one primary action; resist adding secondary asks near it |
+| Confident grid discipline and margins | Extend the §2 spacing/margin discipline explicitly to imagery and pull-quotes, not just text blocks |
+
 ## 3. Motion & detail polish
 
 - Audit all existing motion primitives (`Reveal`, `Stagger`, hover-lift, glow/sweep utilities) and standardize on one or two signature motions used consistently; drop redundant or competing effects found along the way.
