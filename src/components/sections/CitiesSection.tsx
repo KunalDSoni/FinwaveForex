@@ -32,7 +32,10 @@ export function CitiesSection() {
               delay={index * 0.06}
               className="hairline-cell relative flex items-center gap-3 px-6 py-6"
             >
-              <span className="tnum absolute top-4 left-5 text-[11px] font-medium text-ink-soft/40">
+              <span
+                aria-hidden="true"
+                className="tnum absolute top-6 left-6 text-[11px] font-medium text-ink-soft/40"
+              >
                 {String(index + 1).padStart(2, "0")}
               </span>
               <MapPin className="size-4 shrink-0 text-brand-deep" aria-hidden />

@@ -36,7 +36,7 @@ export default function Home() {
       <MarketTicker className="mt-[72px]" />
       <Hero />
 
-      {/* What we do → who we are → how it works → why us → rates → coverage. */}
+      {/* Ticker → hero → services → story → how it works → why us → stats → leadership → rates → coverage → cta. */}
       <ServicesGrid />
 
       <EditorialSplit
@@ -90,7 +90,7 @@ export default function Home() {
 
       <HowItWorks />
       <WhyFinwave />
-      <StatsBand />
+      <StatsBand innerClassName="pt-0 lg:pt-0" />
       <LeadershipTeaser />
       <RatesTeaser />
       <CitiesSection />

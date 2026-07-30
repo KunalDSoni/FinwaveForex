@@ -5,6 +5,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Section } from "@/components/ui/section";
 import { leadership, leadershipMessage } from "@/content/team";
+import { siteConfig } from "@/content/site";
 import { asset } from "@/lib/base-path";
 
 /**
@@ -16,7 +17,7 @@ export function LeadershipTeaser() {
   const founder = leadership[0];
 
   return (
-    <Section bordered>
+    <Section>
       <div className="grid items-center gap-10 lg:grid-cols-[auto_1fr] lg:gap-14">
         <Reveal>
           <Image
@@ -26,6 +27,11 @@ export function LeadershipTeaser() {
             height={420}
             className="size-24 rounded-full object-cover ring-2 ring-white shadow-soft lg:size-32"
           />
+          <p className="mt-4 text-sm text-ink-soft">
+            <span className="font-semibold text-ink">{founder.name}</span>
+            {" · "}
+            {founder.role}
+          </p>
         </Reveal>
         <Reveal delay={0.1}>
           <Eyebrow>Leadership</Eyebrow>
@@ -33,9 +39,7 @@ export function LeadershipTeaser() {
             &ldquo;{leadershipMessage.quote}&rdquo;
           </blockquote>
           <p className="mt-5 text-sm text-ink-soft">
-            <span className="font-semibold text-ink">{founder.name}</span>
-            {" · "}
-            {founder.role}
+            {leadershipMessage.attribution} · {siteConfig.legalName}
           </p>
           <Link
             href="/about"
