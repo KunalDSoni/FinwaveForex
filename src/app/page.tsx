@@ -11,6 +11,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { MarketTicker } from "@/components/sections/MarketTicker";
 import { RatesTeaser } from "@/components/sections/RatesTeaser";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { StatsBand } from "@/components/sections/StatsBand";
 import { WhyFinwave } from "@/components/sections/WhyFinwave";
 import { siteConfig } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
@@ -88,6 +89,7 @@ export default function Home() {
 
       <HowItWorks />
       <WhyFinwave />
+      <StatsBand />
       <RatesTeaser />
       <CitiesSection />
       <CtaBand />
