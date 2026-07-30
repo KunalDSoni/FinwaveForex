@@ -64,7 +64,10 @@ export function WhyFinwave() {
       <div className="mt-14 grid gap-5 lg:grid-cols-2">
         {pillars.map((pillar, index) => (
           <Reveal key={pillar.eyebrow} delay={index * 0.12} className="h-full">
-            <Card hover glow className="h-full gap-0 p-8 lg:p-10">
+            <Card hover glow className="relative h-full gap-0 p-8 lg:p-10">
+              <span className="tnum absolute top-8 right-8 text-xs font-medium text-ink-soft/45 lg:top-10 lg:right-10">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <span className="relative flex size-14 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-colors duration-300 group-hover:bg-brand group-hover:text-ink">
                 <pillar.icon className="size-6" aria-hidden />
               </span>
