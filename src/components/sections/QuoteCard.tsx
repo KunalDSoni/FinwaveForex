@@ -6,7 +6,20 @@ import { ArrowRight, ChevronDown, ShieldCheck } from "lucide-react";
 import { cachedInrWithPrev, formatPrice, priceFromInr } from "@/lib/fx";
 import { currencies, INR } from "@/content/rates";
 import { tickerQuotes } from "@/content/ticker";
+import { siteConfig } from "@/content/site";
 import { cn } from "@/lib/utils";
+
+/**
+ * Product and city were captured by the legacy enquiry form and are what the
+ * desk actually needs to quote: which instrument, and where it has to reach.
+ * Options mirror content/services and siteConfig.cities.
+ */
+const PRODUCTS = [
+  "Currency notes",
+  "Travel card",
+  "Travellers' cheques",
+  "Outbound transfer (TT/DD)",
+] as const;
 
 /**
  * Illustrative INR-per-unit fallbacks, reused from the ticker content so the
@@ -117,6 +130,8 @@ export function QuoteCard() {
     value: DEFAULT_ENTRY.buy,
   });
   const [rates, setRates] = useState<Record<string, number> | null>(null);
+  const [product, setProduct] = useState<string>(PRODUCTS[0]);
+  const [city, setCity] = useState<string>(siteConfig.cities[0]);
 
   useEffect(() => {
     let active = true;
@@ -165,6 +180,15 @@ export function QuoteCard() {
         ? formatAmount(receiveValue, receive.code, 0)
         : ""
       : formatAmount(receiveValue, receive.code, decimalsFor(receive.code, receiveValue));
+
+  /** Passed to Contact so the enquiry survives the click. */
+  const enquiry = {
+    mode,
+    pay: `${payValue.toFixed(2)} ${pay.code}`,
+    receive: `${receiveValue.toFixed(2)} ${receive.code}`,
+    product,
+    city,
+  };
 
   function selectMode(next: Mode) {
     setMode(next);
@@ -230,6 +254,52 @@ export function QuoteCard() {
           />
         </div>
 
+        {/* What and where — the two things the desk needs beyond the amount. */}
+        <div className="grid grid-cols-2 divide-x divide-hairline-soft border-t border-hairline-soft">
+          <label className="flex flex-col gap-1.5 px-5 py-3.5 sm:px-6">
+            <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-soft uppercase">
+              Product
+            </span>
+            <span className="relative flex items-center justify-between gap-2">
+              <span className="truncate text-[13px] font-semibold">{product}</span>
+              <ChevronDown className="size-3.5 shrink-0 text-ink-soft" aria-hidden />
+              <select
+                aria-label="Product"
+                value={product}
+                onChange={(event) => setProduct(event.target.value)}
+                className="absolute inset-0 cursor-pointer opacity-0"
+              >
+                {PRODUCTS.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </span>
+          </label>
+          <label className="flex flex-col gap-1.5 px-5 py-3.5 sm:px-6">
+            <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-soft uppercase">
+              City
+            </span>
+            <span className="relative flex items-center justify-between gap-2">
+              <span className="truncate text-[13px] font-semibold">{city}</span>
+              <ChevronDown className="size-3.5 shrink-0 text-ink-soft" aria-hidden />
+              <select
+                aria-label="City"
+                value={city}
+                onChange={(event) => setCity(event.target.value)}
+                className="absolute inset-0 cursor-pointer opacity-0"
+              >
+                {siteConfig.cities.map((item) => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </span>
+          </label>
+        </div>
+
         {/* Rate */}
         <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-hairline-soft px-5 py-3.5 sm:px-6">
           <span className="text-[13px] text-ink-soft">Rate today</span>
@@ -241,7 +311,7 @@ export function QuoteCard() {
 
       <div className="px-1.5 pt-3.5 pb-1.5">
         <Link
-          href="/contact"
+          href={{ pathname: "/contact", query: enquiry }}
           className="btn-sweep group flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-semibold"
         >
           Get this rate

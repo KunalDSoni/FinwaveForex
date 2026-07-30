@@ -51,7 +51,7 @@ export function ServiceDetail({ service }: { service: Service }) {
               as="h1"
               lines={[service.name]}
               delay={0.1}
-              className="font-serif text-4xl leading-[1.08] font-normal tracking-[-0.03em] text-balance sm:text-5xl lg:text-[3.25rem]"
+              className="display-lg text-balance"
             />
             <Reveal delay={0.2}>
               <p className="mt-6 max-w-xl text-lg leading-8 text-ink-soft">{description}</p>
@@ -87,7 +87,7 @@ export function ServiceDetail({ service }: { service: Service }) {
       {features.length ? (
         <Section innerClassName="pt-20 pb-10 lg:pt-24 lg:pb-12">
           <Reveal>
-            <h2 className="font-serif text-2xl font-normal tracking-[-0.025em] sm:text-3xl">
+            <h2 className="display-md">
               What&apos;s included
             </h2>
           </Reveal>
@@ -113,7 +113,7 @@ export function ServiceDetail({ service }: { service: Service }) {
 
       <Section variant="sand" bordered innerClassName="py-20 lg:py-24">
         <Reveal>
-          <h2 className="font-serif text-2xl font-normal tracking-[-0.025em] sm:text-3xl">
+          <h2 className="display-md">
             How it works
           </h2>
         </Reveal>
@@ -141,7 +141,7 @@ export function ServiceDetail({ service }: { service: Service }) {
       {faqs.length ? (
         <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:py-24">
           <Reveal>
-            <h2 className="font-serif text-2xl font-normal tracking-[-0.025em] sm:text-3xl">
+            <h2 className="display-md">
               Frequently asked questions
             </h2>
           </Reveal>

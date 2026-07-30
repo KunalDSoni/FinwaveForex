@@ -1,7 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, Suspense } from "react";
 import { ArrowUpRight, Mail, MapPin, Phone, ShieldCheck, Truck } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Em } from "@/components/sections/Em";
+import { EnquirySummary } from "@/components/sections/EnquirySummary";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
@@ -40,6 +41,11 @@ export default function ContactPage() {
       </section>
 
       <Section innerClassName="pt-14 pb-24 lg:pt-16 lg:pb-32">
+        {/* Present only when arriving from the hero quote card. */}
+        <Suspense fallback={null}>
+          <EnquirySummary />
+        </Suspense>
+
         <div className="grid gap-5 lg:grid-cols-3">
           {/* Calling is the primary channel, so it gets the primary treatment. */}
           <Reveal className="h-full">

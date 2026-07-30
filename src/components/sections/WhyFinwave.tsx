@@ -1,11 +1,13 @@
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { BadgeCheck, Building, FileCheck2, ShieldCheck, Truck } from "lucide-react";
+import { CountUp } from "@/components/motion/CountUp";
 import { Reveal } from "@/components/motion/Reveal";
 import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { Card } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
+import { siteConfig } from "@/content/site";
 
 type Pillar = {
   icon: LucideIcon;
@@ -69,7 +71,7 @@ export function WhyFinwave() {
               <p className="relative mt-7 text-xs font-semibold tracking-[0.16em] text-brand-deep uppercase">
                 {pillar.eyebrow}
               </p>
-              <h3 className="relative mt-3 font-serif text-2xl leading-[1.2] font-normal tracking-[-0.025em] text-balance sm:text-[1.75rem]">
+              <h3 className="display-sm relative mt-3 text-balance">
                 {pillar.title}
               </h3>
               <p className="relative mt-4 text-base leading-7 text-ink-soft">{pillar.body}</p>
@@ -82,6 +84,23 @@ export function WhyFinwave() {
                 ))}
               </ul>
             </Card>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* Proof numbers close the same argument, so they live here rather than in
+          a separate band two scrolls away. */}
+      <div className="hairline-grid mt-5 sm:grid-cols-3">
+        {siteConfig.stats.map((stat, index) => (
+          <Reveal
+            key={stat.label}
+            delay={index * 0.1}
+            className="hairline-cell px-7 py-10 sm:px-8"
+          >
+            <p className="tnum text-4xl font-semibold tracking-[-0.03em] lg:text-5xl">
+              <CountUp value={stat.value} suffix={stat.suffix} />
+            </p>
+            <p className="mt-3 max-w-[14rem] text-sm leading-6 text-ink-soft">{stat.label}</p>
           </Reveal>
         ))}
       </div>

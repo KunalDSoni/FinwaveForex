@@ -26,7 +26,7 @@ export function CtaBand() {
                   in one <Em tone="dark">phone call.</Em>
                 </Fragment>,
               ]}
-              className="font-serif text-3xl leading-[1.08] font-normal tracking-[-0.03em] text-balance text-white sm:text-4xl lg:text-5xl"
+              className="display-lg text-balance text-white"
             />
             <Reveal delay={0.2}>
               <p className="mt-5 max-w-md text-base leading-7 text-white/60">

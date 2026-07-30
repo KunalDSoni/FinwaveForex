@@ -48,7 +48,7 @@ export function Hero() {
               </Fragment>,
             ]}
             delay={0.1}
-            className="mt-7 font-serif text-[2.75rem] leading-[1.06] font-normal tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4.25rem]"
+            className="display-xl mt-7 text-balance"
           />
 
           <Reveal delay={0.25}>

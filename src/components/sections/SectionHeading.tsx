@@ -27,12 +27,8 @@ export function SectionHeading({
   className,
 }: SectionHeadingProps) {
   const centered = align === "center";
-  const titleCls = cn(
-    "mt-5 font-serif font-normal tracking-[-0.02em] text-balance",
-    as === "h1"
-      ? "text-4xl leading-[1.1] sm:text-[2.5rem] lg:text-5xl"
-      : "text-[1.75rem] leading-[1.15] sm:text-3xl lg:text-4xl",
-  );
+  // Display scale lives in globals; nothing here re-guesses size or tracking.
+  const titleCls = cn("mt-5 text-balance", as === "h1" ? "display-lg" : "display-md");
 
   if (layout === "split") {
     return (

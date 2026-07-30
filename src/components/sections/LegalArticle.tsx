@@ -22,7 +22,7 @@ export function LegalArticle({ page }: { page: LegalPage }) {
       <section className="mx-auto max-w-6xl px-4 pt-28 sm:px-6 lg:pt-36">
         <Reveal>
           <Eyebrow>Legal</Eyebrow>
-          <h1 className="mt-5 font-serif text-4xl leading-[1.08] font-normal tracking-[-0.03em] text-balance sm:text-5xl">
+          <h1 className="display-lg mt-5 text-balance">
             {page.title}
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-soft">{page.intro}</p>
@@ -67,7 +67,7 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                 className={index === 0 ? "scroll-mt-28" : "mt-12 scroll-mt-28"}
               >
                 <Reveal>
-                  <h2 className="flex gap-3 font-serif text-xl leading-snug font-normal tracking-[-0.02em] sm:text-2xl">
+                  <h2 className="display-sm flex gap-3">
                     {showContents ? (
                       <span className="tnum mt-1.5 shrink-0 text-sm text-brand-deep">
                         {String(index + 1).padStart(2, "0")}

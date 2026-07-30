@@ -74,7 +74,7 @@ export default function FaqPage() {
                 className={index === 0 ? "scroll-mt-28" : "mt-14 scroll-mt-28"}
               >
                 <Reveal>
-                  <h2 className="font-serif text-2xl font-normal tracking-[-0.025em] sm:text-[1.75rem]">
+                  <h2 className="display-md">
                     {category.title}
                   </h2>
                 </Reveal>

@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, PhoneCall } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { CitiesSection } from "@/components/sections/CitiesSection";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { DeskShowcase } from "@/components/sections/DeskShowcase";
+import { EditorialSplit } from "@/components/sections/EditorialSplit";
+import { Em } from "@/components/sections/Em";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { MarketTicker } from "@/components/sections/MarketTicker";
-import { PullQuote } from "@/components/sections/PullQuote";
 import { RatesTeaser } from "@/components/sections/RatesTeaser";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { StatsBand } from "@/components/sections/StatsBand";
 import { WhyFinwave } from "@/components/sections/WhyFinwave";
+import { siteConfig } from "@/content/site";
 import { pageMetadata } from "@/lib/seo";
 
 const base = pageMetadata({
@@ -30,14 +33,62 @@ export default function Home() {
       {/* Live rate tape sits directly under the fixed header. */}
       <MarketTicker className="mt-[72px]" />
       <Hero />
-      {/* Proof of scale, then what we do, then how simple it is. */}
-      <StatsBand innerClassName="pt-2 pb-20 lg:pt-4 lg:pb-24" />
+
+      {/* What we do → who we are → how it works → why us → rates → coverage. */}
       <ServicesGrid />
+
+      <EditorialSplit
+        eyebrow="The Finwave desk"
+        title={
+          <>
+            A real forex desk, not a <Em>black box.</Em>
+          </>
+        }
+        body={
+          <>
+            <p>
+              Quote by phone, confirm a live rate, and receive your currency at home or at the
+              branch. Every transaction is RBI-compliant and fully documented before anything
+              moves.
+            </p>
+            <p>
+              You deal with the same desk each time — people who know your file, your purpose and
+              the paperwork it needs.
+            </p>
+          </>
+        }
+        photo={{
+          src: "/photography/exchange-desk.webp",
+          alt: "Foreign currency notes on the Finwave Forex exchange desk",
+          width: 1280,
+          height: 548,
+        }}
+        media="end"
+        variant="sand"
+        bordered
+      >
+        <div className="flex flex-wrap gap-3">
+          <Button asChild size="lg" variant="outline" className="border-ink/20 bg-white/70">
+            <a href={siteConfig.phoneHref}>
+              <PhoneCall className="size-4" aria-hidden />
+              {siteConfig.phone}
+            </a>
+          </Button>
+          <Button asChild size="lg" variant="ghost" className="group">
+            <Link href="/about">
+              Meet the team
+              <ArrowRight
+                className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden
+              />
+            </Link>
+          </Button>
+        </div>
+      </EditorialSplit>
+
       <HowItWorks />
       <WhyFinwave />
-      <DeskShowcase />
       <RatesTeaser />
-      <PullQuote />
       <CitiesSection />
       <CtaBand />
     </>

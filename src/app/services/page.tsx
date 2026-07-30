@@ -75,7 +75,7 @@ export default function ServicesPage() {
       {/* Products */}
       <Section innerClassName="pt-16 pb-10 lg:pt-20 lg:pb-12">
         <Reveal>
-          <h2 className="font-serif text-2xl font-normal tracking-[-0.025em] sm:text-3xl">
+          <h2 className="display-md">
             Products
           </h2>
         </Reveal>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fragment_Mono, Hanken_Grotesk } from "next/font/google";
+import { Fragment_Mono, Hanken_Grotesk, Newsreader } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -11,6 +11,16 @@ const hanken = Hanken_Grotesk({
   subsets: ["latin"],
   style: ["normal", "italic"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+// Editorial display face for headlines and the italic accent. Hanken keeps the
+// body copy; the pairing is what gives the page its financial-press authority.
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -36,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${hanken.variable} ${fragmentMono.variable}`}>
+    <html lang="en" className={`${hanken.variable} ${newsreader.variable} ${fragmentMono.variable}`}>
       <body className="font-sans">
         <a
           href="#content"

@@ -13,7 +13,9 @@ import {
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Em } from "@/components/sections/Em";
+import { Figure } from "@/components/sections/Figure";
 import { LeadershipCard } from "@/components/sections/LeadershipCard";
+import { EditorialSplit } from "@/components/sections/EditorialSplit";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { StatsBand } from "@/components/sections/StatsBand";
 import { Section } from "@/components/ui/section";
@@ -91,54 +93,68 @@ export default function AboutPage() {
 
       <StatsBand innerClassName="pt-0 pb-20 lg:pt-0 lg:pb-24" />
 
-      {/* Company story */}
-      <Section variant="sand" bordered>
-        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
-          <div>
-            <SectionHeading
-              eyebrow="Our story"
-              lines={[
-                <Fragment key="l1">A decade of</Fragment>,
-                <Fragment key="l2">
-                  honest <Em>exchange.</Em>
-                </Fragment>,
-              ]}
-            />
-            <Reveal delay={0.15}>
-              <div className="mt-7 flex flex-col gap-5 text-lg leading-8 text-ink-soft">
-                <p>
-                  Finwave Forex Pvt. Ltd. has spent ten years doing one thing properly: moving
-                  money across borders for people who need it to arrive correctly, at a rate they
-                  can verify.
-                </p>
-                <p>
-                  Foreign exchange rewards the patient and punishes the careless. We built the
-                  desk around that reality — real people quoting real rates, paperwork completed
-                  before it becomes a problem, and a phone number that reaches someone who knows
-                  your file.
-                </p>
-              </div>
-            </Reveal>
-          </div>
+      {/* Company story — photography opposite the narrative. */}
+      <EditorialSplit
+        eyebrow="Our story"
+        title={
+          <>
+            A decade of honest <Em>exchange.</Em>
+          </>
+        }
+        body={
+          <>
+            <p>
+              Finwave Forex Pvt. Ltd. has spent ten years doing one thing properly: moving money
+              across borders for people who need it to arrive correctly, at a rate they can verify.
+            </p>
+            <p>
+              Foreign exchange rewards the patient and punishes the careless. We built the desk
+              around that reality — real people quoting real rates, paperwork completed before it
+              becomes a problem, and a phone number that reaches someone who knows your file.
+            </p>
+          </>
+        }
+        photo={{
+          src: "/photography/currency-notes.webp",
+          alt: "Assorted foreign currency notes handled by Finwave Forex",
+          width: 1280,
+          height: 520,
+        }}
+        media="start"
+        variant="sand"
+        bordered
+      />
 
-          <div className="grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline sm:grid-cols-2">
-            {principles.map((principle, index) => {
-              const Icon = principleIcons[principle.icon];
-              return (
-                <Reveal
-                  key={principle.title}
-                  delay={index * 0.06}
-                  className="group bg-canvas p-7 transition-colors duration-300 hover:bg-white"
-                >
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-colors duration-300 group-hover:bg-brand group-hover:text-ink">
-                    <Icon className="size-[18px]" aria-hidden />
-                  </span>
-                  <h3 className="mt-5 font-semibold tracking-[-0.01em]">{principle.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-ink-soft">{principle.body}</p>
-                </Reveal>
-              );
-            })}
-          </div>
+      {/* What we stand for */}
+      <Section>
+        <SectionHeading
+          layout="split"
+          eyebrow="What we stand for"
+          lines={[
+            <Fragment key="l1">Six commitments we</Fragment>,
+            <Fragment key="l2">
+              refuse to <Em>compromise on.</Em>
+            </Fragment>,
+          ]}
+          sub="They are unremarkable individually. Held together, over a decade, they are the whole business."
+        />
+        <div className="hairline-grid mt-14 sm:grid-cols-2 lg:grid-cols-3">
+          {principles.map((principle, index) => {
+            const Icon = principleIcons[principle.icon];
+            return (
+              <Reveal
+                key={principle.title}
+                delay={index * 0.06}
+                className="hairline-cell group p-8"
+              >
+                <span className="flex size-11 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-colors duration-300 group-hover:bg-brand group-hover:text-ink">
+                  <Icon className="size-5" aria-hidden />
+                </span>
+                <h3 className="mt-6 font-semibold tracking-[-0.01em]">{principle.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-ink-soft">{principle.body}</p>
+              </Reveal>
+            );
+          })}
         </div>
       </Section>
 
@@ -162,32 +178,13 @@ export default function AboutPage() {
         </div>
 
         {/* Leadership message */}
-        <Reveal delay={0.2}>
-          <figure className="relative mt-5 overflow-hidden rounded-2xl bg-ink px-8 py-12 sm:px-12 lg:py-16">
-            <div
-              aria-hidden
-              className="animate-gradient-shift pointer-events-none absolute inset-0 bg-[radial-gradient(70%_120%_at_85%_0%,rgb(234_163_0_/_0.32),transparent)]"
-            />
-            <div className="relative grid gap-8 lg:grid-cols-[auto_1fr] lg:gap-12">
-              <svg
-                aria-hidden
-                viewBox="0 0 44 32"
-                className="h-8 w-auto shrink-0 text-brand lg:h-10"
-                fill="currentColor"
-              >
-                <path d="M0 32V18.4C0 8.6 5.4 2.1 16.2 0l1.8 4.9c-6.2 1.8-9.3 5.3-9.3 10.4h9.9V32H0Zm25.9 0V18.4C25.9 8.6 31.3 2.1 42.1 0l1.9 4.9c-6.2 1.8-9.3 5.3-9.3 10.4h9.8V32H25.9Z" />
-              </svg>
-              <div>
-                <blockquote className="max-w-3xl text-xl leading-9 text-balance text-white/90 sm:text-2xl sm:leading-10">
-                  {leadershipMessage.quote}
-                </blockquote>
-                <figcaption className="mt-7 text-xs font-semibold tracking-[0.16em] text-brand uppercase">
-                  {leadershipMessage.attribution} · {siteConfig.legalName}
-                </figcaption>
-              </div>
-            </div>
-          </figure>
-        </Reveal>
+        <Figure
+          as="panel"
+          tone="dark"
+          quote={leadershipMessage.quote}
+          attribution={`${leadershipMessage.attribution} · ${siteConfig.legalName}`}
+          className="mt-5"
+        />
       </Section>
 
       <CtaBand />
