@@ -8,6 +8,7 @@ import { EditorialSplit } from "@/components/sections/EditorialSplit";
 import { Em } from "@/components/sections/Em";
 import { Hero } from "@/components/sections/Hero";
 import { HowItWorks } from "@/components/sections/HowItWorks";
+import { LeadershipTeaser } from "@/components/sections/LeadershipTeaser";
 import { MarketTicker } from "@/components/sections/MarketTicker";
 import { RatesTeaser } from "@/components/sections/RatesTeaser";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
@@ -90,6 +91,7 @@ export default function Home() {
       <HowItWorks />
       <WhyFinwave />
       <StatsBand />
+      <LeadershipTeaser />
       <RatesTeaser />
       <CitiesSection />
       <CtaBand />
