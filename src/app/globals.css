@@ -301,6 +301,21 @@
     }
   }
 
+  /* ---- Reading measure --------------------------------------------------
+     Caps prose in `ch`, not rem. A rem cap is wrong at more than one type size:
+     max-w-2xl is a comfortable 65ch at 18px but a punishing 96ch at 14px.
+     Widening the page container to 1504px pushed legal clauses to 138-173ch,
+     roughly double what is readable. */
+  /* Calibrated against the rendered font, not assumed: 1ch here is 7.84px
+     (the width of "0") while the average glyph in real prose is 6.38px, so a
+     68ch cap actually set 84 characters per line. 57ch measures ~70. */
+  .measure {
+    max-width: 57ch;
+  }
+  .measure-tight {
+    max-width: 46ch;
+  }
+
   /* ---- Photo frame -------------------------------------------------------
      Signature notch: the image sits over a gold corner block, so photography
      reads as deliberately placed rather than dropped in. */
@@ -406,42 +421,29 @@
     font-variant-numeric: tabular-nums;
   }
   /* Signature CTA: gold diagonal sweep-fills on hover (from money2abroad) */
-  /* THE primary action, used on every surface on the site.
-     Previously an ink fill that swept to gold on hover. That made the busiest
-     control on the page the darkest object on it — and on the cognac closing
-     band it rendered ink-on-cognac, about 1.4:1, effectively invisible.
-     Neither reference site uses a heavy dark primary: JPMorgan's is a light
-     pill, money2abroad's a copper outline.
-     Now: gold fill, ink label (5.9:1), sweeping a deeper amber on hover
-     (4.6:1). Gold only reaches 1.7:1 against cream, so the ring supplies the
-     edge definition WCAG 1.4.11 asks for (brand-deep, 5.4:1 on paper). One
-     primary that reads correctly on paper, canvas, white and the dark band. */
-  .btn-sweep {
-    background-color: var(--color-brand);
-    background-image: linear-gradient(
-      118deg,
-      #d18f00 0%,
-      #c28500 46%,
-      transparent 46.1%
-    );
-    background-size: 240% 100%;
-    background-position: 100% 0;
-    background-repeat: no-repeat;
-    color: var(--color-ink);
-    box-shadow: inset 0 0 0 1px var(--color-brand-deep);
+  /* THE primary action, used on every surface.
+     Coffee fill with a cream label (9.4:1). Four points lighter and warmer than
+     the text ink so it reads as coffee rather than as black.
+     No gradient sweep: it produced two contrast defects (the label flipped
+     colour mid-animation, and on the dark band the fill was invisible), and it
+     was noise on the busiest control on the page. A lift and a deepen is
+     quieter and reads more expensive.
+     On dark surfaces use variant="inverse" — a dark button on a dark band is
+     the bug this replaces. */
+  .btn-primary {
+    background-color: #4d3a2b;
+    color: var(--color-paper);
     transition:
-      background-position 0.55s cubic-bezier(0.7, 0.05, 0.25, 1),
+      background-color 0.25s ease,
       box-shadow 0.3s ease,
       transform 0.15s ease;
   }
-  .btn-sweep:hover {
-    background-position: 0 0;
-    box-shadow:
-      inset 0 0 0 1px var(--color-brand-deep),
-      0 14px 30px -10px rgb(234 163 0 / 0.5);
+  .btn-primary:hover {
+    background-color: #5d4632;
+    box-shadow: 0 12px 26px -12px rgb(61 48 36 / 0.5);
   }
   @media (prefers-reduced-motion: reduce) {
-    .btn-sweep {
+    .btn-primary {
       transition: box-shadow 0.3s ease;
     }
   }

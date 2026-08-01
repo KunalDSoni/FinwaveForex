@@ -73,7 +73,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Products */}
-      <Section innerClassName="pt-16 pb-10 lg:pt-20 lg:pb-12">
+      <Section space="tight">
         <Reveal>
           <h2 className="display-md">
             Products
@@ -87,7 +87,7 @@ export default function ServicesPage() {
       </Section>
 
       {/* Outbound services — the live site treats this as its own category. */}
-      <Section variant="sand" bordered innerClassName="py-20 lg:py-24">
+      <Section variant="sand" bordered space="tight">
         <div className="grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
           <div>
             <SectionHeading
@@ -120,7 +120,7 @@ export default function ServicesPage() {
                   <Send className="size-[22px]" aria-hidden />
                 </span>
               </div>
-              <div className="p-7 lg:p-8">
+              <div className="p-8 lg:p-8">
                 <p className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
                   Can be used for
                 </p>
@@ -139,7 +139,7 @@ export default function ServicesPage() {
       </Section>
 
       {/* Not-sure-which fallback: the desk answers it in one call. */}
-      <Section innerClassName="pt-12 pb-10 lg:pt-16 lg:pb-12">
+      <Section space="tight">
         <Reveal delay={0.1}>
           <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-hairline bg-white px-8 py-8 sm:flex-row sm:items-center">
             <div className="flex items-start gap-4">

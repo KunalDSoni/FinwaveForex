@@ -90,7 +90,7 @@ export default function Home() {
 
       <HowItWorks />
       <WhyFinwave />
-      <StatsBand innerClassName="pt-0 lg:pt-0" />
+      <StatsBand space="flushTop" />
       <LeadershipTeaser />
       <RatesTeaser />
       <CitiesSection />

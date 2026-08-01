@@ -25,7 +25,7 @@ export function LegalArticle({ page }: { page: LegalPage }) {
           <h1 className="display-lg mt-5 text-balance">
             {page.title}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-soft">{page.intro}</p>
+          <p className="measure mt-6 text-lg leading-8 text-ink-soft">{page.intro}</p>
           {page.updated ? (
             <p className="mt-6 text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase">
               Last updated {page.updated}
@@ -78,13 +78,13 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                   <div className="mt-5 flex flex-col gap-4">
                     {section.blocks.map((block, blockIndex) =>
                       block.type === "paragraph" ? (
-                        <p key={blockIndex} className="text-sm leading-7 text-ink-soft">
+                        <p key={blockIndex} className="measure text-sm leading-7 text-ink-soft">
                           {block.text}
                         </p>
                       ) : block.type === "clauses" ? (
                         // Verbatim contract clauses, numbered so they can be
                         // cited — the source publishes them as one long block.
-                        <ol key={blockIndex} className="flex flex-col gap-5">
+                        <ol key={blockIndex} className="flex max-w-[calc(57ch+2.75rem)] flex-col gap-5">
                           {block.items.map((clause, clauseIndex) => (
                             <li
                               key={clause.slice(0, 60)}
@@ -93,14 +93,14 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                               <span className="tnum pt-0.5 text-xs font-semibold text-brand-deep">
                                 {String(clauseIndex + 1).padStart(2, "0")}
                               </span>
-                              <span className="text-sm leading-7 text-ink-soft">{clause}</span>
+                              <span className="measure text-sm leading-7 text-ink-soft">{clause}</span>
                             </li>
                           ))}
                         </ol>
                       ) : (
                         <ul key={blockIndex} className="flex flex-col gap-3">
                           {block.items.map((item) => (
-                            <li key={item} className="flex gap-3 text-sm leading-7 text-ink-soft">
+                            <li key={item} className="measure flex gap-3 text-sm leading-7 text-ink-soft">
                               <span
                                 className="mt-3 size-1.5 shrink-0 rounded-full bg-brand"
                                 aria-hidden
@@ -118,7 +118,7 @@ export function LegalArticle({ page }: { page: LegalPage }) {
 
             {/* Where to take a question about this document. */}
             <Reveal delay={0.1}>
-              <div className="mt-14 rounded-2xl border border-hairline bg-white p-8">
+              <div className="mt-14 max-w-[calc(57ch+2.75rem)] rounded-2xl border border-hairline bg-white p-8">
                 <h2 className="text-base font-semibold tracking-[-0.01em]">
                   Questions about this policy?
                 </h2>
@@ -141,7 +141,7 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                     {siteConfig.phone}
                   </a>
                 </div>
-                <p className="mt-6 border-t border-hairline pt-5 text-xs leading-6 text-ink-soft">
+                <p className="measure mt-6 border-t border-hairline pt-5 text-xs leading-6 text-ink-soft">
                   {siteConfig.legalName} · {siteConfig.address.line1}, {siteConfig.address.line2},{" "}
                   {siteConfig.address.city} {siteConfig.address.postalCode} ·{" "}
                   <Link

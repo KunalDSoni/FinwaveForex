@@ -53,11 +53,7 @@ export function CtaBand({ lines = DEFAULT_LINES, body = DEFAULT_BODY }: CtaBandP
           <Reveal delay={0.3}>
             <div className="flex flex-col gap-4 lg:items-end">
               <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-                <Button
-                  asChild
-                  size="lg"
-                  className="group bg-brand text-ink hover:bg-[color-mix(in_oklch,var(--color-brand),white_18%)]"
-                >
+                <Button asChild size="lg" variant="inverse" className="group">
                   <Link href="/contact">
                     Get a quote
                     <ArrowRight

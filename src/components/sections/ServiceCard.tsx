@@ -20,7 +20,7 @@ export function ServiceCard({ service, index, variant = "card" }: ServiceCardPro
 
   if (variant === "cell") {
     return (
-      <div className="group hairline-cell relative flex flex-col p-7 lg:p-8">
+      <div className="group hairline-cell relative flex flex-col p-8 lg:p-8">
         <span className="tnum absolute top-7 right-7 text-xs font-medium text-ink-soft/45">
           {String(index + 1).padStart(2, "0")}
         </span>
@@ -63,7 +63,7 @@ export function ServiceCard({ service, index, variant = "card" }: ServiceCardPro
             />
           </span>
         </div>
-        <div className="flex flex-1 flex-col p-7 lg:p-8">
+        <div className="flex flex-1 flex-col p-8 lg:p-8">
           <h3 className="text-xl font-semibold tracking-[-0.02em] text-balance">{service.name}</h3>
           <p className="mt-2.5 text-sm leading-6 text-ink-soft">{service.blurb}</p>
           {highlights.length ? (

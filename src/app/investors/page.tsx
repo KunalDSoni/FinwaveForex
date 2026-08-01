@@ -60,7 +60,7 @@ export default function InvestorsPage() {
         </dl>
       </section>
 
-      <Section innerClassName="pt-16 pb-10 lg:pt-20 lg:pb-12">
+      <Section space="tight">
         {/* Latest year leads; earlier years sit beneath as an archive. */}
         <Reveal>
           <a
@@ -85,7 +85,7 @@ export default function InvestorsPage() {
                 </p>
               </div>
             </div>
-            <span className="btn-sweep inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold">
+            <span className="btn-primary inline-flex shrink-0 items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold">
               <ArrowDownToLine className="size-4" aria-hidden />
               Download
             </span>
@@ -134,7 +134,7 @@ export default function InvestorsPage() {
         </ul>
 
         <Reveal delay={0.15}>
-          <p className="mt-8 max-w-2xl text-sm leading-6 text-ink-soft">
+          <p className="measure mt-8 text-sm leading-6 text-ink-soft">
             Looking for something else? Write to{" "}
             <a
               href={`mailto:${siteConfig.email}`}

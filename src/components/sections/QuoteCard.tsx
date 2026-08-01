@@ -198,8 +198,8 @@ export function QuoteCard() {
   return (
     // Deliberately static: this is a form with tabs, selects and two text
     // inputs, so a perpetual float would make every control a moving target.
-    <div className="shadow-quote mx-auto w-full max-w-lg rounded-[28px] bg-white p-3">
-      <div className="rounded-[21px] border border-hairline-soft bg-canvas">
+    <div className="shadow-quote mx-auto w-full max-w-lg rounded-3xl bg-white p-3">
+      <div className="rounded-2xl border border-hairline-soft bg-canvas">
         {/* Mode + live status */}
         <div className="flex items-center justify-between gap-3 border-b border-hairline-soft px-3 py-3">
           <div role="tablist" aria-label="Exchange direction" className="flex gap-1">
@@ -312,7 +312,7 @@ export function QuoteCard() {
       <div className="px-1.5 pt-3.5 pb-1.5">
         <Link
           href={{ pathname: "/contact", query: enquiry }}
-          className="btn-sweep group flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-semibold"
+          className="btn-primary group flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-semibold"
         >
           Get this rate
           <ArrowRight

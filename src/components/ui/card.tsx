@@ -18,7 +18,7 @@ export function Card({ children, hover = false, glow = false, className }: CardP
       whileHover={hover && !reduce ? { y: -5 } : undefined}
       transition={{ type: "spring", stiffness: 300, damping: 22 }}
       className={cn(
-        "group shadow-soft relative flex flex-col overflow-hidden rounded-[20px] border border-hairline bg-white p-8 transition-[border-color,box-shadow] duration-300",
+        "group shadow-soft relative flex flex-col overflow-hidden rounded-2xl border border-hairline bg-white p-8 transition-[border-color,box-shadow] duration-300",
         hover && "hover:border-brand/40 hover:shadow-rich-lg",
         className,
       )}

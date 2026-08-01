@@ -196,10 +196,10 @@ export function RatesTable() {
       </Reveal>
 
       <Reveal delay={0.15}>
-        <div className="mt-5 flex flex-col gap-5 rounded-2xl border border-hairline bg-brand-tint/50 p-6 sm:flex-row sm:items-center sm:justify-between lg:p-7">
+        <div className="mt-5 flex flex-col gap-5 rounded-2xl border border-hairline bg-brand-tint/50 p-6 sm:flex-row sm:items-center sm:justify-between lg:p-8">
           <div className="flex items-start gap-3">
             <Info className="mt-0.5 size-5 shrink-0 text-brand-deep" aria-hidden />
-            <p className="max-w-2xl text-sm leading-6 text-brand-deep">
+            <p className="measure text-sm leading-6 text-brand-deep">
               These are indicative mid-market reference rates, not the price you transact at. Buying
               and selling rates carry a spread that depends on the currency, the amount and the
               product — so we quote your rate on the call, and we&apos;ll work to better any quote

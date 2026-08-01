@@ -9,7 +9,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "btn-sweep hover:-translate-y-px",
+        default: "btn-primary hover:-translate-y-px",
+        // For dark surfaces. A coffee button on the cognac band is invisible;
+        // inverting is the standard answer and keeps one visual hierarchy.
+        inverse:
+          "bg-paper text-ink shadow-[0_10px_26px_-14px_rgb(0_0_0/0.45)] hover:bg-white hover:-translate-y-px",
         outline:
           "border-border bg-background shadow-xs hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:

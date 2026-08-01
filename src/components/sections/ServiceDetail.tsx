@@ -74,7 +74,7 @@ export function ServiceDetail({ service }: { service: Service }) {
       </section>
 
       {features.length ? (
-        <Section innerClassName="pt-20 pb-10 lg:pt-24 lg:pb-12">
+        <Section space="tight">
           <Reveal>
             <h2 className="display-md">
               What&apos;s included
@@ -100,7 +100,7 @@ export function ServiceDetail({ service }: { service: Service }) {
         </Section>
       ) : null}
 
-      <Section variant="sand" bordered innerClassName="py-20 lg:py-24">
+      <Section variant="sand" bordered space="tight">
         <Reveal>
           <h2 className="display-md">
             How it works
@@ -109,7 +109,7 @@ export function ServiceDetail({ service }: { service: Service }) {
         <ol className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline sm:grid-cols-3">
           {service.steps.map((step, index) => (
             <li key={step.title} className="bg-canvas">
-              <Reveal delay={index * 0.1} className="h-full p-7 lg:p-8">
+              <Reveal delay={index * 0.1} className="h-full p-8 lg:p-8">
                 <div className="flex items-center gap-3">
                   <span className="tnum flex size-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-ink">
                     {index + 1}
@@ -152,7 +152,7 @@ export function ServiceDetail({ service }: { service: Service }) {
       ) : null}
 
       {/* Cross-navigation: never leave a detail page as a dead end. */}
-      <Section innerClassName="pt-4 pb-20 lg:pt-6 lg:pb-24">
+      <Section space="flushTop">
         <Reveal>
           <h2 className="text-xs font-semibold tracking-[0.16em] text-ink-soft uppercase">
             Other services
@@ -163,7 +163,7 @@ export function ServiceDetail({ service }: { service: Service }) {
             <Reveal key={other.slug} delay={index * 0.06} className="hairline-cell">
               <Link
                 href={`/services/${other.slug}`}
-                className="group/next flex h-full flex-col justify-between gap-6 p-7 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+                className="group/next flex h-full flex-col justify-between gap-6 p-8 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
               >
                 <span className="font-semibold tracking-[-0.01em] text-balance">{other.name}</span>
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-deep">

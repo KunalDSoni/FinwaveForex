@@ -45,7 +45,7 @@ export default function FaqPage() {
         />
       </section>
 
-      <Section innerClassName="pt-14 pb-10 lg:pt-16 lg:pb-12">
+      <Section space="tight">
         <div className="grid gap-10 lg:grid-cols-[13rem_1fr] lg:gap-16">
           {/* Category index; sticks alongside the answers on large screens. */}
           <nav aria-label="FAQ categories" className="lg:sticky lg:top-28 lg:self-start">
@@ -85,7 +85,7 @@ export default function FaqPage() {
                         <AccordionTrigger className="text-left text-base font-semibold">
                           {faq.q}
                         </AccordionTrigger>
-                        <AccordionContent className="text-sm leading-7 text-ink-soft">
+                        <AccordionContent className="measure text-sm leading-7 text-ink-soft">
                           {faq.a}
                         </AccordionContent>
                       </AccordionItem>
@@ -107,7 +107,7 @@ export default function FaqPage() {
                       The legal framework
                     </h2>
                   </div>
-                  <p className="mt-6 text-sm leading-7 text-ink-soft">{femaFramework}</p>
+                  <p className="measure mt-6 text-sm leading-7 text-ink-soft">{femaFramework}</p>
                   <a
                     href={asset(travelGuidelines.file)}
                     target="_blank"

@@ -41,7 +41,7 @@ export default function ContactPage() {
         />
       </section>
 
-      <Section innerClassName="pt-14 pb-24 lg:pt-16 lg:pb-32">
+      <Section space="flushTop">
         {/* Present only when arriving from the hero quote card. */}
         <Suspense fallback={null}>
           <EnquirySummary />

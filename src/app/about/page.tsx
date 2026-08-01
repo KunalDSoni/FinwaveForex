@@ -92,7 +92,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <StatsBand innerClassName="pt-0 pb-20 lg:pt-0 lg:pb-24" />
+      <StatsBand space="flushTop" />
 
       {/* Company story — photography opposite the narrative. */}
       <EditorialSplit

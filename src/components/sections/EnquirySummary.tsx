@@ -46,7 +46,7 @@ export function EnquirySummary() {
   )}&body=${encodeURIComponent(body)}`;
 
   return (
-    <div className="shadow-card mb-5 rounded-2xl border border-hairline bg-white p-7 ring-1 ring-brand/25 lg:p-8">
+    <div className="shadow-card mb-5 rounded-2xl border border-hairline bg-white p-8 ring-1 ring-brand/25 lg:p-8">
       <div className="flex items-center gap-3">
         <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-brand text-ink">
           <Receipt className="size-5" aria-hidden />

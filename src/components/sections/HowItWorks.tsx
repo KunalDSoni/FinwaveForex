@@ -29,7 +29,7 @@ export function HowItWorks() {
       <ol className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline lg:grid-cols-3">
         {steps.map((step, index) => (
           <li key={step.title} className="bg-canvas">
-            <Reveal delay={index * 0.1} className="h-full p-8 lg:p-9">
+            <Reveal delay={index * 0.1} className="h-full p-8 lg:p-10">
               <div className="flex items-center gap-3">
                 <span className="tnum flex size-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-ink">
                   {index + 1}

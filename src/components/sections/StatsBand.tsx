@@ -3,9 +3,9 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Section } from "@/components/ui/section";
 import { siteConfig } from "@/content/site";
 
-export function StatsBand({ innerClassName }: { innerClassName?: string }) {
+export function StatsBand({ space }: { space?: "default" | "tight" | "flushTop" | "flushBottom" }) {
   return (
-    <Section innerClassName={innerClassName}>
+    <Section space={space}>
       <div className="hairline-grid sm:grid-cols-3">
         {siteConfig.stats.map((stat, index) => (
           <Reveal
