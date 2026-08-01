@@ -43,7 +43,7 @@ export function LeadershipTeaser() {
           </p>
           <Link
             href="/about"
-            className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-deep transition-colors hover:text-ink focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+            className="group mt-6 inline-flex items-center gap-2 py-1 text-sm font-semibold text-brand-deep transition-colors hover:text-ink focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
           >
             Meet the full team
             <ArrowRight

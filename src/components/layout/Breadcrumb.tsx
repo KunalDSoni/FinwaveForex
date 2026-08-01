@@ -16,7 +16,7 @@ export function Breadcrumb({ trail, className }: { trail: Crumb[]; className?: s
     <nav aria-label="Breadcrumb" className={cn("mb-7", className)}>
       <ol className="flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs font-semibold tracking-[0.1em] uppercase">
         <li>
-          <Link href="/" className="text-ink-soft transition-colors hover:text-brand-deep">
+          <Link href="/" className="inline-block py-1 text-ink-soft transition-colors hover:text-brand-deep">
             Home
           </Link>
         </li>
@@ -32,7 +32,7 @@ export function Breadcrumb({ trail, className }: { trail: Crumb[]; className?: s
               ) : (
                 <Link
                   href={crumb.href}
-                  className="text-ink-soft transition-colors hover:text-brand-deep"
+                  className="inline-block py-1 text-ink-soft transition-colors hover:text-brand-deep"
                 >
                   {crumb.label}
                 </Link>

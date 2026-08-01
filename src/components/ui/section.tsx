@@ -16,7 +16,7 @@ type SectionProps = {
 const variants = {
   paper: "",
   sand: "bg-sand/60",
-  dark: "bg-ink text-white",
+  dark: "bg-ink-surface text-white",
 } as const;
 
 export function Section({

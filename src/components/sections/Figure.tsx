@@ -56,12 +56,26 @@ export function Figure({
   );
 
   if (as === "panel") {
+    // Light by default. The reference site earns its calm by having almost no
+    // dark slabs — a page carrying both a dark quote panel and a dark closing
+    // band reads heavy no matter how warm the brown is. `tone="dark"` is still
+    // available where a page genuinely needs the weight.
     return (
       <Reveal className={className}>
-        <div className="relative overflow-hidden rounded-3xl bg-ink px-8 py-12 sm:px-12 lg:py-16">
+        <div
+          className={cn(
+            "relative overflow-hidden rounded-3xl px-8 py-12 sm:px-12 lg:py-16",
+            dark ? "bg-ink-surface" : "shadow-card border border-hairline bg-canvas",
+          )}
+        >
           <div
             aria-hidden
-            className="animate-gradient-shift pointer-events-none absolute inset-0 bg-[radial-gradient(70%_120%_at_85%_0%,rgb(234_163_0_/_0.32),transparent)]"
+            className={cn(
+              "pointer-events-none absolute inset-0",
+              dark
+                ? "animate-gradient-shift bg-[radial-gradient(70%_120%_at_85%_0%,rgb(234_163_0_/_0.32),transparent)]"
+                : "bg-[radial-gradient(70%_120%_at_88%_0%,rgb(234_163_0_/_0.14),transparent)]",
+            )}
           />
           <div className="relative">{inner}</div>
         </div>

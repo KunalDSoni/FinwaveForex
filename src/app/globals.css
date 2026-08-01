@@ -6,8 +6,18 @@
 
 @theme {
   --color-paper: #ece4d6;
-  --color-ink: #1c1a15;
-  --color-ink-soft: #5c574d;
+  /* No black anywhere. The darks are one warm brown family sharing the gold's
+     hue (35°) and the cream ground's (38°). hsl(30,26,19) is light and
+     saturated enough to read as brown rather than a black that missed, while
+     holding 10.1:1 on paper (AAA). Text and small dark controls. */
+  --color-ink: #3d3024;
+  /* Large panels. A rich cognac rather than an espresso: the reference site
+     avoids the heavy feeling by having almost no dark slabs at all, so the one
+     slab we keep is warm and expensive rather than oppressive.
+     White 10.6:1, cream 9.2:1, brand gold 4.9:1. */
+  --color-ink-surface: #523a22;
+  /* Secondary body text, warmed to match. Worst ground (sand) 5.08:1. */
+  --color-ink-soft: #675542;
   --color-brand: #eaa300;
   /* Text-only companion to the brand gold. Darkened from #9c6b00 so 12–14px
      labels clear WCAG AA (4.5:1) on paper, cream and white — the bright gold
@@ -18,9 +28,9 @@
   --color-hairline: #d8ccb7;
   --color-accent-blue: #369be4;
   --color-accent-red: #fa4661;
-  --shadow-rich: 0 24px 60px -28px rgb(28 26 21 / 0.3);
-  --shadow-rich-lg: 0 44px 96px -36px rgb(28 26 21 / 0.42);
-  --shadow-soft: 0 10px 30px -18px rgb(28 26 21 / 0.22);
+  --shadow-rich: 0 24px 60px -28px rgb(61 48 36 / 0.3);
+  --shadow-rich-lg: 0 44px 96px -36px rgb(61 48 36 / 0.42);
+  --shadow-soft: 0 10px 30px -18px rgb(61 48 36 / 0.22);
   --color-pos: #15803d;
   --color-neg: #b91c1c;
   /* Crisp warm near-white for elevated surfaces that need to read brighter
@@ -29,9 +39,9 @@
   --color-hairline-soft: #e7ddca;
   /* Card elevation ladder: resting cards, then the hero quote card, which is
      the single most-elevated object on the page. */
-  --shadow-card: 0 1px 2px rgb(28 26 21 / 0.04), 0 14px 34px -18px rgb(28 26 21 / 0.2);
+  --shadow-card: 0 1px 2px rgb(61 48 36 / 0.04), 0 14px 34px -18px rgb(61 48 36 / 0.2);
   --shadow-quote:
-    0 2px 4px rgb(28 26 21 / 0.03), 0 36px 72px -28px rgb(28 26 21 / 0.26),
+    0 2px 4px rgb(61 48 36 / 0.03), 0 36px 72px -28px rgb(61 48 36 / 0.26),
     0 0 0 1px rgb(216 204 183 / 0.6);
   --animate-marquee: marquee var(--marquee-duration, 28s) linear infinite;
   --animate-live: live-pulse 2.4s ease-in-out infinite;
@@ -155,23 +165,23 @@
 
 :root {
   --background: #ece4d6;
-  --foreground: #1c1a15;
+  --foreground: #3d3024;
   --card: #ffffff;
-  --card-foreground: #1c1a15;
+  --card-foreground: #3d3024;
   --popover: #ffffff;
-  --popover-foreground: #1c1a15;
-  --primary: #1c1a15;
+  --popover-foreground: #3d3024;
+  --primary: #3d3024;
   --primary-foreground: #f6efe2;
   --secondary: #e3d9c6;
-  --secondary-foreground: #1c1a15;
+  --secondary-foreground: #3d3024;
   --muted: #e3d9c6;
-  --muted-foreground: #5c574d;
+  --muted-foreground: #675542;
   --accent: #f7e9c4;
   --accent-foreground: #7a5400;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #d8ccb7;
   --input: #d8ccb7;
-  --ring: #1c1a15;
+  --ring: #3d3024;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);

@@ -181,7 +181,6 @@ export default function AboutPage() {
         {/* Leadership message */}
         <Figure
           as="panel"
-          tone="dark"
           quote={leadershipMessage.quote}
           attribution={`${leadershipMessage.attribution} · ${siteConfig.legalName}`}
           className="mt-5"

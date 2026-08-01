@@ -29,7 +29,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5">
               {siteConfig.nav.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="relative text-sm text-ink-soft transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 hover:text-ink hover:after:scale-x-100">
+                  <Link href={item.href} className="relative inline-block py-1 text-sm text-ink-soft transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 hover:text-ink hover:after:scale-x-100">
                     {item.label}
                   </Link>
                 </li>
@@ -40,13 +40,13 @@ export function Footer() {
             <h2 className="text-xs font-semibold tracking-widest text-ink-soft uppercase">Contact</h2>
             <ul className="mt-4 space-y-2.5 text-sm text-ink-soft">
               <li>
-                <a href={siteConfig.phoneHref} className="flex items-center gap-2 transition-colors hover:text-ink">
+                <a href={siteConfig.phoneHref} className="flex items-center gap-2 py-1 transition-colors hover:text-ink">
                   <Phone className="size-4 shrink-0 text-brand" aria-hidden />
                   {siteConfig.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-2 transition-colors hover:text-ink">
+                <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-2 py-1 transition-colors hover:text-ink">
                   <Mail className="size-4 shrink-0 text-brand" aria-hidden />
                   {siteConfig.email}
                 </a>
@@ -66,7 +66,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5">
               {siteConfig.footerLegal.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="relative text-sm text-ink-soft transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 hover:text-ink hover:after:scale-x-100">
+                  <Link href={item.href} className="relative inline-block py-1 text-sm text-ink-soft transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-ink after:transition-transform after:duration-300 hover:text-ink hover:after:scale-x-100">
                     {item.label}
                   </Link>
                 </li>

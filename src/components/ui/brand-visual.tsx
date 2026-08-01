@@ -93,8 +93,8 @@ export function BrandVisual({ seed = "finwave", tone = "paper", className }: Bra
     >
       <defs>
         <linearGradient id={`${id}-bg`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor={dark ? "#241f18" : "#fdfbf6"} />
-          <stop offset="100%" stopColor={dark ? "#14120e" : "#f0e7d5"} />
+          <stop offset="0%" stopColor={dark ? "#523a22" : "#fdfbf6"} />
+          <stop offset="100%" stopColor={dark ? "#33240f" : "#f0e7d5"} />
         </linearGradient>
         <linearGradient id={`${id}-gold`} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%" stopColor="#eaa300" />
@@ -112,7 +112,7 @@ export function BrandVisual({ seed = "finwave", tone = "paper", className }: Bra
 
       {/* Chart grid */}
       <g
-        stroke={dark ? "#ffffff" : "#1c1a15"}
+        stroke={dark ? "#ffffff" : "#3d3024"}
         strokeOpacity={dark ? "0.07" : "0.05"}
         vectorEffect="non-scaling-stroke"
       >

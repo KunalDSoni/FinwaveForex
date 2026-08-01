@@ -36,7 +36,7 @@ export function ServiceCard({ service, index, variant = "card" }: ServiceCardPro
         <p className="relative mt-2.5 flex-1 text-sm leading-6 text-ink-soft">{service.blurb}</p>
         <Link
           href={`/services/${service.slug}`}
-          className="relative mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-deep transition-colors hover:text-ink focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+          className="relative mt-6 inline-flex items-center gap-1.5 py-1 text-sm font-semibold text-brand-deep transition-colors hover:text-ink focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
         >
           Learn more<span className="sr-only"> about {service.name.toLowerCase()}</span>
           <ArrowRight
@@ -78,7 +78,7 @@ export function ServiceCard({ service, index, variant = "card" }: ServiceCardPro
           ) : null}
           <Link
             href={`/services/${service.slug}`}
-            className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-brand-deep transition-colors hover:text-ink focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+            className="mt-auto inline-flex items-center gap-1.5 pt-6 pb-1 text-sm font-semibold text-brand-deep transition-colors hover:text-ink focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
           >
             Learn more<span className="sr-only"> about {service.name.toLowerCase()}</span>
             <ArrowRight

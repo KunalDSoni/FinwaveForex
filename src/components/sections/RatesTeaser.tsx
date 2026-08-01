@@ -77,7 +77,6 @@ export function RatesTeaser() {
       {/* The rate promise belongs beside the rates, not in its own band. */}
       <Figure
         as="panel"
-        tone="dark"
         quote="We can surely better this rate for you."
         attribution={`Our promise · ${siteConfig.legalName}`}
         className="mt-14"

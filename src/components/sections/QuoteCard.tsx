@@ -94,7 +94,7 @@ function AmountField({
                 aria-label="Foreign currency"
                 value={currency}
                 onChange={(event) => onCurrencyChange(event.target.value)}
-                className="absolute inset-0 cursor-pointer opacity-0"
+                className="absolute inset-0 size-full cursor-pointer opacity-0"
               >
                 {currencies.map((item) => (
                   <option key={item.code} value={item.code}>
@@ -256,18 +256,18 @@ export function QuoteCard() {
 
         {/* What and where — the two things the desk needs beyond the amount. */}
         <div className="grid grid-cols-2 divide-x divide-hairline-soft border-t border-hairline-soft">
-          <label className="flex flex-col gap-1.5 px-5 py-3.5 sm:px-6">
+          <label className="relative flex cursor-pointer flex-col gap-1.5 px-5 py-3.5 sm:px-6">
             <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-soft uppercase">
               Product
             </span>
-            <span className="relative flex items-center justify-between gap-2">
+            <span className="flex items-center justify-between gap-2">
               <span className="truncate text-[13px] font-semibold">{product}</span>
               <ChevronDown className="size-3.5 shrink-0 text-ink-soft" aria-hidden />
               <select
                 aria-label="Product"
                 value={product}
                 onChange={(event) => setProduct(event.target.value)}
-                className="absolute inset-0 cursor-pointer opacity-0"
+                className="absolute inset-0 size-full cursor-pointer opacity-0"
               >
                 {PRODUCTS.map((item) => (
                   <option key={item} value={item}>
@@ -277,18 +277,18 @@ export function QuoteCard() {
               </select>
             </span>
           </label>
-          <label className="flex flex-col gap-1.5 px-5 py-3.5 sm:px-6">
+          <label className="relative flex cursor-pointer flex-col gap-1.5 px-5 py-3.5 sm:px-6">
             <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-soft uppercase">
               City
             </span>
-            <span className="relative flex items-center justify-between gap-2">
+            <span className="flex items-center justify-between gap-2">
               <span className="truncate text-[13px] font-semibold">{city}</span>
               <ChevronDown className="size-3.5 shrink-0 text-ink-soft" aria-hidden />
               <select
                 aria-label="City"
                 value={city}
                 onChange={(event) => setCity(event.target.value)}
-                className="absolute inset-0 cursor-pointer opacity-0"
+                className="absolute inset-0 size-full cursor-pointer opacity-0"
               >
                 {siteConfig.cities.map((item) => (
                   <option key={item} value={item}>

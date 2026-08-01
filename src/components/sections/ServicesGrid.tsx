@@ -31,7 +31,7 @@ export function ServicesGrid() {
         <div className="mt-10">
           <Link
             href="/services"
-            className="group inline-flex items-center gap-2 text-sm font-semibold text-brand-deep transition-colors hover:text-ink"
+            className="group inline-flex items-center gap-2 py-1 text-sm font-semibold text-brand-deep transition-colors hover:text-ink"
           >
             Compare all services
             <ArrowRight

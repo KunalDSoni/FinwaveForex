@@ -138,7 +138,7 @@ export default function InvestorsPage() {
             Looking for something else? Write to{" "}
             <a
               href={`mailto:${siteConfig.email}`}
-              className="font-medium text-brand-deep underline underline-offset-4 transition-colors hover:text-ink"
+              className="inline-block py-1 font-medium text-brand-deep underline underline-offset-4 transition-colors hover:text-ink"
             >
               {siteConfig.email}
             </a>{" "}

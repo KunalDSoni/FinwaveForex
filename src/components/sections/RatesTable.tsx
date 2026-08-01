@@ -86,7 +86,7 @@ export function RatesTable() {
             >
               Find a currency
             </label>
-            <div className="mt-2 flex items-center gap-2 rounded-full border border-hairline bg-white px-4 py-2.5 focus-within:border-brand focus-within:ring-3 focus-within:ring-brand/25 sm:w-80">
+            <label htmlFor="rate-search" className="mt-2 flex min-h-11 cursor-text items-center gap-2 rounded-full border border-hairline bg-white px-4 focus-within:border-brand focus-within:ring-3 focus-within:ring-brand/25 sm:w-80">
               <Search className="size-4 shrink-0 text-ink-soft" aria-hidden />
               <input
                 id="rate-search"
@@ -94,9 +94,9 @@ export function RatesTable() {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="US Dollar, GBP, AED…"
-                className="w-full bg-transparent text-sm outline-none placeholder:text-ink-soft/60"
+                className="h-11 w-full bg-transparent text-sm outline-none placeholder:text-ink-soft/60"
               />
-            </div>
+            </label>
           </div>
           <p className="flex items-center gap-2 text-xs text-ink-soft">
             <span
