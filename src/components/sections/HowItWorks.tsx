@@ -42,7 +42,7 @@ export function HowItWorks() {
               <h3 className="mt-6 text-lg font-semibold tracking-[-0.02em] text-balance">
                 {step.title}
               </h3>
-              <p className="mt-2.5 text-sm leading-6 text-ink-soft">{step.body}</p>
+              <p className="mt-2.5 text-sm text-ink-soft">{step.body}</p>
             </Reveal>
           </li>
         ))}

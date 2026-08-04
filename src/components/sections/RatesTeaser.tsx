@@ -42,10 +42,10 @@ export function RatesTeaser() {
         <Reveal delay={0.15}>
           <div className="shadow-card overflow-hidden rounded-2xl border border-hairline bg-white">
             <div className="flex items-center justify-between border-b border-hairline px-6 py-3.5">
-              <span className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+              <span className="label-micro text-ink-soft">
                 Indicative
               </span>
-              <span className="text-[11px] font-medium text-ink-soft">Rupees per unit</span>
+              <span className="text-xs font-medium text-ink-soft">Rupees per unit</span>
             </div>
             <ul className="divide-y divide-hairline px-6">
               {currencies.slice(0, 5).map((currency) => (

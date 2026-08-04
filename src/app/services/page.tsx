@@ -34,7 +34,7 @@ const chooser = [
 export default function ServicesPage() {
   return (
     <>
-      <section className="mx-auto max-w-page px-5 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
         <Breadcrumb trail={[{ label: "Products & Services" }]} />
         <SectionHeading
           as="h1"
@@ -56,7 +56,7 @@ export default function ServicesPage() {
                 href={`/services/${item.slug}`}
                 className="group/pick flex h-full flex-col justify-between gap-4 px-6 py-6 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
               >
-                <span className="text-[11px] font-semibold tracking-[0.12em] text-ink-soft uppercase">
+                <span className="label-micro text-ink-soft">
                   {item.need}
                 </span>
                 <span className="flex items-center justify-between gap-2 text-sm font-semibold">
@@ -73,7 +73,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Products */}
-      <Section space="tight">
+      <Section>
         <Reveal>
           <h2 className="display-md">
             Products
@@ -87,7 +87,7 @@ export default function ServicesPage() {
       </Section>
 
       {/* Outbound services — the live site treats this as its own category. */}
-      <Section variant="sand" bordered space="tight">
+      <Section variant="sand" bordered>
         <div className="grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
           <div>
             <SectionHeading
@@ -120,13 +120,13 @@ export default function ServicesPage() {
                   <Send className="size-[22px]" aria-hidden />
                 </span>
               </div>
-              <div className="p-8 lg:p-8">
-                <p className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+              <div className="p-8">
+                <p className="label-micro text-ink-soft">
                   Can be used for
                 </p>
                 <ul className="mt-4 flex flex-col gap-3">
                   {outbound.features.map((purpose) => (
-                    <li key={purpose} className="flex items-start gap-3 text-sm leading-6">
+                    <li key={purpose} className="flex items-start gap-3 text-sm">
                       <Check className="mt-1 size-3.5 shrink-0 text-brand-deep" aria-hidden />
                       {purpose}
                     </li>
@@ -139,7 +139,7 @@ export default function ServicesPage() {
       </Section>
 
       {/* Not-sure-which fallback: the desk answers it in one call. */}
-      <Section space="tight">
+      <Section>
         <Reveal delay={0.1}>
           <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-hairline bg-white px-8 py-8 sm:flex-row sm:items-center">
             <div className="flex items-start gap-4">
@@ -148,7 +148,7 @@ export default function ServicesPage() {
               </span>
               <div>
                 <p className="font-semibold tracking-tight">Not sure which you need?</p>
-                <p className="mt-1 text-sm leading-6 text-ink-soft">
+                <p className="mt-1 text-sm text-ink-soft">
                   Tell us where you&apos;re going and what it&apos;s for, and we&apos;ll point you
                   to the cheapest route.
                 </p>

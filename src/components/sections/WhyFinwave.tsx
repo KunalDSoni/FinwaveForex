@@ -65,14 +65,14 @@ export function WhyFinwave() {
             <Card hover glow className="relative h-full gap-0 p-8 lg:p-10">
               <span
                 aria-hidden="true"
-                className="tnum absolute top-8 right-8 text-xs font-medium text-ink-soft/45 lg:top-10 lg:right-10"
+                className="tnum absolute top-8 right-8 text-xs font-medium text-ink-soft lg:top-10 lg:right-10"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
               <span className="relative flex size-14 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-colors duration-300 group-hover:bg-brand group-hover:text-ink">
                 <pillar.icon className="size-6" aria-hidden />
               </span>
-              <p className="relative mt-7 text-xs font-semibold tracking-[0.16em] text-brand-deep uppercase">
+              <p className="relative mt-7 label-micro text-brand-deep">
                 {pillar.eyebrow}
               </p>
               <h3 className="display-sm relative mt-3 text-balance">

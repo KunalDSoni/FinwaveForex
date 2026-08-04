@@ -34,8 +34,8 @@ function Quote({ quote }: { quote: TickerQuote }) {
         className={cn(
           "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium tabular-nums",
           up
-            ? "bg-[rgb(22_163_74_/_0.1)] text-[#15803d]"
-            : "bg-[rgb(220_38_38_/_0.1)] text-[#b91c1c]",
+            ? "bg-pos-tint text-pos"
+            : "bg-neg-tint text-neg",
         )}
       >
         <span aria-hidden>{up ? "▲" : "▼"}</span>
@@ -49,7 +49,7 @@ function TickerRow({ quotes, hidden }: { quotes: TickerQuote[]; hidden?: boolean
   return (
     <div
       aria-hidden={hidden || undefined}
-      className="flex shrink-0 items-center gap-9 pr-9 text-[13px]"
+      className="flex shrink-0 items-center gap-9 pr-9 text-sm"
     >
       {quotes.map((quote) => (
         <Quote key={quote.pair} quote={quote} />
@@ -83,7 +83,7 @@ export function MarketTicker({ className }: { className?: string }) {
       <p className="sr-only">
         Indicative INR exchange rates. Illustrative only — call us for a live quote.
       </p>
-      <span className="hidden shrink-0 items-center gap-2 border-r border-hairline py-3 pr-5 pl-4 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase sm:flex sm:pl-6">
+      <span className="hidden shrink-0 items-center gap-2 border-r border-hairline py-3 pr-5 pl-4 label-micro text-ink-soft sm:flex sm:pl-6">
         <span className="animate-live size-1.5 rounded-full bg-pos" aria-hidden />
         Rates
       </span>

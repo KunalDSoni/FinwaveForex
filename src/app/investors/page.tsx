@@ -33,7 +33,7 @@ export default function InvestorsPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-page px-5 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
         <Breadcrumb trail={[{ label: "Investors" }]} />
         <SectionHeading
           as="h1"
@@ -49,8 +49,8 @@ export default function InvestorsPage() {
 
         <dl className="hairline-grid mt-12 sm:grid-cols-3">
           {disclosures.map((row, index) => (
-            <Reveal key={row.label} delay={index * 0.07} className="hairline-cell px-6 py-6">
-              <dt className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.12em] text-ink-soft uppercase">
+            <Reveal key={row.label} delay={index * 0.07} className="hairline-cell p-6">
+              <dt className="flex items-center gap-2 label-micro text-ink-soft">
                 <row.icon className="size-4 shrink-0 text-brand-deep" aria-hidden />
                 {row.label}
               </dt>
@@ -60,7 +60,7 @@ export default function InvestorsPage() {
         </dl>
       </section>
 
-      <Section space="tight">
+      <Section>
         {/* Latest year leads; earlier years sit beneath as an archive. */}
         <Reveal>
           <a
@@ -74,7 +74,7 @@ export default function InvestorsPage() {
                 <FileText className="size-6" aria-hidden />
               </span>
               <div>
-                <p className="text-[11px] font-semibold tracking-[0.14em] text-brand-deep uppercase">
+                <p className="label-micro text-brand-deep">
                   Latest report
                 </p>
                 <h2 className="mt-2 text-2xl font-semibold tracking-[-0.025em]">
@@ -93,7 +93,7 @@ export default function InvestorsPage() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h2 className="mt-14 text-xs font-semibold tracking-[0.16em] text-ink-soft uppercase">
+          <h2 className="mt-14 label-micro text-ink-soft">
             Earlier years
           </h2>
         </Reveal>
@@ -105,7 +105,7 @@ export default function InvestorsPage() {
                   href={asset(report.file)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/row hairline-cell flex h-full items-center justify-between gap-5 px-7 py-7 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+                  className="group/row hairline-cell flex h-full items-center justify-between gap-5 p-6 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
                 >
                   <span className="flex items-center gap-4">
                     <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-colors duration-300 group-hover/row:bg-brand group-hover/row:text-ink">
@@ -134,7 +134,7 @@ export default function InvestorsPage() {
         </ul>
 
         <Reveal delay={0.15}>
-          <p className="measure mt-8 text-sm leading-6 text-ink-soft">
+          <p className="measure mt-8 text-sm text-ink-soft">
             Looking for something else? Write to{" "}
             <a
               href={`mailto:${siteConfig.email}`}

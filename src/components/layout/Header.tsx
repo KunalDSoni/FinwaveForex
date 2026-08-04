@@ -30,7 +30,7 @@ export function Header() {
         scrolled ? "border-b border-hairline bg-paper/85 backdrop-blur-md" : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-[72px] max-w-page items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-[72px] max-w-page items-center justify-between gap-4 gutter">
         <Link href="/" aria-label="Finwave Forex, home" className="flex shrink-0 items-center">
           <Image
             src={asset("/logo.png")}

@@ -19,7 +19,7 @@ export function LegalArticle({ page }: { page: LegalPage }) {
 
   return (
     <>
-      <section className="mx-auto max-w-page px-4 pt-28 sm:px-6 lg:pt-36">
+      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
         <Reveal>
           <Eyebrow>Legal</Eyebrow>
           <h1 className="display-lg mt-5 text-balance">
@@ -27,18 +27,18 @@ export function LegalArticle({ page }: { page: LegalPage }) {
           </h1>
           <p className="measure mt-6 text-lg leading-8 text-ink-soft">{page.intro}</p>
           {page.updated ? (
-            <p className="mt-6 text-xs font-semibold tracking-[0.14em] text-ink-soft uppercase">
+            <p className="mt-6 label-micro text-ink-soft">
               Last updated {page.updated}
             </p>
           ) : null}
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-page px-4 pt-14 pb-24 sm:px-6 lg:pt-16 lg:pb-32">
+      <section className="mx-auto max-w-page gutter pt-14 pb-16 lg:pt-16 lg:pb-20">
         <div className={showContents ? "grid gap-10 lg:grid-cols-[14rem_1fr] lg:gap-16" : "max-w-3xl"}>
           {showContents ? (
             <nav aria-label="On this page" className="lg:sticky lg:top-28 lg:self-start">
-              <p className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+              <p className="label-micro text-ink-soft">
                 On this page
               </p>
               <ol className="mt-4 flex flex-col gap-1">
@@ -46,9 +46,9 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                   <li key={section.heading}>
                     <a
                       href={`#${slugify(section.heading)}`}
-                      className="flex gap-2.5 rounded-lg px-3 py-2 text-sm leading-6 text-ink-soft transition-colors hover:bg-white hover:text-brand-deep focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+                      className="flex gap-2.5 rounded-lg px-3 py-2 text-sm text-ink-soft transition-colors hover:bg-white hover:text-brand-deep focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
                     >
-                      <span className="tnum shrink-0 text-xs text-ink-soft/60">
+                      <span className="tnum shrink-0 text-xs text-ink-soft">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                       {section.heading}
@@ -122,31 +122,33 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                 <h2 className="text-base font-semibold tracking-[-0.01em]">
                   Questions about this policy?
                 </h2>
-                <p className="mt-2 text-sm leading-6 text-ink-soft">
+                <p className="mt-2 text-sm text-ink-soft">
                   Write to us or call the desk and we&apos;ll put you through to the right person.
                 </p>
-                <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm">
+                {/* min-h-11: these three were 20px, 20px and 16px tall, the
+                    only controls on the site failing WCAG 2.5.8 (24px). */}
+                <div className="mt-4 flex flex-wrap gap-x-6 text-sm">
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="flex items-center gap-2 font-medium text-brand-deep transition-colors hover:text-ink"
+                    className="flex min-h-11 items-center gap-2 font-medium text-brand-deep transition-colors hover:text-ink"
                   >
                     <Mail className="size-4 shrink-0" aria-hidden />
                     {siteConfig.email}
                   </a>
                   <a
                     href={siteConfig.phoneHref}
-                    className="flex items-center gap-2 font-medium text-brand-deep transition-colors hover:text-ink"
+                    className="flex min-h-11 items-center gap-2 font-medium text-brand-deep transition-colors hover:text-ink"
                   >
                     <PhoneCall className="size-4 shrink-0" aria-hidden />
                     {siteConfig.phone}
                   </a>
                 </div>
-                <p className="measure mt-6 border-t border-hairline pt-5 text-xs leading-6 text-ink-soft">
+                <p className="measure mt-5 border-t border-hairline pt-5 text-xs leading-6 text-ink-soft">
                   {siteConfig.legalName} · {siteConfig.address.line1}, {siteConfig.address.line2},{" "}
                   {siteConfig.address.city} {siteConfig.address.postalCode} ·{" "}
                   <Link
                     href="/contact"
-                    className="underline underline-offset-4 transition-colors hover:text-ink"
+                    className="inline-block py-2 underline underline-offset-4 transition-colors hover:text-ink"
                   >
                     Contact us
                   </Link>

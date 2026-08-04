@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-hairline bg-sand/60">
-      <div className="mx-auto max-w-page px-4 py-16 sm:px-6">
+      <div className="mx-auto max-w-page gutter py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1.2fr_1fr]">
           <div>
             <Link href="/" aria-label="Finwave Forex, home" className="inline-flex">
@@ -22,10 +22,10 @@ export function Footer() {
                 className="h-8 w-auto"
               />
             </Link>
-            <p className="mt-3 max-w-xs text-sm leading-6 text-ink-soft">{siteConfig.tagline}</p>
+            <p className="mt-3 max-w-xs text-sm text-ink-soft">{siteConfig.tagline}</p>
           </div>
           <nav aria-label="Footer">
-            <h2 className="text-xs font-semibold tracking-widest text-ink-soft uppercase">Explore</h2>
+            <h2 className="label-micro text-ink-soft">Explore</h2>
             <ul className="mt-4 space-y-2.5">
               {siteConfig.nav.map((item) => (
                 <li key={item.href}>
@@ -37,7 +37,7 @@ export function Footer() {
             </ul>
           </nav>
           <div>
-            <h2 className="text-xs font-semibold tracking-widest text-ink-soft uppercase">Contact</h2>
+            <h2 className="label-micro text-ink-soft">Contact</h2>
             <ul className="mt-4 space-y-2.5 text-sm text-ink-soft">
               <li>
                 <a href={siteConfig.phoneHref} className="flex items-center gap-2 py-1 transition-colors hover:text-ink">
@@ -62,7 +62,7 @@ export function Footer() {
             </ul>
           </div>
           <nav aria-label="Legal">
-            <h2 className="text-xs font-semibold tracking-widest text-ink-soft uppercase">Legal</h2>
+            <h2 className="label-micro text-ink-soft">Legal</h2>
             <ul className="mt-4 space-y-2.5">
               {siteConfig.footerLegal.map((item) => (
                 <li key={item.href}>

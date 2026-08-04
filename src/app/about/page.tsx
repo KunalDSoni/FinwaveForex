@@ -64,7 +64,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 opacity-[0.35] [background-image:linear-gradient(to_right,var(--color-hairline)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-hairline)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:radial-gradient(70%_60%_at_50%_35%,black,transparent)]" />
         </div>
 
-        <div className="mx-auto max-w-page px-5 pt-28 pb-16 sm:px-6 lg:px-8 lg:pt-36 lg:pb-20">
+        <div className="mx-auto max-w-page gutter pt-28 pb-16 lg:pt-36 lg:pb-20">
           <Breadcrumb trail={[{ label: "About Us" }]} />
           <SectionHeading
             as="h1"
@@ -80,8 +80,8 @@ export default function AboutPage() {
 
           <dl className="hairline-grid mt-14 sm:grid-cols-2 lg:grid-cols-4">
             {credentials.map((row, index) => (
-              <Reveal key={row.label} delay={index * 0.07} className="hairline-cell px-6 py-6">
-                <dt className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.12em] text-ink-soft uppercase">
+              <Reveal key={row.label} delay={index * 0.07} className="hairline-cell p-6">
+                <dt className="flex items-center gap-2 label-micro text-ink-soft">
                   <row.icon className="size-4 shrink-0 text-brand-deep" aria-hidden />
                   {row.label}
                 </dt>
@@ -152,7 +152,7 @@ export default function AboutPage() {
                   <Icon className="size-5" aria-hidden />
                 </span>
                 <h3 className="mt-6 font-semibold tracking-[-0.01em]">{principle.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-ink-soft">{principle.body}</p>
+                <p className="mt-2 text-sm text-ink-soft">{principle.body}</p>
               </Reveal>
             );
           })}

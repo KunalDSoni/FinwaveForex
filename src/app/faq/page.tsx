@@ -30,7 +30,7 @@ export default function FaqPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-page px-5 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
         <Breadcrumb trail={[{ label: "FAQ's" }]} />
         <SectionHeading
           as="h1"
@@ -45,11 +45,11 @@ export default function FaqPage() {
         />
       </section>
 
-      <Section space="tight">
+      <Section>
         <div className="grid gap-10 lg:grid-cols-[13rem_1fr] lg:gap-16">
           {/* Category index; sticks alongside the answers on large screens. */}
           <nav aria-label="FAQ categories" className="lg:sticky lg:top-28 lg:self-start">
-            <p className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+            <p className="label-micro text-ink-soft">
               Topics
             </p>
             <ul className="mt-4 flex flex-wrap gap-2 lg:flex-col lg:gap-1">
@@ -130,7 +130,7 @@ export default function FaqPage() {
               <div className="mt-6 flex flex-col items-start justify-between gap-5 rounded-2xl border border-hairline bg-sand/50 px-8 py-7 sm:flex-row sm:items-center">
                 <div>
                   <p className="font-semibold tracking-tight">Still not answered?</p>
-                  <p className="mt-1 text-sm leading-6 text-ink-soft">
+                  <p className="mt-1 text-sm text-ink-soft">
                     Call the desk, or send your question and we&apos;ll reply with today&apos;s
                     rate too.
                   </p>

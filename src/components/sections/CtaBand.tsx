@@ -29,7 +29,7 @@ const DEFAULT_BODY =
  */
 export function CtaBand({ lines = DEFAULT_LINES, body = DEFAULT_BODY }: CtaBandProps = {}) {
   return (
-    <section className="px-4 pb-24 sm:px-6 lg:pb-32">
+    <section className="gutter pb-16 lg:pb-20">
       <div className="relative mx-auto max-w-page overflow-hidden rounded-3xl bg-ink-surface px-6 py-16 sm:px-12 lg:py-20">
         <div
           className="animate-gradient-shift pointer-events-none absolute inset-0 bg-[radial-gradient(80%_120%_at_85%_0%,rgb(234_163_0_/_0.38),transparent)]"
@@ -74,7 +74,7 @@ export function CtaBand({ lines = DEFAULT_LINES, body = DEFAULT_BODY }: CtaBandP
                   </a>
                 </Button>
               </div>
-              <p className="flex items-center gap-2 text-xs text-white/45 lg:justify-end">
+              <p className="flex items-center gap-2 text-xs text-white/60 lg:justify-end">
                 <ShieldCheck className="size-3.5 shrink-0 text-brand" aria-hidden />
                 RBI-approved · {siteConfig.legalName}
               </p>

@@ -38,7 +38,7 @@ export function LeadershipCard({ leader, index }: { leader: Leader; index: numbe
         <p className="relative mt-7 text-base leading-7 text-ink-soft">{leader.bio}</p>
 
         <div className="relative mt-7 border-t border-hairline pt-6">
-          <p className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+          <p className="label-micro text-ink-soft">
             Areas of expertise
           </p>
           <ul className="mt-4 flex flex-wrap gap-2">

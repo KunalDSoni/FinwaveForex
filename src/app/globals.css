@@ -31,8 +31,15 @@
   --shadow-rich: 0 24px 60px -28px rgb(61 48 36 / 0.3);
   --shadow-rich-lg: 0 44px 96px -36px rgb(61 48 36 / 0.42);
   --shadow-soft: 0 10px 30px -18px rgb(61 48 36 / 0.22);
-  --color-pos: #15803d;
+  /* 4.22:1 on its own 10% tint pill at 12px — under AA. #146c34 is 5.48:1
+     there and 6.51:1 on white, matching the loss colour's weight. */
+  --color-pos: #146c34;
   --color-neg: #b91c1c;
+  /* The up/down pill grounds. These were arbitrary values duplicated in two
+     files, and the ticker hardcoded the old green hex instead of the token,
+     so a colour fix reached the rates table but not the tape. */
+  --color-pos-tint: rgb(20 108 52 / 0.12);
+  --color-neg-tint: rgb(185 28 28 / 0.1);
   /* Crisp warm near-white for elevated surfaces that need to read brighter
      than the cream page ground (hero, quote card, stat cells). */
   --color-canvas: #fbf8f2;
@@ -49,6 +56,11 @@
      content out from 240px to 1680px at a 1920px viewport (1440px wide). With
      the 32px gutter below, a 1504px container reproduces that exactly. */
   --container-page: 94rem;
+  /* 14px is the site's workhorse size and it was set at two different leadings
+     depending on whether the author happened to add `leading-6`: an audit found
+     152 elements at 14/20 and 90 at 14/24, with no rule separating them. One
+     value, owned here, so `text-sm` cannot drift again. */
+  --text-sm--line-height: calc(24 / 14);
 }
 
 @keyframes live-pulse {
@@ -289,6 +301,52 @@
     line-height: 1.28;
     letter-spacing: -0.01em;
   }
+  /* Statistic numerals. The count-up figures were the one piece of display type
+     set in the sans at weight 600 with its own tracking, so the loudest numbers
+     on the page spoke in a different voice from every headline around them.
+     They now belong to the display scale like everything else. */
+  .display-stat {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(3rem, 5vw, 4.25rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-feature-settings: "tnum" 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---- The one small-uppercase label ------------------------------------
+     This single role — eyebrows, table headers, field labels, breadcrumbs,
+     footer column headings, figure captions — was implemented six ways: at
+     11px and 12px, with tracking of 0.1em, 0.12em, 0.14em, 0.16em and
+     `tracking-widest`. 11px is below the size this site should set anything
+     at, so the survivor is 12px. */
+  .label-micro {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* ---- Page gutter -------------------------------------------------------
+     The single horizontal inset. Four different gutters were in use, so the
+     hero sat 8px left of the header logo and the footer 8px left of the page
+     it closed — on every route. Anything spanning the page width uses this. */
+  .gutter {
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .gutter {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .gutter {
+      padding-inline: 2rem;
+    }
+  }
+
   /* Body lead paragraph beside a display heading. */
   .lead {
     font-size: 1.0625rem;
@@ -409,8 +467,14 @@
     border-radius: var(--radius-2xl);
     overflow: hidden;
   }
+  /* Canvas, not paper. The page ground is a gradient running #fdfbf6 → paper,
+     so a paper-coloured cell read as an inset panel at the top of a page and
+     disappeared entirely at the bottom — the same component, two appearances
+     depending on scroll position. Canvas is lighter than the ground
+     everywhere, so cells read as raised consistently, and it is already what
+     the step grids use. It also lifts body copy from 5.63:1 to 6.70:1. */
   .hairline-cell {
-    background-color: var(--color-paper);
+    background-color: var(--color-canvas);
     transition: background-color 0.25s ease;
   }
   .hairline-cell:hover {

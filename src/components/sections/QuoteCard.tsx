@@ -73,13 +73,13 @@ function AmountField({
 }: FieldProps) {
   return (
     <div className="px-5 py-5 transition-colors focus-within:bg-brand-tint/25 sm:px-6">
-      <label htmlFor={id} className="text-[13px] font-medium text-ink-soft">
+      <label htmlFor={id} className="text-sm font-medium text-ink-soft">
         {label}
       </label>
       <div className="mt-2.5 flex items-center justify-between gap-3">
         <span
           className={cn(
-            "relative inline-flex shrink-0 items-center gap-2 rounded-full border border-hairline bg-canvas py-2 pr-3 pl-3.5 text-[15px] font-semibold transition-colors",
+            "relative inline-flex shrink-0 items-center gap-2 rounded-full border border-hairline bg-canvas py-2 pr-3 pl-3.5 text-sm font-semibold transition-colors",
             onCurrencyChange
               ? "cursor-pointer hover:border-brand focus-within:border-brand focus-within:ring-3 focus-within:ring-brand/25"
               : "cursor-default",
@@ -211,7 +211,7 @@ export function QuoteCard() {
                 aria-selected={mode === item.id}
                 onClick={() => selectMode(item.id)}
                 className={cn(
-                  "rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition-colors focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none",
+                  "rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none",
                   mode === item.id
                     ? "bg-ink text-paper"
                     : "text-ink-soft hover:bg-sand/70 hover:text-ink",
@@ -221,7 +221,7 @@ export function QuoteCard() {
               </button>
             ))}
           </div>
-          <span className="flex items-center gap-1.5 pr-1.5 text-[11px] font-medium text-ink-soft">
+          <span className="flex items-center gap-1.5 pr-1.5 text-xs font-medium text-ink-soft">
             <span
               className={cn("size-1.5 rounded-full", live ? "animate-live bg-pos" : "bg-hairline")}
               aria-hidden
@@ -257,11 +257,11 @@ export function QuoteCard() {
         {/* What and where — the two things the desk needs beyond the amount. */}
         <div className="grid grid-cols-2 divide-x divide-hairline-soft border-t border-hairline-soft">
           <label className="relative flex cursor-pointer flex-col gap-1.5 px-5 py-3.5 sm:px-6">
-            <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-soft uppercase">
+            <span className="label-micro text-ink-soft">
               Product
             </span>
             <span className="flex items-center justify-between gap-2">
-              <span className="truncate text-[13px] font-semibold">{product}</span>
+              <span className="truncate text-sm font-semibold">{product}</span>
               <ChevronDown className="size-3.5 shrink-0 text-ink-soft" aria-hidden />
               <select
                 aria-label="Product"
@@ -278,11 +278,11 @@ export function QuoteCard() {
             </span>
           </label>
           <label className="relative flex cursor-pointer flex-col gap-1.5 px-5 py-3.5 sm:px-6">
-            <span className="text-[11px] font-semibold tracking-[0.1em] text-ink-soft uppercase">
+            <span className="label-micro text-ink-soft">
               City
             </span>
             <span className="flex items-center justify-between gap-2">
-              <span className="truncate text-[13px] font-semibold">{city}</span>
+              <span className="truncate text-sm font-semibold">{city}</span>
               <ChevronDown className="size-3.5 shrink-0 text-ink-soft" aria-hidden />
               <select
                 aria-label="City"
@@ -302,8 +302,8 @@ export function QuoteCard() {
 
         {/* Rate */}
         <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-hairline-soft px-5 py-3.5 sm:px-6">
-          <span className="text-[13px] text-ink-soft">Rate today</span>
-          <span className="tnum text-[13px] font-semibold">
+          <span className="text-sm text-ink-soft">Rate today</span>
+          <span className="tnum text-sm font-semibold">
             1 {currency.code} = ₹{formatPrice(inrPerUnit)}
           </span>
         </div>
@@ -320,7 +320,7 @@ export function QuoteCard() {
             aria-hidden
           />
         </Link>
-        <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-[11px] leading-4 text-ink-soft">
+        <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs leading-4 text-ink-soft">
           <ShieldCheck className="size-3.5 shrink-0 text-brand-deep" aria-hidden />
           RBI-approved money changer · we&apos;ll work to better any quote
         </p>

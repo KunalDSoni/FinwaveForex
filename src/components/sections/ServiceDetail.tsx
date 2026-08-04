@@ -26,7 +26,7 @@ export function ServiceDetail({ service }: { service: Service }) {
 
   return (
     <>
-      <section className="mx-auto max-w-page px-4 pt-28 sm:px-6 lg:pt-36">
+      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
         <Breadcrumb
           trail={[
             { label: "Products & Services", href: "/services" },
@@ -74,7 +74,7 @@ export function ServiceDetail({ service }: { service: Service }) {
       </section>
 
       {features.length ? (
-        <Section space="tight">
+        <Section>
           <Reveal>
             <h2 className="display-md">
               What&apos;s included
@@ -87,7 +87,7 @@ export function ServiceDetail({ service }: { service: Service }) {
                   <span className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-brand-tint ring-1 ring-brand/20">
                     <Check className="size-3.5 text-brand-deep" aria-hidden />
                   </span>
-                  <span className="text-sm leading-6">{feature}</span>
+                  <span className="text-sm">{feature}</span>
                 </Reveal>
               </li>
             ))}
@@ -100,7 +100,7 @@ export function ServiceDetail({ service }: { service: Service }) {
         </Section>
       ) : null}
 
-      <Section variant="sand" bordered space="tight">
+      <Section variant="sand" bordered>
         <Reveal>
           <h2 className="display-md">
             How it works
@@ -109,7 +109,7 @@ export function ServiceDetail({ service }: { service: Service }) {
         <ol className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-hairline bg-hairline sm:grid-cols-3">
           {service.steps.map((step, index) => (
             <li key={step.title} className="bg-canvas">
-              <Reveal delay={index * 0.1} className="h-full p-8 lg:p-8">
+              <Reveal delay={index * 0.1} className="h-full p-8">
                 <div className="flex items-center gap-3">
                   <span className="tnum flex size-9 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-ink">
                     {index + 1}
@@ -120,41 +120,47 @@ export function ServiceDetail({ service }: { service: Service }) {
                   />
                 </div>
                 <h3 className="mt-6 font-semibold tracking-[-0.01em]">{step.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-ink-soft">{step.body}</p>
+                <p className="mt-2 text-sm text-ink-soft">{step.body}</p>
               </Reveal>
             </li>
           ))}
         </ol>
       </Section>
 
+      {/* Left-aligned, not a centred column. This block used to centre itself
+          in the page while every other section on the route started at the
+          gutter, so its heading sat 272px right of the one above it. The
+          accordion caps its own width instead. */}
       {faqs.length ? (
-        <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:py-24">
+        <Section>
           <Reveal>
             <h2 className="display-md">
               Frequently asked questions
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <Accordion type="single" collapsible className="mt-8">
+            <Accordion type="single" collapsible className="mt-8 max-w-3xl">
               {faqs.map((faq) => (
                 <AccordionItem key={faq.q} value={faq.q}>
                   <AccordionTrigger className="text-left text-base font-semibold">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm leading-7 text-ink-soft">
+                  {/* `measure` to match the FAQ page, where the same component
+                      caps its answers. Without it these ran ~120 characters. */}
+                  <AccordionContent className="measure text-sm leading-7 text-ink-soft">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
           </Reveal>
-        </section>
+        </Section>
       ) : null}
 
       {/* Cross-navigation: never leave a detail page as a dead end. */}
       <Section space="flushTop">
         <Reveal>
-          <h2 className="text-xs font-semibold tracking-[0.16em] text-ink-soft uppercase">
+          <h2 className="label-micro text-ink-soft">
             Other services
           </h2>
         </Reveal>

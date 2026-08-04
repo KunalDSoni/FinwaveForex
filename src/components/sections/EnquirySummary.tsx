@@ -46,13 +46,13 @@ export function EnquirySummary() {
   )}&body=${encodeURIComponent(body)}`;
 
   return (
-    <div className="shadow-card mb-5 rounded-2xl border border-hairline bg-white p-8 ring-1 ring-brand/25 lg:p-8">
+    <div className="shadow-card mb-5 rounded-2xl border border-hairline bg-white p-8 ring-1 ring-brand/25">
       <div className="flex items-center gap-3">
         <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-brand text-ink">
           <Receipt className="size-5" aria-hidden />
         </span>
         <div>
-          <p className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+          <p className="label-micro text-ink-soft">
             Your enquiry
           </p>
           <p className="mt-0.5 text-sm font-semibold">Quote it with the desk</p>
@@ -62,7 +62,7 @@ export function EnquirySummary() {
       <dl className="mt-6 grid gap-px overflow-hidden rounded-xl border border-hairline bg-hairline sm:grid-cols-2">
         {rows.map((row) => (
           <div key={row.label} className="bg-canvas px-5 py-4">
-            <dt className="text-[11px] font-semibold tracking-[0.1em] text-ink-soft uppercase">
+            <dt className="label-micro text-ink-soft">
               {row.label}
             </dt>
             <dd className="tnum mt-1 text-sm font-semibold">{row.value}</dd>

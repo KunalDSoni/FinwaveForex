@@ -76,13 +76,13 @@ export function RatesTable() {
     : null;
 
   return (
-    <div className="mx-auto max-w-page px-5 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-page gutter">
       <Reveal>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <label
               htmlFor="rate-search"
-              className="text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase"
+              className="label-micro text-ink-soft"
             >
               Find a currency
             </label>
@@ -111,22 +111,22 @@ export function RatesTable() {
       <Reveal delay={0.1}>
         <div className="shadow-card mt-6 overflow-hidden rounded-2xl border border-hairline bg-white">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[36rem] text-left">
+            <table className="w-full text-left sm:min-w-[36rem]">
               <caption className="sr-only">
                 Indicative mid-market reference rates in rupees per unit of foreign currency
               </caption>
               <thead>
-                <tr className="border-b border-hairline text-[11px] font-semibold tracking-[0.12em] text-ink-soft uppercase">
-                  <th scope="col" className="px-6 py-4">
+                <tr className="border-b border-hairline label-micro text-ink-soft [&_th]:font-semibold">
+                  <th scope="col" className="px-3 py-4 sm:px-6">
                     Currency
                   </th>
-                  <th scope="col" className="px-6 py-4 text-right">
+                  <th scope="col" className="px-3 py-4 text-right sm:px-6">
                     Reference rate
                   </th>
-                  <th scope="col" className="px-6 py-4 text-right">
+                  <th scope="col" className="px-3 py-4 text-right sm:px-6">
                     24h
                   </th>
-                  <th scope="col" className="px-6 py-4 text-right">
+                  <th scope="col" className="hidden px-6 py-4 text-right sm:table-cell">
                     Your rate
                   </th>
                 </tr>
@@ -136,7 +136,7 @@ export function RatesTable() {
                   const up = (row.change ?? 0) >= 0;
                   return (
                     <tr key={row.code} className="transition-colors hover:bg-sand/40">
-                      <th scope="row" className="px-6 py-4 font-normal">
+                      <th scope="row" className="px-3 py-4 font-normal sm:px-6">
                         <span className="flex items-center gap-3">
                           <span className="text-lg leading-none" aria-hidden>
                             {row.flag}
@@ -149,10 +149,10 @@ export function RatesTable() {
                           </span>
                         </span>
                       </th>
-                      <td className="tnum px-6 py-4 text-right text-sm font-semibold">
+                      <td className="tnum px-3 py-4 text-right text-sm font-semibold sm:px-6">
                         ₹{formatPrice(row.inr)}
                       </td>
-                      <td className="px-6 py-4 text-right">
+                      <td className="px-3 py-4 text-right sm:px-6">
                         {row.change === null ? (
                           <span className="text-xs text-ink-soft">—</span>
                         ) : (
@@ -160,8 +160,8 @@ export function RatesTable() {
                             className={cn(
                               "tnum inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium",
                               up
-                                ? "bg-[rgb(22_163_74_/_0.1)] text-pos"
-                                : "bg-[rgb(220_38_38_/_0.1)] text-neg",
+                                ? "bg-pos-tint text-pos"
+                                : "bg-neg-tint text-neg",
                             )}
                           >
                             <span aria-hidden>{up ? "▲" : "▼"}</span>
@@ -169,13 +169,13 @@ export function RatesTable() {
                           </span>
                         )}
                       </td>
-                      <td className="px-6 py-4 text-right">
+                      <td className="hidden px-6 py-4 text-right sm:table-cell">
                         <Link
                           href={{
                             pathname: "/contact",
                             query: { product: "Currency notes", currency: row.code },
                           }}
-                          className="inline-block rounded-full bg-brand-tint px-3.5 py-1.5 text-xs font-semibold text-brand-deep transition-colors hover:bg-brand hover:text-ink"
+                          className="inline-flex min-h-9 items-center rounded-full bg-brand-tint px-4 text-xs font-semibold text-brand-deep transition-colors hover:bg-brand hover:text-ink focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
                         >
                           Ask us
                         </Link>
@@ -199,7 +199,7 @@ export function RatesTable() {
         <div className="mt-5 flex flex-col gap-5 rounded-2xl border border-hairline bg-brand-tint/50 p-6 sm:flex-row sm:items-center sm:justify-between lg:p-8">
           <div className="flex items-start gap-3">
             <Info className="mt-0.5 size-5 shrink-0 text-brand-deep" aria-hidden />
-            <p className="measure text-sm leading-6 text-brand-deep">
+            <p className="measure text-sm text-brand-deep">
               These are indicative mid-market reference rates, not the price you transact at. Buying
               and selling rates carry a spread that depends on the currency, the amount and the
               product — so we quote your rate on the call, and we&apos;ll work to better any quote

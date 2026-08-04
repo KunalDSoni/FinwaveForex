@@ -11,12 +11,12 @@ export function StatsBand({ space }: { space?: "default" | "tight" | "flushTop" 
           <Reveal
             key={stat.label}
             delay={index * 0.1}
-            className="hairline-cell px-7 py-10 sm:px-8 lg:py-12"
+            className="hairline-cell p-8"
           >
-            <p className="tnum text-6xl font-semibold tracking-[-0.045em] lg:text-7xl">
+            <p className="display-stat">
               <CountUp value={stat.value} suffix={stat.suffix} />
             </p>
-            <p className="mt-3 max-w-[14rem] text-sm leading-6 text-ink-soft">
+            <p className="mt-4 max-w-[14rem] text-sm text-ink-soft">
               {stat.label}
             </p>
           </Reveal>

@@ -30,18 +30,18 @@ export function CitiesSection() {
             <Reveal
               key={city}
               delay={index * 0.06}
-              className="hairline-cell relative flex items-center gap-3 px-6 py-6"
+              className="hairline-cell relative flex items-center gap-3 p-6"
             >
               <span
                 aria-hidden="true"
-                className="tnum absolute top-6 left-6 text-[11px] font-medium text-ink-soft/40"
+                className="tnum absolute top-6 left-6 text-xs font-medium text-ink-soft"
               >
                 {String(index + 1).padStart(2, "0")}
               </span>
               <MapPin className="size-4 shrink-0 text-brand-deep" aria-hidden />
               <span className="font-medium tracking-tight">{city}</span>
               {isBase ? (
-                <span className="ml-auto rounded-full bg-brand-tint px-2.5 py-1 text-[11px] font-semibold text-brand-deep">
+                <span className="ml-auto rounded-full bg-brand-tint px-2.5 py-1 text-xs font-semibold text-brand-deep">
                   Head office
                 </span>
               ) : null}

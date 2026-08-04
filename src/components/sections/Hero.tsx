@@ -28,10 +28,10 @@ export function Hero() {
       {/* On mobile the quote card follows the headline so the primary tool is
           reachable without scrolling past the trust list; on large screens it
           sits alongside, spanning both rows of the left column. */}
-      <div className="relative mx-auto grid max-w-page gap-12 px-4 pt-14 pb-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-16 lg:gap-y-10 lg:pt-20 lg:pb-28">
+      <div className="relative mx-auto grid max-w-page gutter gap-12 pt-14 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-16 lg:gap-y-10 lg:pt-20 lg:pb-28">
         <div data-particle-safe className="lg:col-start-1 lg:row-start-1">
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-white/70 py-1.5 pr-4 pl-2 text-[13px] font-semibold backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-white/70 py-1.5 pr-4 pl-2 text-sm font-semibold backdrop-blur-sm">
               <span className="flex size-6 items-center justify-center rounded-full bg-brand-tint">
                 <ShieldCheck className="size-3.5 text-brand-deep" aria-hidden />
               </span>
@@ -91,7 +91,7 @@ export function Hero() {
         <Reveal delay={0.45} className="lg:col-start-1 lg:row-start-2">
           <ul className="grid gap-3 border-t border-hairline pt-7 sm:grid-cols-3 sm:gap-x-5">
             {trustPoints.map(({ icon: Icon, label }) => (
-              <li key={label} className="flex items-start gap-2.5 text-sm leading-6 text-ink-soft">
+              <li key={label} className="flex items-start gap-2.5 text-sm text-ink-soft">
                 <Icon className="mt-0.5 size-4 shrink-0 text-brand-deep" aria-hidden />
                 {label}
               </li>

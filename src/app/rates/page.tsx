@@ -17,7 +17,7 @@ export const metadata = pageMetadata({
 export default function RatesPage() {
   return (
     <>
-      <section className="mx-auto max-w-page px-5 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
         <Breadcrumb trail={[{ label: "Rates" }]} />
         <SectionHeading
           as="h1"
@@ -32,7 +32,7 @@ export default function RatesPage() {
         />
       </section>
 
-      <section className="pt-14 pb-24 lg:pt-16 lg:pb-32">
+      <section className="pt-14 pb-16 lg:pt-16 lg:pb-20">
         <RatesTable />
       </section>
 

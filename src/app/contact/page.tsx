@@ -26,7 +26,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-page px-5 pt-28 sm:px-6 lg:px-8 lg:pt-36">
+      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
         <Breadcrumb trail={[{ label: "Contact Us" }]} />
         <SectionHeading
           as="h1"
@@ -55,7 +55,7 @@ export default function ContactPage() {
                 <span className="flex size-12 items-center justify-center rounded-2xl bg-brand text-ink">
                   <Phone className="size-[22px]" aria-hidden />
                 </span>
-                <p className="mt-6 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+                <p className="mt-6 label-micro text-ink-soft">
                   Call the desk
                 </p>
               </div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 <span className="flex size-12 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-colors duration-300 group-hover:bg-brand group-hover:text-ink">
                   <Mail className="size-[22px]" aria-hidden />
                 </span>
-                <p className="mt-6 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+                <p className="mt-6 label-micro text-ink-soft">
                   Email us
                 </p>
               </div>
@@ -105,11 +105,11 @@ export default function ContactPage() {
                 <span className="flex size-12 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-colors duration-300 group-hover:bg-brand group-hover:text-ink">
                   <MapPin className="size-[22px]" aria-hidden />
                 </span>
-                <p className="mt-6 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+                <p className="mt-6 label-micro text-ink-soft">
                   Visit the branch
                 </p>
               </div>
-              <address className="mt-3 text-sm leading-6 font-medium not-italic">
+              <address className="mt-3 text-sm font-medium not-italic">
                 {siteConfig.legalName}
                 <br />
                 {address.line1}, {address.line2}
@@ -149,11 +149,11 @@ export default function ContactPage() {
         {/* Coverage + assurances */}
         <div className="hairline-grid mt-5 lg:grid-cols-2">
           <Reveal className="hairline-cell p-8">
-            <p className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+            <p className="flex items-center gap-2 label-micro text-ink-soft">
               <Truck className="size-4 text-brand-deep" aria-hidden />
               Delivery &amp; pick-up
             </p>
-            <p className="mt-3 text-sm leading-6">
+            <p className="mt-3 text-sm">
               {siteConfig.cities.slice(0, -1).join(", ")} and {siteConfig.cities.at(-1)}.
             </p>
             <p className="mt-1.5 text-sm text-ink-soft">
@@ -161,7 +161,7 @@ export default function ContactPage() {
             </p>
           </Reveal>
           <Reveal delay={0.08} className="hairline-cell p-8">
-            <p className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.14em] text-ink-soft uppercase">
+            <p className="flex items-center gap-2 label-micro text-ink-soft">
               <ShieldCheck className="size-4 text-brand-deep" aria-hidden />
               Before you visit
             </p>

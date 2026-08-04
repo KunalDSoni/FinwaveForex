@@ -20,8 +20,8 @@ export function ServiceCard({ service, index, variant = "card" }: ServiceCardPro
 
   if (variant === "cell") {
     return (
-      <div className="group hairline-cell relative flex flex-col p-8 lg:p-8">
-        <span className="tnum absolute top-7 right-7 text-xs font-medium text-ink-soft/45">
+      <div className="group hairline-cell relative flex flex-col p-8">
+        <span className="tnum absolute top-7 right-7 text-xs font-medium text-ink-soft">
           {String(index + 1).padStart(2, "0")}
         </span>
         <span className="relative flex size-12 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20 transition-[background-color,box-shadow] duration-300 group-hover:bg-brand group-hover:text-ink group-hover:ring-brand/40">
@@ -33,7 +33,7 @@ export function ServiceCard({ service, index, variant = "card" }: ServiceCardPro
         <h3 className="relative mt-6 text-lg font-semibold tracking-[-0.02em] text-balance">
           {service.name}
         </h3>
-        <p className="relative mt-2.5 flex-1 text-sm leading-6 text-ink-soft">{service.blurb}</p>
+        <p className="relative mt-2.5 flex-1 text-sm text-ink-soft">{service.blurb}</p>
         <Link
           href={`/services/${service.slug}`}
           className="relative mt-6 inline-flex items-center gap-1.5 py-1 text-sm font-semibold text-brand-deep transition-colors hover:text-ink focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
@@ -63,13 +63,13 @@ export function ServiceCard({ service, index, variant = "card" }: ServiceCardPro
             />
           </span>
         </div>
-        <div className="flex flex-1 flex-col p-8 lg:p-8">
+        <div className="flex flex-1 flex-col p-8">
           <h3 className="text-xl font-semibold tracking-[-0.02em] text-balance">{service.name}</h3>
-          <p className="mt-2.5 text-sm leading-6 text-ink-soft">{service.blurb}</p>
+          <p className="mt-2.5 text-sm text-ink-soft">{service.blurb}</p>
           {highlights.length ? (
             <ul className="mt-5 flex flex-col gap-2 border-t border-hairline pt-5">
               {highlights.map((feature) => (
-                <li key={feature} className="flex items-start gap-2.5 text-sm leading-6">
+                <li key={feature} className="flex items-start gap-2.5 text-sm">
                   <Check className="mt-1 size-3.5 shrink-0 text-brand-deep" aria-hidden />
                   {feature}
                 </li>
