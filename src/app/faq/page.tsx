@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { ArrowUpRight, FileText, Scale } from "lucide-react";
+import { ArrowUpRight, FileText } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +11,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
+import { Eyebrow } from "@/components/ui/eyebrow";
 import { Section } from "@/components/ui/section";
 import { faqCategories, femaFramework, travelGuidelines } from "@/content/faqs";
 import { asset } from "@/lib/base-path";
@@ -93,40 +94,45 @@ export default function FaqPage() {
               </section>
             ))}
 
-            {/* Regulatory context Finwave publishes, kept verbatim. */}
-            <section id="framework" className="mt-16 scroll-mt-28">
-              <Reveal>
-                <div className="grid gap-8 rounded-2xl border border-hairline bg-white p-8 lg:grid-cols-[18rem_1fr] lg:gap-14 lg:p-10">
-                  <div>
-                    <span className="flex size-11 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20">
-                      <Scale className="size-5" aria-hidden />
-                    </span>
-                    <h2 className="mt-5 text-lg font-semibold tracking-[-0.02em]">
-                      The legal framework
-                    </h2>
-                    <p className="mt-2 text-sm text-ink-soft">
-                      Reproduced from the guidance Finwave Forex publishes.
-                    </p>
-                    <a
-                    href={asset(travelGuidelines.file)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/pdf mt-6 inline-flex items-center gap-3 rounded-xl border border-hairline px-5 py-3.5 text-sm font-semibold transition-[border-color,background-color] duration-300 hover:border-brand/50 hover:bg-brand-tint/40 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
-                  >
-                    <FileText className="size-4 shrink-0 text-brand-deep" aria-hidden />
-                    {travelGuidelines.label}
-                    <ArrowUpRight
-                      className="size-4 shrink-0 text-brand-deep transition-transform duration-300 group-hover/pdf:translate-x-0.5 group-hover/pdf:-translate-y-0.5"
-                      aria-hidden
-                    />
-                    </a>
-                  </div>
-                  <p className="measure text-base leading-7 text-ink-soft">{femaFramework}</p>
-                </div>
-              </Reveal>
-            </section>
-
           </div>
+        </div>
+      </Section>
+
+      {/* Regulatory context Finwave publishes, kept verbatim.
+
+          Was a white card inside the answers column: a filled, bordered slab
+          sitting under a list of plain accordion rows, so the footnote outranked
+          the answers. It is now a band — the same treatment as "How it works"
+          and the editorial splits elsewhere on the site — which reads as the
+          closing section of the page rather than an object dropped into it. */}
+      <Section id="framework" variant="sand" bordered className="scroll-mt-28">
+        <div className="grid gap-10 lg:grid-cols-[1fr_minmax(0,42rem)] lg:gap-16">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <Eyebrow>The legal framework</Eyebrow>
+            <h2 className="display-md mt-5 text-balance">
+              The rules we <Em>operate under.</Em>
+            </h2>
+            <p className="measure mt-5 text-base leading-7 text-ink-soft">
+              Reproduced verbatim from the guidance Finwave Forex publishes, alongside the RBI
+              travel-forex guidelines in full.
+            </p>
+            <a
+              href={asset(travelGuidelines.file)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/pdf mt-7 inline-flex items-center gap-3 rounded-xl border border-hairline bg-canvas px-5 py-3.5 text-sm font-semibold transition-[border-color,background-color] duration-300 hover:border-brand/50 hover:bg-brand-tint/40 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+            >
+              <FileText className="size-4 shrink-0 text-brand-deep" aria-hidden />
+              {travelGuidelines.label}
+              <ArrowUpRight
+                className="size-4 shrink-0 text-brand-deep transition-transform duration-300 group-hover/pdf:translate-x-0.5 group-hover/pdf:-translate-y-0.5"
+                aria-hidden
+              />
+            </a>
+          </div>
+          <Reveal delay={0.1}>
+            <p className="measure text-base leading-7 text-ink-soft">{femaFramework}</p>
+          </Reveal>
         </div>
       </Section>
 
