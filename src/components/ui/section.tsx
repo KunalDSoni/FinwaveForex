@@ -5,7 +5,8 @@ type SectionProps = {
   children: ReactNode;
   variant?: "paper" | "sand" | "dark";
   bordered?: boolean;
-  width?: "default" | "narrow";
+  /** `document` is the reading-page shell — see --container-doc. */
+  width?: "default" | "narrow" | "document";
   /**
    * Vertical rhythm. Every section on the site draws from these steps instead
    * of hand-tuned pt/pb pairs.
@@ -29,6 +30,12 @@ const spacing = {
   tight: "py-12 lg:py-14",
   flushTop: "pt-0 pb-16 lg:pb-20",
   flushBottom: "pt-16 pb-0 lg:pt-20",
+} as const;
+
+const widths = {
+  default: "max-w-page",
+  narrow: "max-w-4xl",
+  document: "max-w-[var(--container-doc)]",
 } as const;
 
 const variants = {
@@ -59,7 +66,7 @@ export function Section({
         className={cn(
           "gutter mx-auto",
           spacing[space],
-          width === "narrow" ? "max-w-4xl" : "max-w-page",
+          widths[width],
           innerClassName,
         )}
       >

@@ -19,7 +19,7 @@ export function LegalArticle({ page }: { page: LegalPage }) {
 
   return (
     <>
-      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
+      <section className="mx-auto max-w-[var(--container-doc)] gutter pt-28 lg:pt-36">
         <Reveal>
           <Eyebrow>Legal</Eyebrow>
           <h1 className="display-lg mt-5 text-balance">
@@ -34,8 +34,11 @@ export function LegalArticle({ page }: { page: LegalPage }) {
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-page gutter pt-14 pb-16 lg:pt-16 lg:pb-20">
-        <div className={showContents ? "grid gap-10 lg:grid-cols-[14rem_1fr] lg:gap-16" : "max-w-3xl"}>
+      <section className="mx-auto max-w-[var(--container-doc)] gutter pt-14 pb-16 lg:pt-16 lg:pb-20">
+        {/* Without a contents rail the column has nothing to sit against, so it
+            is capped near the measure rather than at max-w-3xl — otherwise the
+            contact card ran ~200px wider than any line of text beside it. */}
+        <div className={showContents ? "grid gap-10 lg:grid-cols-[14rem_1fr] lg:gap-14" : "max-w-[40rem]"}>
           {showContents ? (
             <nav aria-label="On this page" className="lg:sticky lg:top-28 lg:self-start">
               <p className="label-micro text-ink-soft">
@@ -78,13 +81,13 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                   <div className="mt-5 flex flex-col gap-4">
                     {section.blocks.map((block, blockIndex) =>
                       block.type === "paragraph" ? (
-                        <p key={blockIndex} className="measure text-sm leading-7 text-ink-soft">
+                        <p key={blockIndex} className="measure text-base leading-7 text-ink-soft">
                           {block.text}
                         </p>
                       ) : block.type === "clauses" ? (
                         // Verbatim contract clauses, numbered so they can be
                         // cited — the source publishes them as one long block.
-                        <ol key={blockIndex} className="flex max-w-[calc(57ch+2.75rem)] flex-col gap-5">
+                        <ol key={blockIndex} className="flex flex-col gap-5">
                           {block.items.map((clause, clauseIndex) => (
                             <li
                               key={clause.slice(0, 60)}
@@ -93,16 +96,16 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                               <span className="tnum pt-0.5 text-xs font-semibold text-brand-deep">
                                 {String(clauseIndex + 1).padStart(2, "0")}
                               </span>
-                              <span className="measure text-sm leading-7 text-ink-soft">{clause}</span>
+                              <span className="measure text-base leading-7 text-ink-soft">{clause}</span>
                             </li>
                           ))}
                         </ol>
                       ) : (
                         <ul key={blockIndex} className="flex flex-col gap-3">
                           {block.items.map((item) => (
-                            <li key={item} className="measure flex gap-3 text-sm leading-7 text-ink-soft">
+                            <li key={item} className="measure flex gap-3 text-base leading-7 text-ink-soft">
                               <span
-                                className="mt-3 size-1.5 shrink-0 rounded-full bg-brand"
+                                className="mt-3.5 size-1.5 shrink-0 rounded-full bg-brand"
                                 aria-hidden
                               />
                               {item}
@@ -118,7 +121,7 @@ export function LegalArticle({ page }: { page: LegalPage }) {
 
             {/* Where to take a question about this document. */}
             <Reveal delay={0.1}>
-              <div className="mt-14 max-w-[calc(57ch+2.75rem)] rounded-2xl border border-hairline bg-white p-8">
+              <div className="mt-14 rounded-2xl border border-hairline bg-white p-8">
                 <h2 className="text-base font-semibold tracking-[-0.01em]">
                   Questions about this policy?
                 </h2>

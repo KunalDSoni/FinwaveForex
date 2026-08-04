@@ -56,6 +56,13 @@
      content out from 240px to 1680px at a 1920px viewport (1440px wide). With
      the 32px gutter below, a 1504px container reproduces that exactly. */
   --container-page: 94rem;
+  /* Document width, for pages that are one column of prose rather than a
+     marketing grid: privacy, disclaimer, FAQ. At the page's 1504px these ran
+     a 511px measure against a 1504px shell and dumped up to 897px of void on
+     the right — 60% of the page. Sized to hold the contents rail (14rem), its
+     gap (4rem) and the measure with slack, then centred so what is left over
+     reads as margin on both sides instead of a hole on one. */
+  --container-doc: 56rem;
   /* 14px is the site's workhorse size and it was set at two different leadings
      depending on whether the author happened to add `leading-6`: an audit found
      152 elements at 14/20 and 90 at 14/24, with no rule separating them. One

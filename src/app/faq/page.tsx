@@ -30,11 +30,10 @@ export default function FaqPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
+      <section className="mx-auto max-w-[var(--container-doc)] gutter pt-28 lg:pt-36">
         <Breadcrumb trail={[{ label: "FAQ's" }]} />
         <SectionHeading
           as="h1"
-          layout="split"
           lines={[
             <Fragment key="l1">Questions we get</Fragment>,
             <Fragment key="l2">
@@ -45,8 +44,8 @@ export default function FaqPage() {
         />
       </section>
 
-      <Section>
-        <div className="grid gap-10 lg:grid-cols-[13rem_1fr] lg:gap-16">
+      <Section width="document">
+        <div className="grid gap-10 lg:grid-cols-[11rem_1fr] lg:gap-14">
           {/* Category index; sticks alongside the answers on large screens. */}
           <nav aria-label="FAQ categories" className="lg:sticky lg:top-28 lg:self-start">
             <p className="label-micro text-ink-soft">
@@ -85,7 +84,7 @@ export default function FaqPage() {
                         <AccordionTrigger className="text-left text-base font-semibold">
                           {faq.q}
                         </AccordionTrigger>
-                        <AccordionContent className="measure text-sm leading-7 text-ink-soft">
+                        <AccordionContent className="measure text-base leading-7 text-ink-soft">
                           {faq.a}
                         </AccordionContent>
                       </AccordionItem>
@@ -107,7 +106,7 @@ export default function FaqPage() {
                       The legal framework
                     </h2>
                   </div>
-                  <p className="measure mt-6 text-sm leading-7 text-ink-soft">{femaFramework}</p>
+                  <p className="measure mt-6 text-base leading-7 text-ink-soft">{femaFramework}</p>
                   <a
                     href={asset(travelGuidelines.file)}
                     target="_blank"
@@ -152,6 +151,7 @@ export default function FaqPage() {
           </Fragment>,
         ]}
         body="The desk answers most things in under a minute, and can confirm today's rate while you're on the line."
+        width="document"
       />
     </>
   );

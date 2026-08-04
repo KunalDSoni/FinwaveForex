@@ -35,7 +35,9 @@ export function LeadershipCard({ leader, index }: { leader: Leader; index: numbe
           </div>
         </div>
 
-        <p className="relative mt-7 text-base leading-7 text-ink-soft">{leader.bio}</p>
+        {/* flex-1 / mt-auto: the two bios differ by a line, which left the
+            expertise rules at different heights on cards sitting side by side. */}
+        <p className="relative mt-7 flex-1 text-base leading-7 text-ink-soft">{leader.bio}</p>
 
         <div className="relative mt-7 border-t border-hairline pt-6">
           <p className="label-micro text-ink-soft">

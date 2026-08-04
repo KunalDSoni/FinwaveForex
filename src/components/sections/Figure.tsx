@@ -87,7 +87,9 @@ export function Figure({
                 : "bg-[radial-gradient(70%_120%_at_88%_0%,rgb(234_163_0_/_0.14),transparent)]",
             )}
           />
-          <div className="relative">{inner}</div>
+          {/* Centred: the quote caps at max-w-3xl, so in a full-width panel it
+              sat against the left edge with ~550px of empty panel beside it. */}
+          <div className="relative mx-auto max-w-4xl">{inner}</div>
         </div>
       </Reveal>
     );

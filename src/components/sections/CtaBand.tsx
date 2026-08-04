@@ -6,11 +6,14 @@ import { MaskText } from "@/components/motion/MaskText";
 import { Reveal } from "@/components/motion/Reveal";
 import { Em } from "@/components/sections/Em";
 import { siteConfig } from "@/content/site";
+import { cn } from "@/lib/utils";
 
 type CtaBandProps = {
   /** Two display lines. Defaults to the house close. */
   lines?: ReactNode[];
   body?: string;
+  /** `document` matches the narrower reading shell — see --container-doc. */
+  width?: "page" | "document";
 };
 
 const DEFAULT_LINES = [
@@ -27,16 +30,34 @@ const DEFAULT_BODY =
  * Closing band. Copy is overridable per page: the identical band on six pages
  * stopped being a call to action and became wallpaper.
  */
-export function CtaBand({ lines = DEFAULT_LINES, body = DEFAULT_BODY }: CtaBandProps = {}) {
+export function CtaBand({
+  lines = DEFAULT_LINES,
+  body = DEFAULT_BODY,
+  width = "page",
+}: CtaBandProps = {}) {
   return (
-    <section className="gutter pb-16 lg:pb-20">
-      <div className="relative mx-auto max-w-page overflow-hidden rounded-3xl bg-ink-surface px-6 py-16 sm:px-12 lg:py-20">
+    // The width cap belongs on the padded wrapper, not the panel. With it on
+    // the panel, the panel centred inside the full-bleed section and so sat
+    // 32px outboard of every other content edge once the viewport exceeded the
+    // container — invisible at 1440, visible at 1920.
+    <section
+      className={cn(
+        "gutter mx-auto pb-16 lg:pb-20",
+        width === "document" ? "max-w-[var(--container-doc)]" : "max-w-page",
+      )}
+    >
+      <div className="relative overflow-hidden rounded-3xl bg-ink-surface px-6 py-16 sm:px-12 lg:py-20">
         <div
           className="animate-gradient-shift pointer-events-none absolute inset-0 bg-[radial-gradient(80%_120%_at_85%_0%,rgb(234_163_0_/_0.38),transparent)]"
           aria-hidden
         />
         {/* Statement left, actions right — reads as a band rather than a poster. */}
-        <div className="relative grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <div
+          className={cn(
+            "relative grid items-center gap-10",
+            width === "document" ? "lg:gap-12" : "lg:grid-cols-[1.15fr_0.85fr] lg:gap-16",
+          )}
+        >
           <div>
             <MaskText
               as="h2"
