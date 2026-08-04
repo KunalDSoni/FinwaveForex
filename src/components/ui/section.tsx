@@ -5,8 +5,7 @@ type SectionProps = {
   children: ReactNode;
   variant?: "paper" | "sand" | "dark";
   bordered?: boolean;
-  /** `document` is the reading-page shell — see --container-doc. */
-  width?: "default" | "narrow" | "document";
+  width?: "default" | "narrow";
   /**
    * Vertical rhythm. Every section on the site draws from these steps instead
    * of hand-tuned pt/pb pairs.
@@ -35,7 +34,6 @@ const spacing = {
 const widths = {
   default: "max-w-page",
   narrow: "max-w-4xl",
-  document: "max-w-[var(--container-doc)]",
 } as const;
 
 const variants = {

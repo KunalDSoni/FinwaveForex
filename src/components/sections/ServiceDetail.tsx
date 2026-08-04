@@ -139,7 +139,7 @@ export function ServiceDetail({ service }: { service: Service }) {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <Accordion type="single" collapsible className="mt-8 max-w-3xl">
+            <Accordion type="single" collapsible className="mt-8">
               {faqs.map((faq) => (
                 <AccordionItem key={faq.q} value={faq.q}>
                   <AccordionTrigger className="text-left text-base font-semibold">
@@ -171,7 +171,12 @@ export function ServiceDetail({ service }: { service: Service }) {
                 href={`/services/${other.slug}`}
                 className="group/next flex h-full flex-col justify-between gap-6 p-8 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
               >
-                <span className="font-semibold tracking-[-0.01em] text-balance">{other.name}</span>
+                <span>
+                  <span className="block font-semibold tracking-[-0.01em] text-balance">
+                    {other.name}
+                  </span>
+                  <span className="mt-2 block text-sm text-ink-soft">{other.blurb}</span>
+                </span>
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-deep">
                   Learn more
                   <ArrowRight

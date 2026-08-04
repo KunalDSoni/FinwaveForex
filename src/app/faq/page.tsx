@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import Link from "next/link";
 import { ArrowUpRight, FileText, Scale } from "lucide-react";
 import {
   Accordion,
@@ -12,7 +11,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { Em } from "@/components/sections/Em";
 import { SectionHeading } from "@/components/sections/SectionHeading";
-import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/section";
 import { faqCategories, femaFramework, travelGuidelines } from "@/content/faqs";
 import { asset } from "@/lib/base-path";
@@ -30,10 +28,11 @@ export default function FaqPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-[var(--container-doc)] gutter pt-28 lg:pt-36">
+      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
         <Breadcrumb trail={[{ label: "FAQ's" }]} />
         <SectionHeading
           as="h1"
+          layout="split"
           lines={[
             <Fragment key="l1">Questions we get</Fragment>,
             <Fragment key="l2">
@@ -44,8 +43,8 @@ export default function FaqPage() {
         />
       </section>
 
-      <Section width="document">
-        <div className="grid gap-10 lg:grid-cols-[11rem_1fr] lg:gap-14">
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-[13rem_1fr] lg:gap-16">
           {/* Category index; sticks alongside the answers on large screens. */}
           <nav aria-label="FAQ categories" className="lg:sticky lg:top-28 lg:self-start">
             <p className="label-micro text-ink-soft">
@@ -97,21 +96,22 @@ export default function FaqPage() {
             {/* Regulatory context Finwave publishes, kept verbatim. */}
             <section id="framework" className="mt-16 scroll-mt-28">
               <Reveal>
-                <div className="rounded-2xl border border-hairline bg-white p-8 lg:p-10">
-                  <div className="flex items-center gap-3">
-                    <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20">
+                <div className="grid gap-8 rounded-2xl border border-hairline bg-white p-8 lg:grid-cols-[18rem_1fr] lg:gap-14 lg:p-10">
+                  <div>
+                    <span className="flex size-11 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20">
                       <Scale className="size-5" aria-hidden />
                     </span>
-                    <h2 className="text-lg font-semibold tracking-[-0.02em]">
+                    <h2 className="mt-5 text-lg font-semibold tracking-[-0.02em]">
                       The legal framework
                     </h2>
-                  </div>
-                  <p className="measure mt-6 text-base leading-7 text-ink-soft">{femaFramework}</p>
-                  <a
+                    <p className="mt-2 text-sm text-ink-soft">
+                      Reproduced from the guidance Finwave Forex publishes.
+                    </p>
+                    <a
                     href={asset(travelGuidelines.file)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group/pdf mt-7 inline-flex items-center gap-3 rounded-xl border border-hairline px-5 py-3.5 text-sm font-semibold transition-[border-color,background-color] duration-300 hover:border-brand/50 hover:bg-brand-tint/40 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+                    className="group/pdf mt-6 inline-flex items-center gap-3 rounded-xl border border-hairline px-5 py-3.5 text-sm font-semibold transition-[border-color,background-color] duration-300 hover:border-brand/50 hover:bg-brand-tint/40 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
                   >
                     <FileText className="size-4 shrink-0 text-brand-deep" aria-hidden />
                     {travelGuidelines.label}
@@ -119,26 +119,13 @@ export default function FaqPage() {
                       className="size-4 shrink-0 text-brand-deep transition-transform duration-300 group-hover/pdf:translate-x-0.5 group-hover/pdf:-translate-y-0.5"
                       aria-hidden
                     />
-                  </a>
+                    </a>
+                  </div>
+                  <p className="measure text-base leading-7 text-ink-soft">{femaFramework}</p>
                 </div>
               </Reveal>
             </section>
 
-            {/* Anything not covered goes to a human. */}
-            <Reveal delay={0.1}>
-              <div className="mt-6 flex flex-col items-start justify-between gap-5 rounded-2xl border border-hairline bg-sand/50 px-8 py-7 sm:flex-row sm:items-center">
-                <div>
-                  <p className="font-semibold tracking-tight">Still not answered?</p>
-                  <p className="mt-1 text-sm text-ink-soft">
-                    Call the desk, or send your question and we&apos;ll reply with today&apos;s
-                    rate too.
-                  </p>
-                </div>
-                <Button asChild className="shrink-0">
-                  <Link href="/contact">Contact us</Link>
-                </Button>
-              </div>
-            </Reveal>
           </div>
         </div>
       </Section>
@@ -151,7 +138,6 @@ export default function FaqPage() {
           </Fragment>,
         ]}
         body="The desk answers most things in under a minute, and can confirm today's rate while you're on the line."
-        width="document"
       />
     </>
   );

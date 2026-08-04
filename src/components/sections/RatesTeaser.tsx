@@ -4,12 +4,10 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/Reveal";
 import { Em } from "@/components/sections/Em";
-import { Figure } from "@/components/sections/Figure";
 import { LiveRate } from "@/components/sections/LiveRate";
 import { SectionHeading } from "@/components/sections/SectionHeading";
 import { Section } from "@/components/ui/section";
 import { currencies } from "@/content/rates";
-import { siteConfig } from "@/content/site";
 
 export function RatesTeaser() {
   return (
@@ -73,14 +71,6 @@ export function RatesTeaser() {
           </div>
         </Reveal>
       </div>
-
-      {/* The rate promise belongs beside the rates, not in its own band. */}
-      <Figure
-        as="panel"
-        quote="We can surely better this rate for you."
-        attribution={`Our promise · ${siteConfig.legalName}`}
-        className="mt-14"
-      />
     </Section>
   );
 }

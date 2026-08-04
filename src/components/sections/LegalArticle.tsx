@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Mail, PhoneCall } from "lucide-react";
+import { ArrowRight, Mail, PhoneCall, ShieldCheck } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { siteConfig } from "@/content/site";
-import type { LegalPage } from "@/content/legal";
+import { legalPages, type LegalPage } from "@/content/legal";
 
 /** Stable anchor id from a section heading. */
 function slugify(heading: string): string {
@@ -13,37 +13,48 @@ function slugify(heading: string): string {
     .replace(/^-|-$/g, "");
 }
 
+/**
+ * Three columns: contents, document, document meta.
+ *
+ * A legal page is one measure-wide column of prose, so on a wide page it
+ * either strands ~900px of void beside it or shrinks into a ribbon that uses
+ * half the screen. Neither is the answer — the third column is. It carries
+ * what a reader of a legal document actually reaches for (who published it,
+ * when, the companion document, and how to ask about it), which composes the
+ * page across the full width with content rather than with margin.
+ */
 export function LegalArticle({ page }: { page: LegalPage }) {
   // A contents rail earns its place once a document has more than one part.
   const showContents = page.sections.length > 1;
+  const companion = legalPages.find((doc) => doc.slug !== page.slug);
 
   return (
     <>
-      <section className="mx-auto max-w-[var(--container-doc)] gutter pt-28 lg:pt-36">
+      <section className="mx-auto max-w-page gutter pt-28 lg:pt-36">
         <Reveal>
-          <Eyebrow>Legal</Eyebrow>
-          <h1 className="display-lg mt-5 text-balance">
-            {page.title}
-          </h1>
-          <p className="measure mt-6 text-lg leading-8 text-ink-soft">{page.intro}</p>
-          {page.updated ? (
-            <p className="mt-6 label-micro text-ink-soft">
-              Last updated {page.updated}
-            </p>
-          ) : null}
+          <div className="grid items-start gap-8 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+            <div>
+              <Eyebrow>Legal</Eyebrow>
+              <h1 className="display-lg mt-5 text-balance">{page.title}</h1>
+            </div>
+            {page.intro ? (
+              <p className="measure text-lg leading-8 text-ink-soft lg:pt-3">{page.intro}</p>
+            ) : null}
+          </div>
         </Reveal>
       </section>
 
-      <section className="mx-auto max-w-[var(--container-doc)] gutter pt-14 pb-16 lg:pt-16 lg:pb-20">
-        {/* Without a contents rail the column has nothing to sit against, so it
-            is capped near the measure rather than at max-w-3xl — otherwise the
-            contact card ran ~200px wider than any line of text beside it. */}
-        <div className={showContents ? "grid gap-10 lg:grid-cols-[14rem_1fr] lg:gap-14" : "max-w-[40rem]"}>
+      <section className="mx-auto max-w-page gutter pt-14 pb-16 lg:pt-16 lg:pb-20">
+        <div
+          className={
+            showContents
+              ? "grid gap-10 lg:grid-cols-[13rem_minmax(0,1fr)_19rem] lg:gap-x-14"
+              : "grid gap-10 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-x-14"
+          }
+        >
           {showContents ? (
             <nav aria-label="On this page" className="lg:sticky lg:top-28 lg:self-start">
-              <p className="label-micro text-ink-soft">
-                On this page
-              </p>
+              <p className="label-micro text-ink-soft">On this page</p>
               <ol className="mt-4 flex flex-col gap-1">
                 {page.sections.map((section, index) => (
                   <li key={section.heading}>
@@ -87,7 +98,13 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                       ) : block.type === "clauses" ? (
                         // Verbatim contract clauses, numbered so they can be
                         // cited — the source publishes them as one long block.
-                        <ol key={blockIndex} className="flex flex-col gap-5">
+                        // Capped to the measure plus the number column so the
+                        // dividing rules stop where the text stops, instead of
+                        // running 300px past it into empty column.
+                        <ol
+                          key={blockIndex}
+                          className="flex max-w-[calc(57ch+2.75rem)] flex-col gap-5"
+                        >
                           {block.items.map((clause, clauseIndex) => (
                             <li
                               key={clause.slice(0, 60)}
@@ -96,14 +113,19 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                               <span className="tnum pt-0.5 text-xs font-semibold text-brand-deep">
                                 {String(clauseIndex + 1).padStart(2, "0")}
                               </span>
-                              <span className="measure text-base leading-7 text-ink-soft">{clause}</span>
+                              <span className="measure text-base leading-7 text-ink-soft">
+                                {clause}
+                              </span>
                             </li>
                           ))}
                         </ol>
                       ) : (
                         <ul key={blockIndex} className="flex flex-col gap-3">
                           {block.items.map((item) => (
-                            <li key={item} className="measure flex gap-3 text-base leading-7 text-ink-soft">
+                            <li
+                              key={item}
+                              className="measure flex gap-3 text-base leading-7 text-ink-soft"
+                            >
                               <span
                                 className="mt-3.5 size-1.5 shrink-0 rounded-full bg-brand"
                                 aria-hidden
@@ -118,47 +140,68 @@ export function LegalArticle({ page }: { page: LegalPage }) {
                 </Reveal>
               </section>
             ))}
+          </div>
 
-            {/* Where to take a question about this document. */}
-            <Reveal delay={0.1}>
-              <div className="mt-14 rounded-2xl border border-hairline bg-white p-8">
-                <h2 className="text-base font-semibold tracking-[-0.01em]">
-                  Questions about this policy?
-                </h2>
-                <p className="mt-2 text-sm text-ink-soft">
-                  Write to us or call the desk and we&apos;ll put you through to the right person.
-                </p>
-                {/* min-h-11: these three were 20px, 20px and 16px tall, the
-                    only controls on the site failing WCAG 2.5.8 (24px). */}
-                <div className="mt-4 flex flex-wrap gap-x-6 text-sm">
+          {/* Document meta. Sticky, so it stays useful through a long scroll. */}
+          <Reveal delay={0.1} className="lg:sticky lg:top-28 lg:self-start">
+            <div className="rounded-2xl border border-hairline bg-canvas p-6">
+              <p className="label-micro text-ink-soft">This document</p>
+              <dl className="mt-4 flex flex-col gap-3 text-sm">
+                <div className="flex justify-between gap-4">
+                  <dt className="text-ink-soft">Published by</dt>
+                  <dd className="text-right font-medium">{siteConfig.legalName}</dd>
+                </div>
+                <div className="flex justify-between gap-4 border-t border-hairline pt-3">
+                  <dt className="text-ink-soft">Last updated</dt>
+                  <dd className="text-right font-medium">{page.updated ?? "Not stated"}</dd>
+                </div>
+                <div className="flex justify-between gap-4 border-t border-hairline pt-3">
+                  <dt className="text-ink-soft">Status</dt>
+                  <dd className="flex items-center gap-1.5 text-right font-medium">
+                    <ShieldCheck className="size-4 shrink-0 text-brand-deep" aria-hidden />
+                    RBI-approved
+                  </dd>
+                </div>
+              </dl>
+
+              {companion ? (
+                <Link
+                  href={`/${companion.slug}`}
+                  className="group/doc mt-6 flex items-center justify-between gap-3 rounded-xl border border-hairline bg-paper px-4 py-3 text-sm font-semibold transition-colors hover:border-brand/50 hover:bg-brand-tint/40 focus-visible:ring-3 focus-visible:ring-brand/40 focus-visible:outline-none"
+                >
+                  {companion.title}
+                  <ArrowRight
+                    className="size-4 shrink-0 text-brand-deep transition-transform duration-300 group-hover/doc:translate-x-0.5"
+                    aria-hidden
+                  />
+                </Link>
+              ) : null}
+
+              <div className="mt-6 border-t border-hairline pt-5">
+                <p className="text-sm font-semibold">Questions about this policy?</p>
+                <div className="mt-1 flex flex-col">
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="flex min-h-11 items-center gap-2 font-medium text-brand-deep transition-colors hover:text-ink"
+                    className="flex min-h-11 items-center gap-2 text-sm font-medium text-brand-deep transition-colors hover:text-ink"
                   >
                     <Mail className="size-4 shrink-0" aria-hidden />
                     {siteConfig.email}
                   </a>
                   <a
                     href={siteConfig.phoneHref}
-                    className="flex min-h-11 items-center gap-2 font-medium text-brand-deep transition-colors hover:text-ink"
+                    className="flex min-h-11 items-center gap-2 text-sm font-medium text-brand-deep transition-colors hover:text-ink"
                   >
                     <PhoneCall className="size-4 shrink-0" aria-hidden />
                     {siteConfig.phone}
                   </a>
                 </div>
-                <p className="measure mt-5 border-t border-hairline pt-5 text-xs leading-6 text-ink-soft">
-                  {siteConfig.legalName} · {siteConfig.address.line1}, {siteConfig.address.line2},{" "}
-                  {siteConfig.address.city} {siteConfig.address.postalCode} ·{" "}
-                  <Link
-                    href="/contact"
-                    className="inline-block py-2 underline underline-offset-4 transition-colors hover:text-ink"
-                  >
-                    Contact us
-                  </Link>
+                <p className="mt-3 text-xs leading-5 text-ink-soft">
+                  {siteConfig.address.line1}, {siteConfig.address.line2}, {siteConfig.address.city}{" "}
+                  {siteConfig.address.postalCode}
                 </p>
               </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

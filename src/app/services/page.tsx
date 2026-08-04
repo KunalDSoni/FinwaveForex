@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import Link from "next/link";
-import { ArrowRight, Check, Send, ShieldCheck } from "lucide-react";
+import { ArrowRight, Check, Send } from "lucide-react";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/CtaBand";
@@ -136,35 +136,6 @@ export default function ServicesPage() {
             </div>
           </Reveal>
         </div>
-      </Section>
-
-      {/* Not-sure-which fallback: the desk answers it in one call. */}
-      <Section>
-        <Reveal delay={0.1}>
-          <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-hairline bg-white px-8 py-8 sm:flex-row sm:items-center">
-            <div className="flex items-start gap-4">
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-brand-tint text-brand-deep ring-1 ring-brand/20">
-                <ShieldCheck className="size-5" aria-hidden />
-              </span>
-              <div>
-                <p className="font-semibold tracking-tight">Not sure which you need?</p>
-                <p className="mt-1 text-sm text-ink-soft">
-                  Tell us where you&apos;re going and what it&apos;s for, and we&apos;ll point you
-                  to the cheapest route.
-                </p>
-              </div>
-            </div>
-            <Button asChild size="lg" variant="outline" className="group shrink-0 border-ink/20">
-              <Link href="/contact">
-                Talk to the desk
-                <ArrowRight
-                  className="size-4 transition-transform duration-300 group-hover:translate-x-1"
-                  aria-hidden
-                />
-              </Link>
-            </Button>
-          </div>
-        </Reveal>
       </Section>
 
       <CtaBand
