@@ -71,10 +71,6 @@ export const faqCategories: FaqCategory[] = [
         // Source: services.html — travel cards in major currencies.
         a: "Travel cards are available in all major currencies, including US Dollar, British Pound, Euro, Singapore Dollar, Canadian Dollar, Australian Dollar, Saudi Riyal and UAE Dirham.",
       },
-      {
-        q: "Why choose a card over cash?",
-        a: "A prepaid travel card is a safer way to carry money abroad than a large amount of notes, and it can be used at ATMs and merchants overseas. Many travellers carry a mix of both.",
-      },
     ],
   },
   {
@@ -112,10 +108,6 @@ export const faqCategories: FaqCategory[] = [
         // Source: disclaimer.html — discrepancy handling.
         a: "If a discrepancy is found in the documents provided, or the details are incomplete or inaccurate, or the request would breach applicable laws, regulations or RBI policy, the transaction can be cancelled. Any amount you've deposited is returned within 21 working days, less applicable charges.",
       },
-      {
-        q: "Are you regulated?",
-        a: "Finwave Forex Pvt. Ltd. is an RBI-approved money changer with a decade of experience in foreign exchange. Full KYC is completed on every transaction.",
-      },
     ],
   },
   {
@@ -125,10 +117,6 @@ export const faqCategories: FaqCategory[] = [
       {
         q: "Where do you deliver?",
         a: "We offer home delivery and branch pick-up across six cities: Ahmedabad, Bangalore, Chennai, Cochin, Kolkata and Mumbai. Our office is on Vijay Cross Roads, Navrangpura, Ahmedabad.",
-      },
-      {
-        q: "How do I start?",
-        a: "Call or email the desk with the currency, the amount and your city. We'll confirm today's rate, tell you what documentation is needed, and arrange delivery or collection.",
       },
     ],
   },
